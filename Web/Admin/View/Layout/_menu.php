@@ -7,7 +7,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">COMPANY NAME</a>
+                <a class="navbar-brand" href="/token">西南票务—后台管理</a>
             </div>
 
             <div class="header-right">
@@ -72,13 +72,28 @@
                         </ul>
                     </li>
                      <li>
-                        <a href="#"><i class="fa fa-yelp "></i>Extra Pages <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-yelp "></i>商品管理 <span class="fa arrow"></span></a>
                          <ul class="nav nav-second-level">
                             <li>
-                                <a href="invoice.html"><i class="fa fa-coffee"></i>Invoice</a>
+                                <a href="#"><i class="fa fa-coffee"></i>明星周边商品<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="<?=U('Star/cateList') ?>"><i class="fa fa-plus "></i>商品分类</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-comments-o "></i>商品列表</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=U('Star/productProperty') ?>"><i class="fa fa-comments-o "></i>商品属性设置</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=U('Star/starList') ?>"><i class="fa fa-comments-o ">明星品牌</i></a>
+                                    </li>
+                                </ul>
+
                             </li>
                             <li>
-                                <a href="pricing.html"><i class="fa fa-flash "></i>Pricing</a>
+                                <a href="pricing.html"><i class="fa fa-flash "></i>商品</a>
                             </li>
                              <li>
                                 <a href="component.html"><i class="fa fa-key "></i>Components</a>

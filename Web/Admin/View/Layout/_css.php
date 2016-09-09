@@ -7,6 +7,7 @@
     <link href="/Public/admin/assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
     <link href="/Public/admin/assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="/Public/admin/assets/css/bootstrap-fileupload.min.css" rel="stylesheet" />
        <!--CUSTOM BASIC STYLES-->
     <link href="/Public/admin/assets/css/basic.css" rel="stylesheet" />
     <!--CUSTOM MAIN STYLES-->

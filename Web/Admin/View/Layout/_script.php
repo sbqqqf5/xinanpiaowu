@@ -4,5 +4,7 @@
 <!-- METISMENU SCRIPTS -->
 <!-- <script src="/Public/admin/assets/js/jquery.metisMenu.js"></script> -->
 <script src="/Public/admin/assets/js/metisMenu.min.js"></script>
+<script src="/Public/admin/assets/js/bootstrap-fileupload.js"></script>
+<script src="/Public/admin/layer/layer.js"></script>
    <!-- CUSTOM SCRIPTS -->
 <script src="/Public/admin/assets/js/custom.js"></script>
