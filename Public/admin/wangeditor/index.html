@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/dist/css/wangEditor.min.css">
+    <script src="dist/js/jquery-2.2.1.min.js"></script>
+    <script src="dist/js/wangEditor.min.js"></script>
+    <style type="text/css">
+        .editor-container{width:900px;}
+        #wang-editor{height:600px;}
+    </style>
+</head>
+<body>
+    <h1>wangEditor</h1>
+    <div class="editor-container">
+        <textarea id="wang-editor"></textarea>
+        <!-- <div id="wang-editor"></div> -->
+    </div>
+    <script>
+    // 阻止输出log
+    wangEditor.config.printLog = false;
+        var editor = new wangEditor('wang-editor')
+            // 上传图片（举例）
+            editor.config.uploadImgUrl = "upload.php";
+
+            // 设置 headers（举例）
+            editor.config.uploadHeaders = {
+                'Accept' : 'text/x-json'
+            };
+
+            // 隐藏掉插入网络图片功能。该配置，只有在你正确配置了图片上传功能之后才可用。
+            editor.config.hideLinkImg = true;
+
+            // 配置 onchange 事件
+        editor.onchange = function () {
+            // 编辑区域内容变化时，实时打印出当前内容
+            console.log(this.$txt.html());
+        };
+         // 普通的自定义菜单
+   /* editor.config.menus = [
+        'source',
+        '|',     // '|' 是菜单组的分割线
+        'bold',
+        'underline',
+        'italic',
+        'strikethrough',
+        'eraser',
+        'forecolor',
+        'bgcolor'
+     ];*/
+
+     // 仅仅想移除某几个菜单，例如想移除『插入代码』和『全屏』菜单：
+     // 其中的 wangEditor.config.menus 可获取默认情况下的菜单配置
+     editor.config.menus = $.map(wangEditor.config.menus, function(item, key) {
+         if (item === 'insertcode') {
+             return null;
+         }
+         if (item === 'fullscreen') {
+             return null;
+         }
+         if (item === 'video') return;
+         if (item === 'location') return;
+         if (item === 'source') return;
+         return item;
+     });
+     // // 颜色
+    editor.config.colors = {
+        '#880000': '暗红色',
+        '#800080': '紫色',
+        '#ff0000': '红色',
+        '#000000': '黑色'
+    };
+        editor.create()
+
+        // 初始化编辑器的内容
+        editor.$txt.html('<p>要初始化的内容</p>');
+          // 获取编辑器区域完整html代码
+        var html = editor.$txt.html();
+
+        // 获取编辑器纯文本内容
+        var text = editor.$txt.text();
+
+        // 获取格式化后的纯文本
+        var formatText = editor.$txt.formatText();
+        //追加内容 
+        editor.$txt.append('<p>新追加的内容</p>');
+        // 清空内容。
+        // 不能传入空字符串，而必须传入如下参数
+        editor.$txt.html('<p><br></p>');
+    </script>
+</body>
+</html>
