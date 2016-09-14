@@ -10,8 +10,15 @@
     <div id="page-inner">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-head-line">Basic Forms</h1>
-                <h1 class="page-subhead-line">This is dummy text , you can replace it with your original text. </h1>
+                <ol class="breadcrumb">
+                <li>
+                    <a href="javascript:;">商品管理</a>
+                </li>
+                <li>
+                    <a href="javascript:;">票务商品</a>
+                </li>
+                <li class="active">票务分类</li>
+            </ol>
             </div>
         </div>
         <h1>Hello world!</h1>

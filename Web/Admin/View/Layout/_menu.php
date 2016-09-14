@@ -38,7 +38,7 @@
 
 <!-- class="active-menu-top" 活动的一级菜单 class="active-menu" 活动的菜单 collapse in 折叠 赋在ul上 -->
                     <li>
-                        <a href="index.html"><i class="fa fa-dashboard "></i>Dashboard</a>
+                        <a href="<?=U('Index/index') ?>"><i class="fa fa-dashboard "></i>Dashboard</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-desktop "></i>UI Elements <span class="fa arrow"></span></a>
@@ -84,7 +84,7 @@
                                         <a href="#"><i class="fa fa-comments-o "></i>商品列表</a>
                                     </li>
                                     <li>
-                                        <a href="<?=U('Star/productProperty') ?>"><i class="fa fa-comments-o "></i>商品属性设置</a>
+                                        <a href="<?=U('Star/productProperty') ?>"><i class="fa fa-comments-o "></i>商品规格设置</a>
                                     </li>
                                     <li>
                                         <a href="<?=U('Star/starList') ?>"><i class="fa fa-comments-o ">明星品牌</i></a>
@@ -93,7 +93,21 @@
 
                             </li>
                             <li>
-                                <a href="pricing.html"><i class="fa fa-flash "></i>商品</a>
+                                <a href="#"><i class="fa fa-flash "></i>票务商品<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="<?=U('Ticket/columnList') ?>"><i class="fa fa-plus "></i>票务栏目</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=U('Ticket/index') ?>"><i class="fa fa-comments-o "></i>商品列表</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=U('Ticket/cityList') ?>"><i class="fa fa-comments-o "></i>票务城市</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=U('Ticket/cateList') ?>"><i class="fa fa-comments-o ">票务类型</i></a>
+                                    </li>
+                                </ul>
                             </li>
                              <li>
                                 <a href="component.html"><i class="fa fa-key "></i>Components</a>
@@ -119,6 +133,29 @@
                            
                              <li>
                                 <a href="<?=U('form') ?>" ><i class="fa fa-desktop "></i>Basic </a>
+                            </li>
+                             <li>
+                                <a href="form-advance.html"><i class="fa fa-code "></i>Advance</a>
+                            </li>
+                             
+                           
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" ><i class="fa fa-bicycle "></i>网站管理 <span class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level ">
+                           
+                             <li>
+                                <a href="<?=U('Info/vipPrice') ?>" ><i class="fa fa-desktop "></i>会员充值积分 </a>
+                            </li>
+                            <li>
+                                <a href="<?=U('Info/preSale') ?>" ><i class="fa fa-desktop "></i>预售票提示信息 </a>
+                            </li>
+                            <li>
+                                <a href="<?=U('Info/promotion') ?>" ><i class="fa fa-desktop "></i>推广说明图片 </a>
+                            </li>
+                            <li>
+                                <a href="<?=U('Info/seoAndRight') ?>" ><i class="fa fa-desktop "></i>SEO及版权设置 </a>
                             </li>
                              <li>
                                 <a href="form-advance.html"><i class="fa fa-code "></i>Advance</a>

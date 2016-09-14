@@ -97,10 +97,58 @@ class WidgetWidget extends Controller
                      if (item === 'video') return;
                      if (item === 'location') return;
                      if (item === 'source') return;
+                     if (item == 'link') return;
+                     if (item == 'unlink') return;
                      return item;
                  });
 
                 editor.create()";
             return $js;
+    }
+/**
+ * 确认删除 modal 
+ * @param  array $param [description]
+ * @return [type]        [description]
+ */
+    public function deleteModal($param)
+    {
+        $id = $param['id'];
+        $content = '<div class="modal fade " id="'.$id.'">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">警告</h4>
+                    </div>
+                    <div class="modal-body">
+                        确定要删除吗？
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" onclick="fn_confirm_delete(\''.$id.'\')">删除</button>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- /modal #item-delete -->';
+        return $content;
+    }
+/**
+ * datatables bootstrap script
+ * @return [type] [description]
+ */
+    public function dataTablesScript()
+    {
+        $script = '<script src="http://cdn.bootcss.com/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
+        <script src="http://cdn.bootcss.com/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>';
+        return $script;
+    }
+/**
+ * datatables bootstrap css
+ * @return [type] [description]
+ */
+    public function dataTablesCss()
+    {
+        $css = '<link rel="stylesheet" href="http://cdn.bootcss.com/datatables/1.10.12/css/dataTables.bootstrap.min.css">';
+        return $css;
     }
 }

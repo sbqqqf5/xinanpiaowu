@@ -62,24 +62,24 @@
             /*====================================
             //horizontal wizrd code section
              ======================================*/
-            $(function () {
+            /*$(function () {
                 $("#wizard").steps({
                     headerTag: "h2",
                     bodyTag: "section",
                     transitionEffect: "slideLeft"
                 });
-            });
+            });*/
             /*====================================
             //vertical wizrd  code section
             ======================================*/
-            $(function () {
+           /* $(function () {
                 $("#wizardV").steps({
                     headerTag: "h2",
                     bodyTag: "section",
                     transitionEffect: "slideLeft",
                     stepsOrientation: "vertical"
                 });
-            });
+            });*/
         },
        
         
@@ -109,10 +109,12 @@
                     // $curMenu.parents('.nav-second-level').prev().addClass('active-menu-top');
                     $curMenu.parents('.nav-third-level').addClass('collpase in');
                     $curMenu.parents('.nav-third-level').prev().addClass('active-menu-top');
+                    $curMenu.parents('.nav-third-level').parent().addClass('active');
                 }
                 if(nav_second_level){
                     $curMenu.parents('.nav-second-level').addClass('collapse in');
                     $curMenu.parents('.nav-second-level').prev().addClass('active-menu-top');
+                    $curMenu.parents('.nav-second-level').parent().addClass('active');
                 }
         }
        
