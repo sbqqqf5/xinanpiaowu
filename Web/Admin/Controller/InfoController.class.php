@@ -70,4 +70,47 @@ class InfoController extends BaseController
         ]);
         $this->display();
     }
+/**
+ * 管理员列表
+ * @return [type] [description]
+ */
+    public function adminList()
+    {
+        $modal = D('admin');
+        if(IS_GET && $id = I('get.id'))
+        {
+            $info = $modal->field('id,user')->find($id);
+            $this->ajaxReturn($info);
+        }
+        if(IS_POST)
+        {
+            $id = I('post.id');
+            if($id){
+                if('del' == I('post.action')){
+                    //删除用户
+                    $modal->delete($id);
+                    $this->ajaxReturn(true);
+                }else{
+                     //修改密码
+                    $update = $modal->updatePassword($_POST);
+                    if($update[0]){
+                        $this->success($update[1]);exit;
+                    }else{
+                        $this->error($update[1]);exit;
+                    }
+                }
+            }else{
+                //添加用户
+                $add = $modal->addOne($_POST);
+                if($add[0]){
+                    $this->success($add[1]);exit;
+                }else{
+                    $this->error($add[1]);exit;
+                }
+            }
+        }
+
+        $this->assign('data',$modal->field('password',true)->select());
+        $this->display();
+    }
 }

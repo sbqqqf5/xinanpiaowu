@@ -81,7 +81,7 @@
                                         <a href="<?=U('Star/cateList') ?>"><i class="fa fa-plus "></i>商品分类</a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="fa fa-comments-o "></i>商品列表</a>
+                                        <a href="<?=U('Star/index') ?>"><i class="fa fa-comments-o "></i>商品列表</a>
                                     </li>
                                     <li>
                                         <a href="<?=U('Star/productProperty') ?>"><i class="fa fa-comments-o "></i>商品规格设置</a>
@@ -156,6 +156,9 @@
                             </li>
                             <li>
                                 <a href="<?=U('Info/seoAndRight') ?>" ><i class="fa fa-desktop "></i>SEO及版权设置 </a>
+                            </li>
+                            <li>
+                                <a href="<?=U('Info/adminList') ?>" ><i class="fa fa-desktop "></i>管理员列表 </a>
                             </li>
                              <li>
                                 <a href="form-advance.html"><i class="fa fa-code "></i>Advance</a>

@@ -5,6 +5,60 @@ use Think\Controller;
 
 class StarController extends BaseController
 {
+/**
+ * 商品列表 
+ * @return [type] [description]
+ */
+    public function index()
+    {
+
+        if(IS_GET && $cate_id = I('get.cate_id')){
+            $cates = D('StarProductCate')->getSecondCates($cate_id);
+            $this->ajaxReturn($cates);
+        }
+        $this->assign([
+            'cates'   => D('StarProductCate')->getParents(),
+        ]);
+        $this->display();
+    }
+/**
+ * 添加商品
+ * @return void
+ */
+    public function addProduct()
+    {
+        /*if(IS_POST){
+            if(I('post.step')==1 && $cate = I('post.cate')){
+                //获取商品分类下的 商品属性
+                $cateInfo = D('StarProductCate')->getOne($cate);
+                $whereProperty['id'] = ['in',$cateInfo['property']];
+                $fieldsInfo = D('ProductProperty')->getAll($whereProperty);
+                $this->assign('fieldsInfo',$fieldsInfo);
+
+                dump($fieldsInfo);
+                dump(D('StarProductCate')->getOne($cate));
+                $this->assign('cate',D('StarProductCate')->getOne($cate));
+            }
+        }*/
+        if(IS_GET && $cate_id = I('get.cate_id')){
+            //选择分类的二级联动数据
+            $cates = D('StarProductCate')->getSecondCates($cate_id);
+            $this->ajaxReturn($cates);
+        }
+        $this->assign([
+            'cates'   => D('StarProductCate')->getParents(),
+            'columns' => D('StarBrand')->getAll(),
+        ]);
+        $this->display();
+    }
+
+    public function addProductStep2()
+    {
+        if(IS_POST){
+            $ans = D('StarGoods')->addOne($_POST);
+        }
+        $this->display();
+    }
 
 /**
  * 明星周边-产品分类-列表
@@ -178,6 +232,15 @@ class StarController extends BaseController
         }else{
             $this->ajaxReturn(0);
         }
+    }
+/**
+ * 明星专区商品 预览图
+ * @return [type] [description]
+ */
+    public function ajaxUploadGoodsPics()
+    {
+        $result = $this->ajaxFileUpload('goods/');
+        $this->ajaxReturn($result);
     }
 /**
  * 重置明星专区 banner 的 session

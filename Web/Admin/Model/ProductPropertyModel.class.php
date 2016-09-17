@@ -48,16 +48,16 @@ class ProductPropertyModel extends Model
  * 获取所有
  * @return [type] [description]
  */
-    public function getAll()
+    public function getAll($where = '')
     {
-        $basic = $this->field(true)->select();
+        $basic = $this->field(true)->where($where)->select();
         foreach($basic as &$v){
             $v['value'] = $v['value']?implode(',',json_decode($v['value'],true)):null;
             switch($v['type']){
-                case self::TYPE_INPUT : $v['type'] = '单行文本';break;
-                case self::TYPE_TEXTAREA : $v['type'] = '多行文本';break;
-                case self::TYPE_SELECT : $v['type'] = '列表选择';break;
-                case self::TYPE_COLOR : $v['type'] = '颜色选择';break;
+                case self::TYPE_INPUT : $v['type_name'] = '单行文本';break;
+                case self::TYPE_TEXTAREA : $v['type_name'] = '多行文本';break;
+                case self::TYPE_SELECT : $v['type_name'] = '列表选择';break;
+                case self::TYPE_COLOR : $v['type_name'] = '颜色选择';break;
             }
         }
         return $basic;

@@ -44,7 +44,7 @@
                 <tr>
                     <td class="text-center"><?=$v['id'] ?></td>
                     <td><?=$v['name'] ?></td>
-                    <td><?=$v['type'] ?></td>
+                    <td><?=$v['type_name'] ?></td>
                     <td><?=$v['value'] ?></td>
                     <td class="text-center td-manage">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="编辑" data-id="<?=$v['id'] ?>" onclick="item_edit(this)"></span>

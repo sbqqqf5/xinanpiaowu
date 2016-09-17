@@ -29,7 +29,8 @@ $filePath = $targetDir . DIRECTORY_SEPARATOR . $fileName;
 $uploadPath = $uploadDir . DIRECTORY_SEPARATOR . $fileName;
 
 
-$imgUrl=$_SERVER['HTTP_ORIGIN']."/Uploads/wangeditor/upload/".$cur_date.'/'.$fileName;
+$imgUrl="/Uploads/wangeditor/upload/".$cur_date.'/'.$fileName;
+// $imgUrl=$_SERVER['HTTP_ORIGIN']."/Uploads/wangeditor/upload/".$cur_date.'/'.$fileName;
 echo $imgUrl;
 
 $chunk = isset($_REQUEST["chunk"]) ? intval($_REQUEST["chunk"]) : 0;

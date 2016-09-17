@@ -20,6 +20,23 @@ class StarProductCateModel extends Model
         return $data;
     }
 /**
+ * 获取一级分类
+ * @return [type] [description]
+ */
+    public function getParents()
+    {
+        return $this->field('id,name')->where('pid = 0')->select();
+    }
+/**
+ * 通过PID 获取次级分类
+ * @param  string $pid [description]
+ * @return array      [description]
+ */
+    public function getSecondCates(string $pid)
+    {
+        return $this->field('id,name')->where(['pid'=>$pid])->select();
+    }
+/**
  * 获取一个 对 property 格式化
  * @param  [type] $id [description]
  * @return [type]     [description]

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 2016-09-14 10:19:41
--- 服务器版本： 5.7.11
--- PHP Version: 5.6.19
+-- Generation Time: Sep 17, 2016 at 01:56 PM
+-- Server version: 5.7.11
+-- PHP Version: 7.0.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,7 +23,31 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- 表的结构 `piaowu_basic_info`
+-- Table structure for table `piaowu_admin`
+--
+
+CREATE TABLE `piaowu_admin` (
+  `id` smallint(6) NOT NULL,
+  `user` varchar(30) NOT NULL,
+  `password` varchar(60) NOT NULL,
+  `last_login_time` int(11) NOT NULL DEFAULT '0' COMMENT '上次登录时间',
+  `last_login_ip` varchar(15) DEFAULT NULL COMMENT '上次登录IP',
+  `login_times` int(11) NOT NULL DEFAULT '0' COMMENT '登录次数',
+  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `piaowu_admin`
+--
+
+INSERT INTO `piaowu_admin` (`id`, `user`, `password`, `last_login_time`, `last_login_ip`, `login_times`, `create_at`) VALUES
+(1, 'admin', '$2y$10$dNrxexKkQYbYC51fsExBm.DvQgT4hDhN/5Avl.cdLHg/M4lyb4vE6', 0, NULL, 0, '2016-09-14 15:39:02'),
+(2, 'user', '$2y$10$sNLqkKXCLoopY3WEC0SlwuFGdeXyPaZ7KvDQVO5RtEknBnZDf2Lum', 0, NULL, 0, '2016-09-14 15:39:34');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `piaowu_basic_info`
 --
 
 CREATE TABLE `piaowu_basic_info` (
@@ -34,7 +58,7 @@ CREATE TABLE `piaowu_basic_info` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='网站基本信息表';
 
 --
--- 转存表中的数据 `piaowu_basic_info`
+-- Dumping data for table `piaowu_basic_info`
 --
 
 INSERT INTO `piaowu_basic_info` (`id`, `location`, `content`, `other`) VALUES
@@ -47,7 +71,7 @@ INSERT INTO `piaowu_basic_info` (`id`, `location`, `content`, `other`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `piaowu_basic_vipprice`
+-- Table structure for table `piaowu_basic_vipprice`
 --
 
 CREATE TABLE `piaowu_basic_vipprice` (
@@ -58,7 +82,7 @@ CREATE TABLE `piaowu_basic_vipprice` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='基本信息 会员购买价格';
 
 --
--- 转存表中的数据 `piaowu_basic_vipprice`
+-- Dumping data for table `piaowu_basic_vipprice`
 --
 
 INSERT INTO `piaowu_basic_vipprice` (`id`, `cate`, `price`, `points`) VALUES
@@ -68,7 +92,7 @@ INSERT INTO `piaowu_basic_vipprice` (`id`, `cate`, `price`, `points`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `piaowu_order`
+-- Table structure for table `piaowu_order`
 --
 
 CREATE TABLE `piaowu_order` (
@@ -106,7 +130,7 @@ CREATE TABLE `piaowu_order` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `piaowu_order_goods`
+-- Table structure for table `piaowu_order_goods`
 --
 
 CREATE TABLE `piaowu_order_goods` (
@@ -125,7 +149,7 @@ CREATE TABLE `piaowu_order_goods` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `piaowu_product_property`
+-- Table structure for table `piaowu_product_property`
 --
 
 CREATE TABLE `piaowu_product_property` (
@@ -136,7 +160,7 @@ CREATE TABLE `piaowu_product_property` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='商品规格模型';
 
 --
--- 转存表中的数据 `piaowu_product_property`
+-- Dumping data for table `piaowu_product_property`
 --
 
 INSERT INTO `piaowu_product_property` (`id`, `name`, `type`, `value`) VALUES
@@ -146,7 +170,7 @@ INSERT INTO `piaowu_product_property` (`id`, `name`, `type`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `piaowu_rebate_log`
+-- Table structure for table `piaowu_rebate_log`
 --
 
 CREATE TABLE `piaowu_rebate_log` (
@@ -167,7 +191,7 @@ CREATE TABLE `piaowu_rebate_log` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `piaowu_recharge`
+-- Table structure for table `piaowu_recharge`
 --
 
 CREATE TABLE `piaowu_recharge` (
@@ -185,7 +209,7 @@ CREATE TABLE `piaowu_recharge` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `piaowu_star_brand`
+-- Table structure for table `piaowu_star_brand`
 --
 
 CREATE TABLE `piaowu_star_brand` (
@@ -199,7 +223,7 @@ CREATE TABLE `piaowu_star_brand` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='明星品牌';
 
 --
--- 转存表中的数据 `piaowu_star_brand`
+-- Dumping data for table `piaowu_star_brand`
 --
 
 INSERT INTO `piaowu_star_brand` (`id`, `name`, `sorted`, `thumb`, `pics`, `status`, `create_at`) VALUES
@@ -212,7 +236,35 @@ INSERT INTO `piaowu_star_brand` (`id`, `name`, `sorted`, `thumb`, `pics`, `statu
 -- --------------------------------------------------------
 
 --
--- 表的结构 `piaowu_star_goods_price`
+-- Table structure for table `piaowu_star_goods`
+--
+
+CREATE TABLE `piaowu_star_goods` (
+  `id` int(11) NOT NULL,
+  `payment_way` tinyint(1) NOT NULL DEFAULT '1' COMMENT '支付方式 1-一般商品 2-积分商品 3-会员商品',
+  `column_id` int(11) DEFAULT NULL COMMENT '栏目ID',
+  `cate_id` int(11) NOT NULL COMMENT '分类ID',
+  `goods_name` varchar(255) NOT NULL COMMENT '名称',
+  `shop_price` decimal(9,2) NOT NULL DEFAULT '0.00' COMMENT '最低价格',
+  `store_count` int(11) NOT NULL DEFAULT '0' COMMENT '库存--没有用',
+  `keywords` varchar(255) DEFAULT NULL COMMENT '关键词',
+  `goods_content` text COMMENT '商品详情',
+  `pics` varchar(255) DEFAULT NULL COMMENT '原始图',
+  `commission` decimal(9,2) NOT NULL DEFAULT '0.00' COMMENT '佣金',
+  `is_on_sale` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1-上架 0-下架',
+  `sorted` smallint(5) UNSIGNED NOT NULL DEFAULT '10' COMMENT '排序',
+  `is_recommend` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否推荐 1-推荐',
+  `is_new` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否新品 1-新品',
+  `is_hot` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否热卖 1-热卖',
+  `sales_sum` int(11) NOT NULL DEFAULT '0' COMMENT '销量  便于排序',
+  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_at` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='明星周边商品';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `piaowu_star_goods_price`
 --
 
 CREATE TABLE `piaowu_star_goods_price` (
@@ -227,7 +279,7 @@ CREATE TABLE `piaowu_star_goods_price` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `piaowu_star_product_cate`
+-- Table structure for table `piaowu_star_product_cate`
 --
 
 CREATE TABLE `piaowu_star_product_cate` (
@@ -239,7 +291,7 @@ CREATE TABLE `piaowu_star_product_cate` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='明星周边--产品--分类';
 
 --
--- 转存表中的数据 `piaowu_star_product_cate`
+-- Dumping data for table `piaowu_star_product_cate`
 --
 
 INSERT INTO `piaowu_star_product_cate` (`id`, `pid`, `sorted`, `name`, `property`) VALUES
@@ -254,7 +306,7 @@ INSERT INTO `piaowu_star_product_cate` (`id`, `pid`, `sorted`, `name`, `property
 -- --------------------------------------------------------
 
 --
--- 表的结构 `piaowu_ticket`
+-- Table structure for table `piaowu_ticket`
 --
 
 CREATE TABLE `piaowu_ticket` (
@@ -289,7 +341,7 @@ CREATE TABLE `piaowu_ticket` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='门票 产品表';
 
 --
--- 转存表中的数据 `piaowu_ticket`
+-- Dumping data for table `piaowu_ticket`
 --
 
 INSERT INTO `piaowu_ticket` (`id`, `columns`, `cate`, `title`, `sorted`, `is_order`, `is_home`, `deposit`, `distribute_price`, `venues`, `city`, `view_location`, `price`, `vip_price`, `performance_time`, `inventory`, `performance_duration`, `entry_time`, `limit_explain`, `child_explain`, `should_known`, `home_thumb`, `thumb`, `detail`, `status`, `create_at`, `update_at`, `is_delete`) VALUES
@@ -299,7 +351,7 @@ INSERT INTO `piaowu_ticket` (`id`, `columns`, `cate`, `title`, `sorted`, `is_ord
 -- --------------------------------------------------------
 
 --
--- 表的结构 `piaowu_ticket_cate`
+-- Table structure for table `piaowu_ticket_cate`
 --
 
 CREATE TABLE `piaowu_ticket_cate` (
@@ -310,7 +362,7 @@ CREATE TABLE `piaowu_ticket_cate` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='票务城市';
 
 --
--- 转存表中的数据 `piaowu_ticket_cate`
+-- Dumping data for table `piaowu_ticket_cate`
 --
 
 INSERT INTO `piaowu_ticket_cate` (`id`, `name`, `sorted`, `status`) VALUES
@@ -321,7 +373,7 @@ INSERT INTO `piaowu_ticket_cate` (`id`, `name`, `sorted`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `piaowu_ticket_city`
+-- Table structure for table `piaowu_ticket_city`
 --
 
 CREATE TABLE `piaowu_ticket_city` (
@@ -332,7 +384,7 @@ CREATE TABLE `piaowu_ticket_city` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='票务城市';
 
 --
--- 转存表中的数据 `piaowu_ticket_city`
+-- Dumping data for table `piaowu_ticket_city`
 --
 
 INSERT INTO `piaowu_ticket_city` (`id`, `name`, `sorted`, `status`) VALUES
@@ -343,7 +395,7 @@ INSERT INTO `piaowu_ticket_city` (`id`, `name`, `sorted`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `piaowu_ticket_column`
+-- Table structure for table `piaowu_ticket_column`
 --
 
 CREATE TABLE `piaowu_ticket_column` (
@@ -357,7 +409,7 @@ CREATE TABLE `piaowu_ticket_column` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='票务栏目';
 
 --
--- 转存表中的数据 `piaowu_ticket_column`
+-- Dumping data for table `piaowu_ticket_column`
 --
 
 INSERT INTO `piaowu_ticket_column` (`id`, `name`, `cates`, `intro`, `pics`, `sorted`, `status`) VALUES
@@ -370,6 +422,12 @@ INSERT INTO `piaowu_ticket_column` (`id`, `name`, `cates`, `intro`, `pics`, `sor
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `piaowu_admin`
+--
+ALTER TABLE `piaowu_admin`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `piaowu_basic_info`
@@ -414,6 +472,12 @@ ALTER TABLE `piaowu_star_brand`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `piaowu_star_goods`
+--
+ALTER TABLE `piaowu_star_goods`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `piaowu_star_goods_price`
 --
 ALTER TABLE `piaowu_star_goods_price`
@@ -450,71 +514,81 @@ ALTER TABLE `piaowu_ticket_column`
   ADD PRIMARY KEY (`id`);
 
 --
--- 在导出的表使用AUTO_INCREMENT
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- 使用表AUTO_INCREMENT `piaowu_basic_info`
+-- AUTO_INCREMENT for table `piaowu_admin`
+--
+ALTER TABLE `piaowu_admin`
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `piaowu_basic_info`
 --
 ALTER TABLE `piaowu_basic_info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- 使用表AUTO_INCREMENT `piaowu_basic_vipprice`
+-- AUTO_INCREMENT for table `piaowu_basic_vipprice`
 --
 ALTER TABLE `piaowu_basic_vipprice`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- 使用表AUTO_INCREMENT `piaowu_order_goods`
+-- AUTO_INCREMENT for table `piaowu_order_goods`
 --
 ALTER TABLE `piaowu_order_goods`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- 使用表AUTO_INCREMENT `piaowu_product_property`
+-- AUTO_INCREMENT for table `piaowu_product_property`
 --
 ALTER TABLE `piaowu_product_property`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- 使用表AUTO_INCREMENT `piaowu_rebate_log`
+-- AUTO_INCREMENT for table `piaowu_rebate_log`
 --
 ALTER TABLE `piaowu_rebate_log`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- 使用表AUTO_INCREMENT `piaowu_recharge`
+-- AUTO_INCREMENT for table `piaowu_recharge`
 --
 ALTER TABLE `piaowu_recharge`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- 使用表AUTO_INCREMENT `piaowu_star_brand`
+-- AUTO_INCREMENT for table `piaowu_star_brand`
 --
 ALTER TABLE `piaowu_star_brand`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
--- 使用表AUTO_INCREMENT `piaowu_star_goods_price`
+-- AUTO_INCREMENT for table `piaowu_star_goods`
+--
+ALTER TABLE `piaowu_star_goods`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `piaowu_star_goods_price`
 --
 ALTER TABLE `piaowu_star_goods_price`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- 使用表AUTO_INCREMENT `piaowu_star_product_cate`
+-- AUTO_INCREMENT for table `piaowu_star_product_cate`
 --
 ALTER TABLE `piaowu_star_product_cate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- 使用表AUTO_INCREMENT `piaowu_ticket`
+-- AUTO_INCREMENT for table `piaowu_ticket`
 --
 ALTER TABLE `piaowu_ticket`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- 使用表AUTO_INCREMENT `piaowu_ticket_cate`
+-- AUTO_INCREMENT for table `piaowu_ticket_cate`
 --
 ALTER TABLE `piaowu_ticket_cate`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- 使用表AUTO_INCREMENT `piaowu_ticket_city`
+-- AUTO_INCREMENT for table `piaowu_ticket_city`
 --
 ALTER TABLE `piaowu_ticket_city`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- 使用表AUTO_INCREMENT `piaowu_ticket_column`
+-- AUTO_INCREMENT for table `piaowu_ticket_column`
 --
 ALTER TABLE `piaowu_ticket_column`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
