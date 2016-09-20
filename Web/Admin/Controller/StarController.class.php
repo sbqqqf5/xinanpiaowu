@@ -12,12 +12,32 @@ class StarController extends BaseController
     public function index()
     {
 
-        if(IS_GET && $cate_id = I('get.cate_id')){
-            $cates = D('StarProductCate')->getSecondCates($cate_id);
-            $this->ajaxReturn($cates);
+        $modal = D('StarGoods');
+        $where = [];
+        if(IS_GET && 'search' == I('get.action')){
+            if($column_id = I('get.columns')){$where['column_id'] = $column_id;}
+            if($cate_id = I('get.cate')){$where['cate_id'] = $cate_id;}
+            if($payment_way = I('get.payment_way')){$where['payment_way'] = $payment_way;}
         }
+        if(IS_POST && I('post.handle')=='status'){ // 状态处理 上架 新品 推荐 热卖
+            $handle = $modal->handleStatus($_POST);
+            $this->ajaxReturn($handle);
+        }
+        if(IS_POST && 'sorted' == I('post.action')){//更新排序
+            $this->ajaxReturn( $modal->updateSorted($_POST) );
+        }
+        if(IS_POST && 'delete' == I('post.action')){//删除
+            $this->ajaxReturn( $modal->deleteOne(I('post.id')) );
+        }
+        $data = $modal->getAllBasic($where);
+        $columns = D('StarBrand')->getIDAndName();
+        // dump($data);
         $this->assign([
-            'cates'   => D('StarProductCate')->getParents(),
+            'cates'       => D('StarProductCate')->getParents(),
+            'columns'     => D('StarBrand')->getIDAndName(),
+            'secondCates' => D('StarProductCate')->getSecondAllAndFormat(),
+            'paymentWay'  => $modal::$paymentWay,
+            'data'        => $data,
         ]);
         $this->display();
     }
@@ -40,6 +60,14 @@ class StarController extends BaseController
                 $this->assign('cate',D('StarProductCate')->getOne($cate));
             }
         }*/
+        if(IS_GET && $id = I('get.id')){
+            $detail = D('StarGoods')->getOneBasic($id);
+            $detailCates = D('StarProductCate')->getOneSecondCatesByPid($detail['cate_pid']);
+            $this->assign([
+                'detail'      => $detail,
+                'detailCates' => $detailCates,
+            ]);
+        }
         if(IS_GET && $cate_id = I('get.cate_id')){
             //选择分类的二级联动数据
             $cates = D('StarProductCate')->getSecondCates($cate_id);
@@ -51,13 +79,74 @@ class StarController extends BaseController
         ]);
         $this->display();
     }
-
+/**
+ * 添加商品 录入价格
+ * @return null
+ */
     public function addProductStep2()
     {
-        if(IS_POST){
+        if(IS_POST && !isset($_POST['id'])){
+            //添加
             $ans = D('StarGoods')->addOne($_POST);
+            if($ans[0]){
+                $fieldsInfo = D('ProductProperty')->getPropertiesByCate(I('post.cate_id'));
+                $this->assign([
+                    'fieldsInfo' => $fieldsInfo,
+                    'goods_id'   => $ans,
+                ]);
+            }else{
+                $this->error($ans[1]);exit;
+            }
         }
+        if(IS_POST && $id=I('post.id')){
+            //更新
+            if('pass' == I('post.action')){
+                //跳过基本信息 更新价格
+                $priceInfo  = D('StarGoodsPrice')->getOneByGoodsId($id);
+                $fieldsInfo = D('ProductProperty')->getPropertiesByCate(I('post.cate_id'));
+                $this->assign([
+                    'fieldsInfo' => $fieldsInfo,
+                    'goods_id'   => $id,
+                    'priceInfo'  => $priceInfo,
+                ]);
+            }else{
+                $update = D('StarGoods')->updateOne($_POST);
+                if($update[0]){
+                    //更新成功
+                    $priceInfo  = D('StarGoodsPrice')->getOneByGoodsId($id);
+                    $fieldsInfo = D('ProductProperty')->getPropertiesByCate(I('post.cate_id'));
+                    $this->assign([
+                        'fieldsInfo' => $fieldsInfo,
+                        'goods_id'   => $id,
+                        'priceInfo'  => $priceInfo,
+                    ]);
+                }else{
+                    $this->error($update[1]);exit;
+                }
+            }
+        }
+
+        /*$priceInfo  = D('StarGoodsPrice')->getOneByGoodsId(8);
+        $fieldsInfo = D('ProductProperty')->getPropertiesByCate(4);
+        dump($priceInfo);
+        dump($fieldsInfo);
+        $this->assign('priceInfo',$priceInfo);
+        $this->assign('fieldsInfo',$fieldsInfo);
+        $this->assign('goods_id',8);*/
+
         $this->display();
+    }
+/**
+ * 添加商品 保存价格
+ */
+    public function addProductStep3()
+    {
+        $ans = D('StarGoodsPrice')->addOne($_POST);
+        if($ans){
+            $this->success('添加成功','index');
+        }else{
+            $this->error('操作失败');
+        }
     }
 
 /**
@@ -70,7 +159,6 @@ class StarController extends BaseController
         $this->assign([
             'data' => $modal->getAll(),
             'secondCateName' => $modal->getSecondName(),
-            'properties' => D('ProductProperty')->getProperties(),
         ]);
         $this->display();
     }
@@ -79,7 +167,6 @@ class StarController extends BaseController
  */
     public function addCate()
     {
-        // dump($_POST);die;
         $ans = D('star_product_cate')->addOne($_POST);
         if($ans[0]){
             $this->success('操作成功');exit;
@@ -120,8 +207,17 @@ class StarController extends BaseController
  */
     public function productProperty()
     {
+        if(IS_POST && $id = I('post.id')){
+            $action = I('post.action');
+            if('sorted' == $action){
+                //更新排序
+                D('productProperty')->updateSorted($_POST);
+                $this->ajaxReturn(1);
+            }
+        }
         $this->assign([
-            'data' => D('productProperty')->getAll(),
+            'data'  => D('productProperty')->getAll(),
+            'cates' => D('StarProductCate')->getSecnodAll(),
         ]);
         $this->display();
     }
@@ -131,10 +227,11 @@ class StarController extends BaseController
  */
     public function propertyAdd()
     {
-        if(D('ProductProperty')->addOne(I('post.'))){
-            $this->success('操作成功');
+        $ans = D('ProductProperty')->addOne(I('post.'));
+        if($ans[0]){
+            $this->success($ans[1]);
         }else{
-            $this->error('操作失败，请重试');
+            $this->error($ans[1]);
         }
     }
 /**

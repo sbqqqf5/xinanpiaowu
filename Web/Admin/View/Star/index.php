@@ -4,6 +4,7 @@
     <?php require __DIR__.'/../Layout/_css.php' ?>
     <?=W('Widget/dataTablesCss') ?>
     <style type="text/css">
+        .td-status span{-moz-user-select: none;-webkit-user-select: none;user-select:none;}
         .td-manage span{cursor:pointer;margin-left:5px;margin-right:5px;}
         .td-manage a{text-decoration: none;}
         thead tr{background-color:#00ca79;color:#fff;}
@@ -34,23 +35,13 @@
         <div class="mg-b-20 clearfix">
             <a class="btn btn-primary" href="<?=U('addProduct') ?>" role="button">添加商品</a>
             <form action="<?=U('index') ?>" method="get" class="form-inline pull-right" role="form">
-            
-                <div class="form-group">
-                    <label class="sr-only" for="">label</label>
-                    <select name="city" class="form-control">
-                        <option value="0">选择城市</option>
-                        <?php foreach($cities as $city): ?>
-                        <option value="<?=$city['id'] ?>"><?=$city['name'] ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
 
                 <div class="form-group">
                     <label for="" class="sr-only"></label>
                     <select name="columns" id="inputColumns" class="form-control">
                         <option value="0">选择栏目</option>
-                        <?php foreach($columns as $column): ?>
-                        <option value="<?=$column['id'] ?>"><?=$column['name'] ?></option>
+                        <?php foreach($columns as $key=>$v): ?>
+                        <option value="<?=$key ?>"><?=$v ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -58,13 +49,22 @@
                     <label for="" class="sr-only"></label>
                     <select name="cate" id="inputCate" class="form-control">
                         <option value="0">选择类别</option>
-                        <?php foreach($cates as $cate): ?>
-                        <option value="<?=$cate['id'] ?>"><?=$cate['name'] ?></option>
+                        <?php foreach($secondCates as $key=>$cate): ?>
+                        <option value="<?=$key ?>"><?=$cate ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label class="sr-only" for="">label</label>
+                    <select name="payment_way" class="form-control">
+                        <option value="0">选择支付方式</option>
+                        <option value="1">一般</option>
+                        <option value="2">仅积分</option>
+                        <option value="3">仅会员</option>
+                    </select>
+                </div>
                 <input type="hidden" name="action" value="search">
-                <button type="submit" class="btn btn-primary">搜索</button>
+                <button type="submit" class="btn btn-primary">筛选</button>
             </form>
         </div>
 
@@ -72,16 +72,13 @@
         <thead>
             <tr>
                 <th class="text-center">#</th>
-                <th class="text-center">名称</th>
-                <th class="text-center">预定</th>
-                <th class="text-center">城市</th>
-                <th class="text-center">场馆</th>
+                <th class="text-center">商品名</th>
                 <th class="text-center">栏目</th>
                 <th class="text-center">分类</th>
-                <th class="text-center">库存</th>
+                <th class="text-center">支付方式</th>
+                <th class="text-center">佣金</th>
                 <th class="text-center">排序值</th>
-                <th class="text-center">显示在首页</th>
-                <th class="text-center">当前状态</th>
+                <th class="text-center">状态</th>
                 <th class="text-center" width="85">操作</th>
             </tr>
         </thead>
@@ -89,35 +86,26 @@
         <?php foreach($data as $k=>$v): ?>
             <tr>
                 <td class="text-center"><?=$k+1 ?></td>
-                <td><?=$v['title'] ?></td>
-                <td class="text-center"><?=$v['is_order']?'<span class="label label-success">预定中</span>':'<span class="label label-default">非预定</span>' ?></td>
-                <td><?=$v['city_name'] ?></td>
-                <td><?=$v['venues'] ?></td>
-                <td><?=$v['column_name'] ?></td>
-                <td><?=$v['cate_name'] ?></td>
-                <td class="text-center inventory"><?=$v['inventory'] ?></td>
+                <td><?=$v['goods_name'] ?></td>
+                <td><?=$columns[$v['column_id']] ?></td>
+                <td><?=$secondCates[$v['cate_id']] ?></td>
+                <td class="text-center"><span class="label label-<?=$v['payment_way']==1?'success':($v['payment_way']==2?'info':'danger') ?>"><?=$paymentWay[$v['payment_way']] ?></span></td>
+                <td><?=$v['commission'] ?></td>
                 <td class="text-center">
-                    <input type="text" name="sorted[]" class="form-control input-sm " value="<?=$v['sorted'] ?>" required="required" onblur="update_sorted(this,<?=$v['id'] ?>)" style="width:90px">
-                </td>
-                <td class="text-center">
-                    <?php if($v['is_home']): ?>
-                        <span class="label label-success">显示</span>
-                    <?php else: ?>
-                        <span class="label label-default">不显示</span>
-                    <?php endif; ?>
+                    <input type="text" name="sorted[]" class="form-control input-sm" value="<?=$v['sorted'] ?>" required="required" onblur="update_sorted(this,<?=$v['id'] ?>)" style="width:90px">
                 </td>
                 <td class="td-status text-center">
-                <?php if($v['status']): ?>
-                    <span class="label label-success" onclick="item_stop(this,<?=$v['id'] ?>)">销售中</span>
-                <?php else: ?>
-                    <span class="label label-default" onclick="item_start(this,<?=$v['id'] ?>)">已下架</span>
-                <?php endif; ?>
+                    <span class="label label-<?=$v['is_on_sale']==1?'success':'default' ?>" onclick="is_sale(this,<?=$v['id'] ?>)">上架</span>
+                    <span class="label label-<?=$v['is_recommend']==1?'success':'default' ?>" onclick="is_recommend(this,<?=$v['id']?>)">推荐</span>
+                    <span class="label label-<?=$v['is_new']==1?'success':'default' ?>" onclick="is_new(this,<?=$v['id'] ?>)">新品</span>
+                    <span class="label label-<?=$v['is_hot']==1?'success':'default' ?>" onclick="is_hot(this,<?=$v['id'] ?>)">热卖</span>
                 </td>
                 <td class="td-manage">
-                    <a href="<?=U('ticketView',['id'=>$v['id']]) ?>">
+                    <!-- <a href="<?=U('ticketView',['id'=>$v['id']]) ?>"> -->
+                    <a href="javascript:;">
                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="查看"></span>
                     </a>
-                    <a href="<?=U('ticketEdit',['id'=>$v['id']]) ?>">
+                    <a href="<?=U('addProduct',['id'=>$v['id']]) ?>">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true" ata-toggle="tooltip" data-placement="bottom" title="编辑"></span>
                     </a>
                     <a href="javascript:;">
@@ -171,37 +159,69 @@ $(function(){
             stateSave:false,//关闭本地存储，默认true
             columnDefs:[
                 //{"visible":false,"targets":0}，//控制列的隐藏显示
-                {"orderable":false,"targets":[-1]} // 不参与排序的列
+                {"orderable":false,"targets":[-1,-2]} // 不参与排序的列
             ],
        });
 
         $('.td-manage span').tooltip();
-
+        $(document).ajaxError(function(){
+            layer.alert('发生错误，请刷新重试',{skin:"layui-layer-lan"});
+    });
 });
 
-/* 状态 上架 */
-function item_start(obj,id)
+/* 状态 —— 上架 下架  */
+function is_sale(obj,id)
 {
-    var $td = $(obj).parent();
-    var inventory = $(obj).parent().prevAll('.inventory').text();
-    if(parseInt(inventory) == 0){layer.alert('库存不足，不能上架',{skin:"layui-layer-lan"});return false;}
-    $.post("<?=U('index') ?>",{"action":"start","id":id},function(e){
-        var new_ele = '<span class="label label-success" onclick="item_stop(this,'+id+')">销售中</span>';
-        $(obj).remove();
-        $td.append(new_ele);
+    var data = {"action":"is_on_sale","id":id,"handle":'status'};
+    if($(obj).hasClass('label-success')){
+        data.value = 0;
+    }else{
+        data.value = 1;
+    }
+    $.post("<?=U('index') ?>",data,function(){
+        $(obj).toggleClass('label-success').toggleClass('label-default')
+    });
+}
+/* 状态 —— 推荐  */
+function is_recommend(obj,id)
+{
+    var data = {"action":"is_recommend","id":id,"handle":'status'};
+    if($(obj).hasClass('label-success')){
+        data.value = 0;
+    }else{
+        data.value = 1;
+    }
+    $.post("<?=U('index') ?>",data,function(){
+        $(obj).toggleClass('label-success').toggleClass('label-default')
+    });
+}
+/* 状态 —— 新品  */
+function is_new(obj,id)
+{
+    var data = {"action":"is_new","id":id,"handle":'status'};
+    if($(obj).hasClass('label-success')){
+        data.value = 0;
+    }else{
+        data.value = 1;
+    }
+    $.post("<?=U('index') ?>",data,function(){
+        $(obj).toggleClass('label-success').toggleClass('label-default')
+    });
+}
+/* 状态 —— 热卖  */
+function is_hot(obj,id)
+{
+    var data = {"action":"is_hot","id":id,"handle":'status'};
+    if($(obj).hasClass('label-success')){
+        data.value = 0;
+    }else{
+        data.value = 1;
+    }
+    $.post("<?=U('index') ?>",data,function(){
+        $(obj).toggleClass('label-success').toggleClass('label-default')
     });
 }
 
-/* 状态 下架 */
-function item_stop(obj,id)
-{
-    var $td = $(obj).parent();
-    $.post("<?=U('index') ?>",{"action":"stop","id":id},function(e){
-        var new_ele = '<span class="label label-default" onclick="item_start(this,'+id+')">已下架</span>';
-        $(obj).remove();
-        $td.append(new_ele);
-    });
-}
 var cur_id = 0;
 var $cur_tr = '';
 function item_del(obj,id)
@@ -213,7 +233,7 @@ function item_del(obj,id)
 /* 确定删除 */
 function fn_confirm_delete(modal_id)
 {
-    $.post("<?=U('index') ?>",{"id":cur_id,"action":'del'},function(e){
+    $.post("<?=U('index') ?>",{"id":cur_id,"action":'delete'},function(e){
         $('#'+modal_id).modal('hide');
         if(e){
             $cur_tr.remove();
@@ -226,6 +246,11 @@ function fn_confirm_delete(modal_id)
 function update_sorted(obj,id)
 {
     var value = $(obj).val();
+    if(value >= 65536){
+        layer.alert('排序值不能超过65535',{skin:"layui-layer-lan"});
+        $(obj).val(10);
+        return false;
+    }
     $.post("<?=U('index') ?>",{"action":"sorted","id":id,"sorted":value});
 }
 </script>

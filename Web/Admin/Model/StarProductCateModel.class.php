@@ -9,6 +9,7 @@ class StarProductCateModel extends Model
         ['name','','名称不能重复',1,'unique'],
         ['sorted','-128,127','排序值不能超过127',1,'between'],
     ];
+
 /**
  * 获取所有
  * @return [type] [description]
@@ -37,16 +38,43 @@ class StarProductCateModel extends Model
         return $this->field('id,name')->where(['pid'=>$pid])->select();
     }
 /**
- * 获取一个 对 property 格式化
+ * 获取所有二级分类
+ * @return [type] [description]
+ */
+    public function getSecnodAll()
+    {
+        return $this->field('id,name')->where('pid != 0')->select();
+    }
+/**
+ * 获取所有二级分类并格式化
+ * @return [type] [description]
+ */
+    public function getSecondAllAndFormat()
+    {
+        $basic = $this->getSecnodAll();
+        $data = [];
+        foreach($basic as $v){
+            $data[$v['id']] = $v['name'];
+        }
+        return $data;
+    }
+/**
+ * 获取一个二级分类下的条目 修改商品时用
+ * @param  string $pid [description]
+ * @return [type]      [description]
+ */
+    public function getOneSecondCatesByPid(string $pid)
+    {
+        return $this->where(['pid'=>$pid])->field('id,name')->select();
+    }
+/**
+ * 获取一个 
  * @param  [type] $id [description]
  * @return [type]     [description]
  */
     public function getOne($id)
     {
         $basic = $this->field(true)->find($id);
-        if($basic['property']){
-            $basic['property'] = json_decode($basic['property'],true);
-        }
         return $basic;
     }
 /**
@@ -55,11 +83,6 @@ class StarProductCateModel extends Model
  */
     public function addOne($data)
     {
-        if($data['property']){
-            $data['property'] = json_encode($data['property'],JSON_UNESCAPED_SLASHES);
-        }else{
-            unset($data['property']);
-        }
         $ct = $this->create($data);
         if($ct){
             if($data['id']){
@@ -99,27 +122,13 @@ class StarProductCateModel extends Model
     {
         $basic = $this->field('id,name')->where('pid = 0')
                 ->order('sorted desc')->select();
-        $data = [];
+        /*$data = [];
         foreach ($basic as $v) {
             $data[$v['id']] = $v['name'];
-        }
-        return $data;
+        }*/
+        return $basic;
     }
-/**
- * 获取所有使用中的属性
- * @return [type] [description]
- */
-    public function getAllUsedProperties()
-    {
-        $arr_properties = $this->where('property is not null')->field('property')->select();
-        $data = [];
-        foreach($arr_properties as $v){
-            foreach(json_decode($v['property'],true) as $value){
-                $data[] = $value;
-            }
-        }
-        return array_unique($data);
-    }
+
 /**
  * 更新排序
  * @param  string $id    ID

@@ -8,10 +8,9 @@
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
-die('index');
 // 开启调试模式 建议开发阶段开启 部署阶段注释或者设为false
 define('APP_DEBUG',True);
-define('BIND_MODULE','Admin');
+define('BIND_MODULE','Home');
 // 定义应用目录
 define('APP_PATH','./Web/');
 

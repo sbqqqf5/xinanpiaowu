@@ -49,6 +49,19 @@ class StarBrandModel extends Model
     {
         return $this->field('pics',true)->select();
     }
+/**
+ * 获取ID 和 名称 格式化关联数组
+ * @return [type] [description]
+ */
+    public function getIDAndName()
+    {
+        $basic = $this->field('id,name')->select();
+        $data = [];
+        foreach($basic as $v){
+            $data[$v['id']] = $v['name'];
+        }
+        return $data;
+    }
 
 /**
  * 删除一个

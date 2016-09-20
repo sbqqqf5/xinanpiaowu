@@ -16,10 +16,18 @@
     <div id="page-inner">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-head-line">明星周边—商品分类</h1>
+                <ol class="breadcrumb">
+                <li>
+                    <a href="javascript:;">商品管理</a>
+                </li>
+                <li>
+                    <a href="javascript:;">明星周边商品</a>
+                </li>
+                <li class="active">商品分类</li>
+            </ol>
             </div>
         </div>
-        <div class="row">
+        <div style="margin-bottom:20px;">
             <button class="btn btn-primary" onclick="$('#modal-add-cate form')[0].reset();$('#modal-add-cate').modal('show');">添加分类</button>
             <button type="button" class="btn btn-info" id="table-toggle" data-status="1">展开/折叠</button>
         </div>
@@ -80,8 +88,8 @@
                         <div class="col-sm-10">
                             <select name="pid" id="inputPid" class="form-control">
                                 <option value="0">一级分类</option>
-                                <?php foreach($secondCateName as $id=>$name): ?>
-                                    <option value="<?=$id ?>">&nbsp;&nbsp;&nbsp;&nbsp;<?=$name ?></option>
+                                <?php foreach($secondCateName as $cate): ?>
+                                    <option value="<?=$cate['id'] ?>">&nbsp;&nbsp;&nbsp;&nbsp;<?=$cate['name'] ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -96,19 +104,6 @@
                         <label for="inputSorted" class="col-sm-2 control-label">排序值:</label>
                         <div class="col-sm-10">
                             <input type="text" name="sorted" id="inputSorted" class="form-control" value="1" required="required" placeholder="值越大，显示越前">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputProperty" class="col-sm-2 control-label">包含属性</label>
-                        <div class="col-sm-10">
-                            <div class="checkbox">
-                            <?php foreach($properties as $property): ?>
-                                <label>
-                                    <input type="checkbox" name="property[]" value="<?=$property['id'] ?>">
-                                    <?=$property['name'] ?>
-                                </label>
-                            <?php endforeach; ?>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -176,16 +171,12 @@
     {
         var $modal = $('#modal-add-cate');
         $.get("<?=U('cateHandle') ?>",{"id":id},function(e){
+            $modal.find('#inputPid>option').removeAttr('disabled');
             $modal.find('#inputPid option[value='+e['pid']+']').prop('selected',true);
+            $modal.find('#inputPid option[value='+e['id']+']').attr('disabled', '');;
             $modal.find('#inputName').val(e['name']);
             $modal.find('#inputSorted').val(e['sorted']);
             $modal.find(':hidden[name=id]').val(e['id']);
-            $modal.find(':checkbox').prop('checked',false);
-            if(e['property']){
-                for(var i in e['property']){
-                    $modal.find(':checkbox[value='+e['property'][i]+']').prop('checked',true);
-                }
-            }
             $modal.modal('show');
         });
     }

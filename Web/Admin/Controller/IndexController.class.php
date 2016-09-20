@@ -1,7 +1,7 @@
 <?php
 namespace Admin\Controller;
 use Think\Controller;
-class IndexController extends Controller
+class IndexController extends BaseController
 {
     public function index()
     {
@@ -10,7 +10,9 @@ class IndexController extends Controller
 
     public function form()
     {
-        $this->display();
+        $msg = '您有新的订单，请即时处理！';
+        $send = $this->_sendMsg($msg,'13540314451');
+        dump($send);
     }
 
     public function multi()
