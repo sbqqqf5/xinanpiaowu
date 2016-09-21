@@ -50,17 +50,34 @@ class OrderModel extends RelationModel
         return $data;
     }
 /**
- * 未发货的订单
- * @param  array  $where [description]
+ * 获取一条订单基本信息
+ * @param  string $order_id [description]
+ * @return array           [description]
+ */
+    public function getOne(string $order_id)
+    {
+        $field = ['user_id', 'order_id', 'order_sn', 'order_type', 'order_status', 
+                'delivery_status', 'province', 'city', 'district', 'address', 
+                'order_amount', 'pay_status', 'consignee', 'phone', 'goods_price', 'create_at', 
+                'pay_time', 'use_desposit', 'use_integral', 'integral_money'];
+        return $this->field($field)->where(['order_id'=>$order_id])->find();
+    }
+/**
+ * 未发货的订单 
  * @return [type]        [description]
  */
-    public function getDeliveryAll(array $where = [])
+    public function getDeliveryAll()
     {
-        $field = ['order_sn, create_at, consignee, phone, pay_time, goods_price, 
-                    order_amount, use_desposit, use_integral'];
+        $where = [
+            'delivery_status' => 0, // 未发货
+            'order_status'    => 1, // 订单未处理
+            'is_admin_delete' => 0, // 管理员未删除
+            'pay_status'      => 1 // 已支付
+        ]; // 未发货条件
+        $field = ['order_id', 'order_sn, create_at, consignee, phone, pay_time, 
+                goods_price, order_amount, use_desposit, use_integral'];
         $basic = $this->field($field)
                     ->where($where)
-                    ->where(['delivery_status'=>0])
                     ->select();
         return $basic;
     }
@@ -81,6 +98,36 @@ class OrderModel extends RelationModel
         }else{
             return [false,'该订单不可被删除'];
         }
+    }
+/**
+ * 执行发货
+ * @param  array  $data ['order_id','express','express_code']
+ * @return array       [bool, string]
+ */
+    public function actionDelivery(array $data)
+    {
+        // order 表更新的数据
+        $dataForOrder = array_merge($data, [
+            'delivery_status' => 1,
+            'receive_type'    => 1,
+            'delivery_time'   => time(),
+        ]);
+        // order_goods 表更新数据
+        $dataForOrderGoods  = ['is_send'=>1];
+        $whereForOrderGoods = ['order_id'=>$data['order_id']];
+
+        $this->startTrans();
+        try{
+            $this->data($dataForOrder)->save();
+            M('OrderGoods')->where($whereForOrderGoods)->setField($dataForOrderGoods);
+            $this->commit();
+            $return = [true,'操作成功'];
+        }catch(\Exception $e){
+            $this->rollback();
+            $info = $this->getError()?$this->getError():'操作失败,请稍候再试！';
+            $return = [false,$info];
+        }
+        return $return;
     }
 /**
  * 判断订单是否可被删除 已取消 已完成的订单才可被删除

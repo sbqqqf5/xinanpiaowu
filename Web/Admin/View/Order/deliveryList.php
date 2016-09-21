@@ -63,22 +63,60 @@
                 </tr>
             </thead>
             <tbody>
+            <?php foreach($data as $v): ?>
                 <tr>
-                    <td>item1</td>
-                    <td>item2</td>
-                    <td>item3</td>
-                    <td>item4</td>
-                    <td>item5</td>
-                    <td>item6</td>
-                    <td>item7</td>
-                    <td>item7</td>
-                    <td>item8</td>
+                    <td><?=$v['order_sn'] ?></td>
+                    <td><?=$v['create_at'] ?></td>
+                    <td><?=$v['consignee'] ?></td>
+                    <td><?=$v['phone'] ?></td>
+                    <td><?=date('Y-m-d H:i:s' , $v['pay_time']) ?></td>
+                    <td><?=$v['goods_price'] ?></td>
+                    <td><?=$v['order_amount'] ?></td>
+                    <td><?=$v['use_integral'] ?></td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm" onclick="delivery_modal(this,<?=$v['order_id'] ?>)">发货</button>
+                    </td>
                 </tr>
+            <?php endforeach; ?>
             </tbody>
         </table>
     </div> <!-- /page-inner -->
 </div> <!-- /page-wrapper -->
 </div> <!-- /wrapper -->
+
+<div class="modal fade" id="modal-delivery">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form onsubmit="return false;" method="POST" role="form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">商品发货</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="express">快递公司</label>
+                        <select name="express" id="express" class="form-control" required>
+                            <option value="顺丰快递" selected>顺丰快递</option>
+                            <option value="申通快递">申通快递</option>
+                            <option value="中通快递">中通快递</option>
+                            <option value="圆通快递">圆通快递</option>
+                            <option value="邮政EMS">邮政EMS</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="express_code">快递单号</label>
+                        <input type="text" class="form-control" name="express_code" id="express_code" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="order_id" value="<?=$orderInfo['order_id'] ?>">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-primary" onclick="delivery_comfirm()">确认发货</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <?php require __DIR__.'/../Layout/_script.php' ?>
 <?=W('Widget/dataTablesScript') ?>
 <script>
@@ -120,6 +158,29 @@ $(function(){
         layer.alert('发生错误，请刷新重试',{skin:"layui-layer-lan"});
     });
 });
+/* 发货 modal show */
+function delivery_modal(obj,order_id)
+{
+    var $modal = $('#modal-delivery');
+    $modal.find('form')[0].reset();
+    $modal.find('form [name=order_id]').val(order_id);
+    $modal.modal('show')
+}
+/* 确认发货 */
+function delivery_comfirm()
+{
+    if($('#express_code').val().length < 5){return false;}
+    var data = $('#modal-delivery form').serializeArray();
+    $.post("<?=U('delivery') ?>",data,function(e){
+        if(e[0]){
+            layer.msg(e[1],{icon:1,time:2000},function(){
+                location.reload();
+            });
+        }else{
+            layer.alert(e[1],{skin:"layui-layer-lan"});
+        }
+    });
+}
 </script>
 </body>
 </html>

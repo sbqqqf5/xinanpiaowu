@@ -55,4 +55,11 @@ class BaseController extends Controller
         $add = [];
         M('user')->add($add);
     }
+
+    protected function addOrderGoods()
+    {
+        $data = ['order_id'=>1, 'goods_type'=>2, 'goods_num'=>1, 'goods_id'=>8, 
+                'spec_key_name'=>'2_0+3_0', 'goods_price'=>80, 'vip_goods_price'=>70];
+        M('OrderGoods')->add($data);
+    }
 }

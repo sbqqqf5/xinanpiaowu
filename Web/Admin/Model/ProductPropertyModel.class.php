@@ -107,6 +107,33 @@ class ProductPropertyModel extends Model
     {
         return $this->delete($id);
     }
+/**
+ * 通过 Key_name 获取name=>value
+ * @param  string $key_name key_name
+ * @return array           [description]
+ */
+    public function getInfoByKeyName(string $key_name)
+    {
+        $isHasPlus = strpos($key_name, '+');
+        if($isHasPlus){//含 '+' ，两个属性
+            $propertyGourp = explode('+', $key_name);
+            $properties[0] = explode('_',$propertyGourp[0]); // 第一个规格项
+            $properties[1] = explode('_',$propertyGourp[1]); // 第二个规格项
+            $info[0]       = $this->field('name,value')->find($properties[0][0]);
+            $info[1]       = $this->field('name,value')->find($properties[1][0]);
+            $data          = [];
+            $value[0]      = json_decode($info[0]['value'],true);
+            $value[1]      = json_decode($info[1]['value'],true);
+            $data[0]       = ['name'=>$info[0]['name'], 'value'=>$value[0][$properties[0][1]]];
+            $data[1]       = ['name'=>$info[1]['name'], 'value'=>$value[1][$properties[1][1]]];
+            return $data;
+        }else{//不含'+' 仅一个属性
+            list($propertyId, $index) = explode('_',$key_name);
+            $info  = $this->field('name,value')->find($propertyId);
+            $value = json_decode($info['value'],true); // value 数组值 
+            return [['name'=>$info['name'], 'value'=>$value[$index]]];
+        }
+    }
 
 
 }

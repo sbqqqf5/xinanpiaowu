@@ -44,4 +44,14 @@ class UserModel extends Model
             return false;
         }
     }
+/**
+ * 获取用户昵称 电话  订单详情使用
+ * @param  string $user_id user_id
+ * @return array          ['nickname'=>'', 'phone'=>'']
+ */
+    public function getOneUseInOrderDetail(string $user_id)
+    {
+        $field = ['nickname', 'phone'];
+        return $this->field($field)->find($user_id);
+    }
 }

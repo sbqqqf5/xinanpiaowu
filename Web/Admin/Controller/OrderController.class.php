@@ -13,7 +13,7 @@ class OrderController extends BaseController
     {
         $model = D('Order');
         $where = [];
-        if(IS_GET && 'search' == I('get.action')){
+        if(IS_GET && 'search' == I('get.action')){ // 筛选
             if($begin = I('get.begin')){
                 $where['create_at'] = ['EGT', $begin];
             }
@@ -63,7 +63,28 @@ class OrderController extends BaseController
  */
     public function orderDetail()
     {
-        $order_id = I('get.order_id');
+        $order_id   = I('get.order_id');
+        $modelOrder = D('Order');
+        $orderInfo  = $modelOrder->getOne($order_id);
+        $userInfo   = D('User')->getOneUseInOrderDetail($orderInfo['user_id']);
+        $goodsInfo  = D('OrderGoods')->getOneByOrderId($orderInfo['order_id'], $orderInfo['order_type']);
+        // dump($goodsInfo);
+        $key_name = $goodsInfo[0]['spec_key_name'];
+        if($key_name){//商品存在规格 
+            $properties = D('ProductProperty')->getInfoByKeyName($key_name);
+        }else{ // 不存在规格 
+            $properties = false;
+        }
+        $this->assign([
+            'orderInfo'       => $orderInfo, // 订单信息
+            'userInfo'        => $userInfo, // 用户信息
+            'goodsInfo'       => $goodsInfo, // 商品信息
+            'goodsProperties' => $properties, // 商品规格 
+            'orderStatus'     => $modelOrder::$orderStatus, // 订单状态
+            'deliveryStatus'  => $modelOrder::$deliveryStatus, // 发货状态
+            'orderType'       => $modelOrder::$orderType, // 订单类别
+            'payStatus'       => $modelOrder::$payStatus, // 支付状态
+        ]);
         $this->display();
     }
 /**
@@ -72,10 +93,21 @@ class OrderController extends BaseController
  */
     public function deliveryList()
     {
+        
+        $data = D('Order')->getDeliveryAll($where);
         $this->assign([
-            'data' => D('Order')->getDeliveryAll(),
+            'data' => $data,
         ]);
         $this->display();
+    }
+/**
+ * 订单发货
+ * @return ajax array
+ */
+    public function delivery()
+    {
+        $ans = D('Order')->actionDelivery($_POST);
+        $this->ajaxReturn($ans);
     }
 /**
  * 退货列表
