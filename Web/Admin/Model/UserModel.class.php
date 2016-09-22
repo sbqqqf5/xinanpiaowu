@@ -16,9 +16,9 @@ class UserModel extends Model
         $members_id = D('Recharge')->getAllMemberId(); // 所有会员ID
         foreach($data as $v){
             if(in_array($v['id'],$members_id)){
-                $data['is_member'] = 1;
+                $v['is_member'] = 1;
             }else{
-                $data['is_member'] = 0;
+                $v['is_member'] = 0;
             }
         }
         return $data;
@@ -53,5 +53,15 @@ class UserModel extends Model
     {
         $field = ['nickname', 'phone'];
         return $this->field($field)->find($user_id);
+    }
+/**
+ * 增加用户积分
+ * @param  string $user_id 用户id
+ * @param  string $points  积分
+ * @return [type]          [description]
+ */
+    public function pointsInc(string $user_id, string $points)
+    {
+        return $this->where(['id'=>$user_id])->setInc('points', $points);
     }
 }

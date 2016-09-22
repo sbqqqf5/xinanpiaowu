@@ -115,9 +115,59 @@ class OrderController extends BaseController
  */
     public function returnList()
     {
+        $modal = D('ReturnGoods');
+        $data = $modal->getAll();
+        if(IS_POST){
+            $action = I('post.action');
+            $id     = I('post.id');
+            if('delete' == $action){
+                $this->ajaxReturn($modal->deleteOne($id));
+            }
+        }
+
         $this->assign([
-            'data' => D('ReturnGoods')->getAll(),
+            'data'   => $data,
+            'status' => $modal::$status,
         ]);
         $this->display();
+    }
+/**
+ * 退换货详情
+ * @return view 
+ */
+    public function returnGoodsDetail()
+    {
+        $id = I('get.id');
+        $modal = D('ReturnGoods');
+        if(IS_POST){
+            $this->ajaxReturn($modal->updateOne(I('post.')));
+        }
+        $detail = $modal->getReturnGoodsDetail($id);
+        $this->assign([
+            'detail' => $detail,
+            'status' => $modal::$status,
+        ]);
+        $this->display();
+    }
+/**
+ * 退款 退积分给用户 
+ * @return [type] [description]
+ */
+    public function handleRefund()
+    {
+        if(IS_POST){
+            $modal = D('RefundLog');
+            if(!I('post.money') && !I('post.intgral')){
+                $this->ajaxReturn([false,'输入不正确']);
+            }
+            if($money = I('post.moeny')){//存在退款
+                $ans = $modal->addOne($_POST);
+                $this->ajaxReturn($ans);
+            }else{//仅退积分
+                unset($_POST['money']);
+                $ans = $modal->addOne($_POST);
+                $this->ajaxReturn($ans);
+            }
+        }
     }
 }

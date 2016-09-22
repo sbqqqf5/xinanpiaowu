@@ -218,3 +218,22 @@ function force_download($file)
         exit( "文件不存在" );
     }
 }
+/**
+ * 生成随机字符串
+ * @param  integer $length 字符串长度 默认6位
+ * @param  boolean $type   是否加密 默认false
+ * @return string          [description]
+ */
+function random_str($length = 6, $type = FALSE)
+{
+    $chars = "abcdefghjkmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ123456789";
+    $str = "";
+    for($i = 0; $i < $length; $i ++) {
+        $str .= substr ( $chars, mt_rand ( 0, strlen ( $chars ) - 1 ), 1 );
+    }
+    if ($type == TRUE) {
+        return strtoupper ( md5 ( time () . $str ) );
+    } else {
+        return $str;
+    }
+}

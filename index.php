@@ -9,6 +9,11 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 // 开启调试模式 建议开发阶段开启 部署阶段注释或者设为false
+
+//新浪 IP 地址接口
+define('IPLOOKUP_SINA','http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js');
+
+// 
 define('APP_DEBUG',True);
 define('BIND_MODULE','Home');
 // 定义应用目录

@@ -5,9 +5,10 @@
     <?=W('Widget/dataTablesCss') ?>
     <style type="text/css">
         .td-manage span{cursor:pointer;margin-left:5px;margin-right:5px;}
-        thead tr{background-color:#00ca79;color:#fff;}
+        thead tr{background-color:#00ca79;color:#fff; }
+        thead tr th{text-align:center;}
         td .label{cursor:pointer;}
-        table>tbody>tr>td{vertical-align: middle !important ;}
+        table>tbody>tr>td{vertical-align: middle !important ;text-align:center;}
         .mg-b-20{margin-bottom:20px;}
     </style>
 </head>
@@ -46,17 +47,31 @@
         <table class="table table-hover table-bordered" ">
             <thead>
                 <tr>
-                    <th>1</th>
-                    <th>1</th>
-                    <th>1</th>
+                    <th>#</th>
+                    <th>会员昵称</th>
+                    <th>联系电话</th>
+                    <th>累计消费</th>
+                    <th>积分</th>
+                    <th>会员</th>
+                    <th>分销商</th>
+                    <th>注册日期</th>
+                    <th>操作</th>
                 </tr>
             </thead>
             <tbody>
+            <?php foreach($data as $v): ?>
                 <tr>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>2</td>
+                    <td><?=$v['id'] ?></td>
+                    <td><?=$v['nickname'] ?></td>
+                    <td><?=$v['phone'] ?></td>
+                    <td><?=$v['total_amount'] ?></td>
+                    <td><?=$v['points'] ?></td>
+                    <td><?=$v['is_member']?'<span class="label label-success">是</span>':'<span class="label label-default">否</span>' ?></td>
+                    <td><?=$v['is_distribute']?'<span class="label label-success">是</span>':'<span class="label label-default">否</span>' ?></td>
+                    <td><?=$v['create_at'] ?></td>
+                    <td></td>
                 </tr>
+            <?php endforeach; ?>
             </tbody>
         </table>
     </div> <!-- /page-inner -->

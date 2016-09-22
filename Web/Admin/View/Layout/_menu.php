@@ -46,9 +46,9 @@
                             <li>
                                 <a href="<?=U('Order/index') ?>"><i class="fa fa-toggle-on"></i>订单列表</a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="<?=U('Order/ticketOrder') ?>"><i class="fa fa-toggle-on"></i>门票预订</a>
-                            </li>
+                            </li> -->
                             <li>
                                 <a href="<?=U('Order/deliveryList') ?>"><i class="fa fa-bell "></i>发货单列表</a>
                             </li>

@@ -10,8 +10,7 @@
         .table thead tr{background-color:#00ca79;color:#fff;}
         td .label{cursor:pointer;}
         .mg-b-20{margin-bottom:20px;}
-        table>tbody>tr>td{vertical-align: middle !important ;}
-        form #begin,form #end{width:110px;font-size:12px;padding:5px;}
+        table>tbody>tr>td{vertical-align: middle !important ;text-align:center;}
     </style>
 </head>
 <body>
@@ -42,20 +41,40 @@
                 </tr>
             </thead>
             <tbody>
+            <?php foreach($data as $v): ?>
                 <tr>
-                    <td>1</td>
-                    <td>门票/一般</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
+                    <td class="text-center"><?=$v['order_sn'] ?></td>
+                    <td class="text-center"><?=$v['order_type']==1?'门票':'商品' ?></td>
+                    <td class="text-center"><?=$v['goods_name'] ?></td>
+                    <td class="text-center"><?=$v['create_at'] ?></td>
+                    <td class="text-center">
+                        <?php if($v['status']==0): ?>
+                            <span class="label label-danger"><?=$status[$v['status']] ?></span>
+                        <?php elseif($v['status']==1): ?>
+                            <span class="label label-success"><?=$status[$v['status']] ?></span>
+                        <?php else: ?>
+                            <span class="label label-default"><?=$status[$v['status']] ?></span>
+                        <?php endif; ?>
+                    </td>
+                    <td class="text-center td-manage">
+                    <a href="<?=U('returnGoodsDetail', ['id'=>$v['id']]) ?>">
+                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true" title="查看" data-toggle="tooltip" data-placement="bottom"></span>
+                    </a>
+                    <a href="javascript:;" onclick="item_delete(this,<?=$v['id'] ?>)">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true" title="删除" data-toggle="tooltip" data-placement="bottom"></span>
+                    </a>
+                    </td>
                 </tr>
+            <?php endforeach; ?>
             </tbody>
         </table>
 
     </div> <!-- /page-inner -->
 </div> <!-- /page-wrapper -->
 </div> <!-- /wrapper -->
+
+<?=W('Widget/deleteModal',[['id'=>'item-delete']]) ?>
+
 <?php require __DIR__.'/../Layout/_script.php' ?>
 <?=W('Widget/dataTablesScript') ?>
 <script>
@@ -93,10 +112,35 @@ $(function(){
         ],
    });
 
+    $('.td-manage span').tooltip();
+
     $(document).ajaxError(function(){
         layer.alert('发生错误，请刷新重试',{skin:"layui-layer-lan"});
     });
 });
+
+var cur_id = 0;
+var $cur_tr = '';
+function item_delete(obj,id)
+{
+    cur_id = id;
+    $cur_tr = $(obj).parents('tr');
+    $('#item-delete').modal();
+}
+/* 确定删除 */
+function fn_confirm_delete(modal_id)
+{
+    $.post("<?=U('returnList') ?>",{"id":cur_id,"action":'delete'},function(e){
+        $('#'+modal_id).modal('hide');
+        if(e[0]){
+            $cur_tr.remove();
+        }else{
+            layer.alert(e[1],{skin:"layui-layer-lan"});
+        }
+    });
+}
+
 </script>
+
 </body>
 </html>

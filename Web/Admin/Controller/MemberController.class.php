@@ -11,7 +11,11 @@ class MemberController extends BaseController
  */
     public function index()
     {
-        
+        $modal = D('User');
+
+        $this->assign([
+            'data' => $modal->getAll(),
+        ]);
         $this->display();
     }
 /**
