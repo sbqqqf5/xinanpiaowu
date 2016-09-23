@@ -4,10 +4,12 @@
     <?php require __DIR__.'/../Layout/_css.php' ?>
     <?=W('Widget/dataTablesCss') ?>
     <style type="text/css">
-        .td-manage span{cursor:pointer;margin-left:5px;margin-right:5px;color:red;}
-        thead tr{background-color:#00ca79;color:#fff;}
+        .td-manage span{cursor:pointer;margin-left:5px;margin-right:5px;}
+        thead tr{background-color:#00ca79;color:#fff; }
+        thead tr th{text-align:center;}
         td .label{cursor:pointer;}
-        table>tbody>tr>td{vertical-align: middle !important ;}
+        table>tbody>tr>td{vertical-align: middle !important ;text-align:center;}
+        .mg-b-20{margin-bottom:20px;}
     </style>
 </head>
 <body>
@@ -21,20 +23,36 @@
                 <li>
                     <a href="javascript:;">用户管理</a>
                 </li>
-                <li class="active">充值记录</li>
+                <li class="active">用户列表</li>
             </ol>
             </div>
         </div>
+
+        <div class="mg-b-20 clearfix">
+            <form action="<?=U('index') ?>" method="get" class="form-inline pull-right" role="form">
+            
+                <div class="form-group">
+                    <label class="sr-only" for="">label</label>
+                    <select name="role" class="form-control">
+                        <option value="0">全部</option>
+                        <option value="1">仅普通</option>
+                        <option value="2">仅会员</option>
+                    </select>
+                </div>
+                <input type="hidden" name="action" value="search">
+                <button type="submit" class="btn btn-primary">搜索</button>
+            </form>
+        </div>
+
         <table class="table table-hover table-bordered" ">
             <thead>
                 <tr>
                     <th class="text-center">#</th>
-                    <th class="text-center">用户</th>
-                    <th class="text-center">充值单号</th>
-                    <th class="text-center">充值金额</th>
-                    <th class="text-center">充值时长</th>
-                    <th class="text-center">开始日期</th>
-                    <th class="text-center">结束日期</th>
+                    <th class="text-center">姓名</th>
+                    <th class="text-center">联系电话</th>
+                    <th class="text-center">累计消费</th>
+                    <th class="text-center">注册日期</th>
+                    <th class="text-center">成为代理日期</th>
                     <th class="text-center">操作</th>
                 </tr>
             </thead>
@@ -42,16 +60,13 @@
             <?php foreach($data as $v): ?>
                 <tr>
                     <td class="text-center"><?=$v['id'] ?></td>
-                    <td class="text-center"><?=$v['nickname'].'&nbsp;&nbsp'.$v['phone'] ?></td>
-                    <td class="text-center"><?=$v['order_sn'] ?></td>
-                    <td class="text-center"><?=$v['money'] ?></td>
+                    <td class="text-center"><?=$v['agent_name'] ?></td>
+                    <td class="text-center"><?=$v['agent_phone'] ?></td>
+                    <td class="text-center"><?=$v['total_amount'] ?></td>
+                    <td class="text-center"><?=$v['create_at'] ?></td>
+                    <td class="text-center"><?=date('Y-m-d',$v['distribute_time']) ?></td>
                     <td class="text-center">
-                        <?=$v['last_time']==1?'<span class="label label-success">月</span>':'<span class="label label-danger">年</span>' ?>
-                    </td>
-                    <td class="text-center"><?=$v['begin_date'] ?></td>
-                    <td class="text-center"><?=$v['end_date'] ?></td>
-                    <td class="text-center td-manage">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true" title="删除记录" data-toggle="tooltip" data-placement="bottom" onclick="item_delete(this,<?=$v['id'] ?>)"></span>
+                        <button type="button" class="btn btn-danger btn-sm" onclick="stop_agent(this,<?=$v['id'] ?>)">暂停代理身份</button>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -60,9 +75,6 @@
     </div> <!-- /page-inner -->
 </div> <!-- /page-wrapper -->
 </div> <!-- /wrapper -->
-
-<?=W('Widget/deleteModal',[['id'=>'item-delete']]) ?>
-
 <?php require __DIR__.'/../Layout/_script.php' ?>
 <?=W('Widget/dataTablesScript') ?>
 <script>
@@ -101,31 +113,21 @@
        });
 
         $('.td-manage span').tooltip();
-
         $(document).ajaxError(function(){
             layer.alert('发生错误，请刷新重试',{skin:"layui-layer-lan"});
     });
 });
 
-var cur_id = 0;
-var $cur_tr = '';
-function item_delete(obj,id)
+/* 停止代理身份 */
+function stop_agent(obj,id)
 {
-    cur_id = id;
-    $cur_tr = $(obj).parents('tr');
-    $('#item-delete').modal();
-}
-/* 确定删除 */
-function fn_confirm_delete(modal_id)
-{
-    $.post("<?=U('recharge') ?>",{"id":cur_id,"action":'delete'},function(e){
-        $('#'+modal_id).modal('hide');
-        if(e){
-            $cur_tr.remove();
-        }else{
-            layer.alert('操作失败',{skin:"layui-layer-lan"});
-        }
-    });
+    layer.confirm('确定要中止该用户的代理身份吗？', {skin:'layui-layer-lan',icon:0} , function(){
+        $.post("<?=U('agent') ?>",{action:'stop', id:id},function(e){
+            console.log(e)
+            layer.closeAll()
+            $(obj).parents('tr').fadeOut();
+        })
+    })
 }
 </script>
 </body>

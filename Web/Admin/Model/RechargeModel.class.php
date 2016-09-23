@@ -13,8 +13,9 @@ class RechargeModel extends Model
     {
         return $this->alias('r')
                     ->join('piaowu_user u ON r.user_id = u.id')
-                    ->field('r.*,u.phone as phone')
+                    ->field('r.*,u.phone, u.nickname')
                     ->where($where)
+                    ->where(['is_admin_delete'=>0])
                     ->order('r.create_at desc')
                     ->select();
     }
@@ -24,13 +25,22 @@ class RechargeModel extends Model
  */
     public function getAllMemberId()
     {
-        $where['end_date'] = ['ELT',date('Y-m-d')];
-        $data = $this->where($where)->field('id')->select();
+        $where['end_date'] = ['EGT',date('Y-m-d')];
+        $data = $this->distinct(true)->where($where)->field('id')->select();
         $array_ids = [];
         foreach($data as $v){
             $array_ids[] = $v['id'];
         }
-        $array_ids = array_unique($array_ids);
+        // $array_ids = array_unique($array_ids);
         return $array_ids;
+    }
+/**
+ * 管理员删除一条记录 软删除 is_admin_delete 置 1
+ * @param  string $id [description]
+ * @return [type]     [description]
+ */
+    public function deleteOne(string $id)
+    {
+        return $this->save(['id'=>$id, 'is_admin_delete'=>1]);
     }
 }

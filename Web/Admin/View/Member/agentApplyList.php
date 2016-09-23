@@ -33,7 +33,7 @@
             
                 <div class="form-group">
                     <label class="sr-only" for="">label</label>
-                    <select name="member" class="form-control">
+                    <select name="role" class="form-control">
                         <option value="0">全部</option>
                         <option value="1">仅普通</option>
                         <option value="2">仅会员</option>
@@ -48,13 +48,10 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>会员昵称</th>
-                    <th>联系电话</th>
-                    <th>累计消费</th>
-                    <th>积分</th>
-                    <th>会员</th>
-                    <th>代理用户</th>
-                    <th>注册日期</th>
+                    <th>姓名</th>
+                    <th>电话</th>
+                    <th>申请日期</th>
+                    <th>状态</th>
                     <th>操作</th>
                 </tr>
             </thead>
@@ -62,17 +59,21 @@
             <?php foreach($data as $v): ?>
                 <tr>
                     <td><?=$v['id'] ?></td>
-                    <td><?=$v['nickname'] ?></td>
+                    <td><?=$v['name'] ?></td>
                     <td><?=$v['phone'] ?></td>
-                    <td><?=$v['total_amount'] ?></td>
-                    <td><?=$v['points'] ?></td>
-                    <td><?=$v['is_member']?'<span class="label label-success">是</span>':'<span class="label label-default">否</span>' ?></td>
-                    <td><?=$v['is_distribute']?'<span class="label label-success">是</span>':'<span class="label label-default">否</span>' ?></td>
                     <td><?=$v['create_at'] ?></td>
-                    <td class="td-manage">
-                        <button type="button" class="btn btn-primary btn-sm" onclick="advance_agent(<?=$v['id'] ?>,<?=$v['is_distribute'] ?>)">
-                            <span class="glyphicon glyphicon-hand-up" aria-hidden="true" title="提升为代理商" data-toggle="tooltip" data-placement="bottom"></span>
-                        </button>
+                    <td>
+                        <?php if($v['status']==0): ?>
+                            <span class="label label-info">未处理</span>
+                        <?php elseif($v['status']==1): ?>
+                            <span class="label label-success">已同意</span>
+                        <?php else: ?>
+                            <span class="label label-default">已拒绝</span>
+                        <?php endif; ?>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-success btn-sm" onclick="item_agree(<?=$v['id'] ?>)" <?=$v['status']==0?'':'disabled' ?>>同意</button>
+                        <button type="button" class="btn btn-warning btn-sm" onclick="item_refuse(<?=$v['id'] ?>)" <?=$v['status']==0?'':'disabled' ?>>拒绝</button>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -124,20 +125,27 @@
     });
 });
 
-/** 提升为代理商 */
-function advance_agent(id,is_agent)
+/** 同意申请 */
+function item_agree(id){
+    layer.confirm('确定要同意该申请吗？',{skin:'layui-layer-lan',icon:3},function(){
+        $.post("<?=U('agentApplyList') ?>", {id:id, action:'agree'},function(e){
+            location.reload();
+        })
+    })
+}
+/** refuse apply */
+function item_refuse(id)
 {
-    if(is_agent){
-        layer.msg('该用户已是代理用户',{shift:6, time:2000});
-        return;
-    }else{
-        layer.confirm('确定要将该用户提升为代理用户吗？', {skin:'layui-layer-lan'}, function(){
-            $.post("<?=U('agent') ?>",{id:id,action:'advance'},function(){
+    layer.confirm('确定要拒绝该申请吗?',
+        {skin:'layui-layer-lan',icon:0},
+        function(){
+            $.post("<?=U('agentApplyList') ?>", {id:id, action:'refuse'},function(e){
                 location.reload();
             })
-        })
-    }
+        }
+    )
 }
 </script>
+
 </body>
 </html>

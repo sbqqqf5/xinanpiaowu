@@ -142,6 +142,17 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="#" ><i class="fa fa-bicycle "></i>代理用户管理 <span class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level ">
+                             <li>
+                                <a href="<?=U('Member/agent') ?>" ><i class="fa fa-desktop "></i>代理用户列表 </a>
+                            </li>
+                            <li>
+                                <a href="<?=U('Member/agentApplyList') ?>" ><i class="fa fa-desktop "></i>代理用户申请</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                         <a href="#" ><i class="fa fa-bicycle "></i>网站管理 <span class="fa arrow"></span></a>
                          <ul class="nav nav-second-level ">
                            

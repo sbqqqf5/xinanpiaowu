@@ -14,7 +14,7 @@
 define('IPLOOKUP_SINA','http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js');
 
 // 
-define('APP_DEBUG',True);
+// define('APP_DEBUG',True);
 define('BIND_MODULE','Home');
 // 定义应用目录
 define('APP_PATH','./Web/');

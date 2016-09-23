@@ -10,11 +10,11 @@ class UserModel extends Model
  * @param  array  $where [description]
  * @return [type]        [description]
  */
-    public function getAll(array $where)
+    public function getAll(array $where=[])
     {
         $data = $this->where($where)->field(true)->select();
         $members_id = D('Recharge')->getAllMemberId(); // 所有会员ID
-        foreach($data as $v){
+        foreach($data as &$v){
             if(in_array($v['id'],$members_id)){
                 $v['is_member'] = 1;
             }else{
@@ -63,5 +63,38 @@ class UserModel extends Model
     public function pointsInc(string $user_id, string $points)
     {
         return $this->where(['id'=>$user_id])->setInc('points', $points);
+    }
+/**
+ * 查询所有代理商
+ * @param  array  $where [description]
+ * @return [type]        [description]
+ */
+    public function getAllAgent(array $where = [])
+    {
+        $field = true;
+        $where['is_distribute'] = 1;
+        return $this->alias('u')
+                    ->join('piaowu_agent_apply a ON u.id=a.user_id')
+                    ->field('u.*, a.name agent_name, a.phone agent_phone')
+                    ->where($where)
+                    ->select();
+    }
+/**
+ * 停止代理身份
+ * @param  string $id [description]
+ * @return [type]     [description]
+ */
+    public function stopAgent(string $id)
+    {
+        return $this->save(['id'=>$id, 'distribute_time'=>time(), 'is_distribute'=>0]);
+    }
+/**
+ * 提升为代理商
+ * @param  string $id [description]
+ * @return [type]     [description]
+ */
+    public function advanceAgent(string $id)
+    {
+        return $this->save(['id'=>$id, 'distribute_time'=>time(), 'is_distribute'=>1]);
     }
 }
