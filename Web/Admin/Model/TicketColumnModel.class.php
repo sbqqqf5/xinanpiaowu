@@ -13,9 +13,22 @@ class TicketColumnModel extends Model
  * 获取所有
  * @return [type] [description]
  */
-    public function getAll()
+    public function getAll(array $where = [])
     {
-        return $this->field(true)->select();
+        return $this->field(true)->where($where)->select();
+    }
+    /**
+     * 获取有效的栏目名 格式化成 json
+     * @return [type] [description]
+     */
+    public function getActivity()
+    {
+        $basic = $this->field('id,name')->where('status=1')->select();
+        $data = [];
+        foreach($basic as $v){
+            $data[$v['id']] = $v['name'];
+        }
+        return json_encode($data, JSON_UNESCAPED_UNICODE);
     }
 /**
  * 获取一个  pics,cates 编码成 array

@@ -17,4 +17,8 @@ return array(
 
     'TMPL_ACTION_ERROR'     =>  './Public/tpl/dispatch_jump.php', // 默认错误跳转对应的模板文件
     'TMPL_ACTION_SUCCESS'   =>  './Public/tpl/dispatch_jump.php', // 默认成功跳转对应的模板文件
+
+    'EXPRESS_KEY'           => 'XuWHURnL632', // 快递100 接口 key
+    'EXPRESS_CALLBACKURL'   => 'test5.fengniaozhiku.com/expresscallback', //快递订阅回调接口
+    'EXPRESS_CUSTOMER'      => '6045AB72DC3A5994B20C11D239C81517', //快递100 公司编号
 );

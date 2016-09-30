@@ -37,13 +37,13 @@ class AdminModel extends \Think\Model
         $info = $this->field(true)->where(['user'=>$data['user']])->find();
         if(!$info){return false;}
         if(password_verify($data['password'],$info['password'])){
-            session('user',$info);
+            session('admin_user',$info);
             $updateData = [
                 'last_login_time' => time(),
                 'last_login_ip'   => get_client_ip(),
                 'login_times'     => $info['login_times']+1,
             ];
-            $this->save($updateData);
+            $this->where(['user'=>$data['user']])->save($updateData);
             return true;
         }else{
             return false;

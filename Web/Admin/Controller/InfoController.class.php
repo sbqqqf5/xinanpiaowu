@@ -113,4 +113,43 @@ class InfoController extends BaseController
         $this->assign('data',$modal->field('password',true)->select());
         $this->display();
     }
+    /** 快递公司 */
+    public function express()
+    {
+        $model = M('AllowedExpress');
+
+        if(IS_POST){
+            $code = I('post.code');
+            $action = I('post.action');
+            if('add' == $action){
+                $add = $model->add(I('post.'));
+                if($add){
+                    $this->success('操作成功', 'express');exit;
+                }else{
+                    $this->error('操作失败，请重试');exit;
+                }
+            }
+            if('update' == $action){
+                $add =$model->save(I('post.'));
+                if($add){
+                    $this->success('操作成功', 'express');exit;
+                }else{
+                    $this->error('操作失败，请重试');exit;
+                }
+            }
+            if('delete' == $action){
+                $this->ajaxReturn($model->delete($code));
+            }
+            if('status' == $action){//更新状态
+                $this->ajaxReturn($model->save(['code'=>I('post.code'),'status'=>I('post.status')]));
+            }
+            if('sorted' == $action){//更新排序值
+                $this->ajaxReturn($model->save(['code'=>I('post.code'),'sorted'=>I('post.sorted')]));
+            }
+        }else{
+            $data = $model->field(true)->select();
+            $this->assign('data', $data);
+            $this->display();
+        }
+    }
 }

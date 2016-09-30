@@ -51,6 +51,14 @@
                    <td><?=$detail['goods_name'] ?></td>
                </tr>
                <tr>
+                 <td>支付金额</td>
+                 <td><?=$detail['order_amount'] ?></td>
+               </tr>
+               <tr>
+                 <td>使用积分</td>
+                 <td><?=$detail['use_integral'] ?></td>
+               </tr>
+               <tr>
                    <td>退款原因</td>
                    <td><?=$detail['reason'] ?></td>
                </tr>
@@ -159,12 +167,23 @@
     });
     /* 显示退款 modal  */
     $('#show-modal-refund').on('click',function(){
-        $('#modal-refund').modal('show')
+        // $('#modal-refund').modal('show')
+        layer.confirm('确定要退款（或积分）给当前用户吗？', function(){
+            var data = {user_id:<?=$detail['user_id'] ?>, order_id:<?=$detail['order_id'] ?>, 
+                    order_num:<?=$detail['order_sn'] ?>};
+            $.post("<?=U('handleRefund') ?>", data, function(e){
+              if(e[0]){
+                layer.msg('操作成功',{time:2000});
+              }else{
+                layer.alert(e[1]);
+              }
+            })
+        })
     });
     /*  确认退款   */
     $('#modal-refund form :submit').on('click',function(event){
         event.preventDefault();
-        var data = $('#modal-refund form').serializeArray();
+        var data = {user_id:<?=$detail['user_id'] ?>, order_id:<?=$detail['order_id'] ?>};
         $.post('<?=U('handleRefund') ?>', data, function(e){
             console.log(e);
             if(e[0]){

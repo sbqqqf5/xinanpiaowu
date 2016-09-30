@@ -26,7 +26,7 @@
             </ol>
             </div>
         </div>
-        <div class="row">
+        <div style="margin-bottom:20px;">
             <button class="btn btn-primary" onclick="$('#modal-add-cate form')[0].reset();$('#modal-add-cate').modal('show');">添加城市</button>
         </div>
 

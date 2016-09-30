@@ -123,4 +123,15 @@ class TicketModel extends Model
             return [false,$this->getError()];
         }
     }
+    /**
+     * 根据分类ID 查询有效数据
+     * @param  string $cate_id [description]
+     * @return [type]          [description]
+     */
+    public function getActivityDataByCate(string $cate_id)
+    {
+        return $this->where(['cate'=>$cate_id,'is_delete'=>0])
+                      ->field('id,title name')
+                      ->select();
+    }
 }

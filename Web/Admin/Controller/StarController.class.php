@@ -280,7 +280,10 @@ class StarController extends BaseController
             $this->error($error);exit;
         }
     }
-
+    /**
+     * 明星品牌 操作
+     * @return [type] [description]
+     */
     public function starBrandHandle()
     {
         $modal = D('StarBrand');
@@ -346,5 +349,41 @@ class StarController extends BaseController
     public function resetSessionBanner()
     {
         session('admin_star_banner',null);
+    }
+/**
+ * 商品评论表
+ * @return [type] [description]
+ */
+    public function goodsComment()
+    {
+        $model = new \Admin\Model\StarGoodsCommentModel();
+        $where = [];
+
+        $data = $model->getAll($where);
+        $this->assign([
+            'data' => $data,
+        ]);
+        $this->display();
+    }
+/**
+ * 评论详情 修改
+ * @return [type] [description]
+ */
+    public function goodsCommentView()
+    {
+        $model = new \Admin\Model\StarGoodsCommentModel();
+        if(IS_GET && $id = I('get.id')){
+            $info = $model->getOne($id);
+            $this->ajaxReturn($info);
+        }
+        if(IS_POST && $id = I('post.id')){
+            $update = $model->updateOne(I('post.'));
+            if($update[0]){
+                $this->success($update[1], 'goodsComment');exit;
+            }else{
+                $this->error($update[1]);exit;
+            }
+        }
+        
     }
 }

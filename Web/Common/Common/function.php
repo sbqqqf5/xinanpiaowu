@@ -237,3 +237,102 @@ function random_str($length = 6, $type = FALSE)
         return $str;
     }
 }
+/**
+ * 快递单号 查询快递公司名
+ * @param  string $num    快递单号
+ * @param  string $key    授权码
+ * @param  string $format 返回格式 json | array | comCode
+ * @return mixed         json | array | string
+ */
+function get_express_code($num, $key = null, $format = 'comCode')
+{
+    $key = $key ? $key : C('EXPRESS_KEY');
+    $url = 'http://www.kuaidi100.com/autonumber/auto?num='.$num.'&key='.$key;
+    $ch = curl_init();
+    curl_setopt($ch,CURLOPT_URL,$url);
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+    $output = curl_exec($ch);
+    curl_close($ch);
+    if('json' == $format){
+        return $output;
+    }elseif('array' == $format){
+        $info = json_decode($output, true);
+        return $info[0];
+    }else{
+        $info = json_decode($output, true);
+        return $info[0]['comCode'];
+    }
+}
+/**
+ * 快递单号 物流信息订阅
+ * @param  string $comCode 快递公司代码
+ * @param  string $number  快递单号
+ * @param  string $from    出发地
+ * @param  string $to      目的地
+ * @return array          ['result', 'returnCode', 'message']
+ */
+function express_info_order($comCode, $number, $from = '', $to = '')
+{
+    $post_data = [];
+    $post_data["schema"] = 'json' ;
+
+    $callbackurl = C('EXPRESS_CALLBACKURL');
+    $key         = C('EXPRESS_KEY');
+
+// 'testkuaidi1031' http://www.yourdmain.com/kuaidi
+    $post_data["param"] = '{"company":"'.$comCode.'", "number":"'.$number.'","from":"'.$from.'", "to":"'.$to.'", "key":"'.$key.'", "parameters":{"callbackurl":"'.$callbackurl.'"}}';
+
+    $url='http://www.kuaidi100.com/poll';
+
+    $o=""; 
+    foreach ($post_data as $k=>$v)
+    {
+        $o.= "$k=".urlencode($v)."&"; 
+    }
+
+    $post_data=substr($o,0,-1);
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+    curl_setopt($ch, CURLOPT_URL,$url);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+    $result = curl_exec($ch);
+    $result = json_decode($result, true);
+    return $result;
+}
+/**
+ * 快递100 快递实时查询
+ * @param  string $com 快递公司代码
+ * @param  string $num 快递单号
+ * @return array      
+ */
+function express_query($num, $com = null)
+{
+    $com = $com ? $com : get_express_code($num);
+    $post_data = array();
+    $post_data["customer"] = C('EXPRESS_CUSTOMER');
+    $key= C('EXPRESS_KEY');
+    $post_data["param"] = '{"com":"'.$com.'","num":"'.$num.'"}';
+
+    $url='http://poll.kuaidi100.com/poll/query.do';
+    $post_data["sign"] = md5($post_data["param"].$key.$post_data["customer"]);
+    $post_data["sign"] = strtoupper($post_data["sign"]);
+    $o=""; 
+    foreach ($post_data as $k=>$v)
+    {
+        $o.= "$k=".urlencode($v)."&";       //默认UTF-8编码格式
+    }
+    $post_data=substr($o,0,-1);
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+    curl_setopt($ch, CURLOPT_URL,$url);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+    $result = curl_exec($ch);
+    $data = str_replace("\&quot;",'"',$result );
+    $data = json_decode($data,true);
+    return $data;
+}

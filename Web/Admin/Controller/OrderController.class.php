@@ -75,6 +75,9 @@ class OrderController extends BaseController
         }else{ // 不存在规格 
             $properties = false;
         }
+
+        $expresses = M('AllowedExpress')->where('status=1')->order('sorted desc')->select();
+
         $this->assign([
             'orderInfo'       => $orderInfo, // 订单信息
             'userInfo'        => $userInfo, // 用户信息
@@ -84,6 +87,7 @@ class OrderController extends BaseController
             'deliveryStatus'  => $modelOrder::$deliveryStatus, // 发货状态
             'orderType'       => $modelOrder::$orderType, // 订单类别
             'payStatus'       => $modelOrder::$payStatus, // 支付状态
+            'expresses'       => $expresses, // 快递公司
         ]);
         $this->display();
     }
@@ -107,6 +111,12 @@ class OrderController extends BaseController
     public function delivery()
     {
         $ans = D('Order')->actionDelivery($_POST);
+        
+        // 订阅快递信息
+        $expressName = $_POST['express'];
+        $expressCode = M('AllowedExpress')->where(['name'=>$expressName])->getField('code');
+        // express_info_order($expressCode,$_POST['express_code']); 
+
         $this->ajaxReturn($ans);
     }
 /**
@@ -156,17 +166,28 @@ class OrderController extends BaseController
     public function handleRefund()
     {
         if(IS_POST){
-            $modal = D('RefundLog');
-            if(!I('post.money') && !I('post.intgral')){
-                $this->ajaxReturn([false,'输入不正确']);
-            }
-            if($money = I('post.moeny')){//存在退款
-                $ans = $modal->addOne($_POST);
-                $this->ajaxReturn($ans);
-            }else{//仅退积分
-                unset($_POST['money']);
-                $ans = $modal->addOne($_POST);
-                $this->ajaxReturn($ans);
+            $modal     = D('RefundLog');
+            $user_id   = I('post.user_id');
+            $order_id  = I('post.order_id'); // 订单ID
+            $order_num = I('post.order_num'); // 订单编号
+            $orderInfo = M('Order')->field('order_id,order_sn,use_integral,order_amount')->find($order_id);
+            $_POST['integral'] = $orderInfo['use_integral'];
+            $_POST['money']    = $orderInfo['money'];
+
+            // 写表 
+            $insert = $modal->addOne($_POST);
+            if($insert[0]){
+                if($orderInfo['money']){// 微信退款
+                    $money = intval($orderInfo['money'])*100; 
+                    // 退款
+                    $refundInfo = $this->wechatRefund($insert[1], $order_num, $money);
+                    $this->ajaxReturn([true, $refundInfo['return_msg']]);
+                }else{
+                    
+                    $this->ajaxReturn([true, $insert[1]]);
+                }
+            }else{
+                $this->ajaxReturn([false, $insert[1]]);
             }
         }
     }

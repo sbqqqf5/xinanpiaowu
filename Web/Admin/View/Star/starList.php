@@ -30,7 +30,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div style="margin-bottom:20px;">
             <button class="btn btn-primary" onclick="$('#modal-add-star form')[0].reset();$('#modal-add-star').modal('show');">添加明星品牌</button>
         </div>
         

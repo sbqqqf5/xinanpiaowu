@@ -7,14 +7,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/token">西南票务—后台管理</a>
+                <a class="navbar-brand" href="/token.php">西南票务—后台管理</a>
             </div>
 
             <div class="header-right">
 
               <a href="message-task.html" class="btn btn-info" title="New Message"><b>30 </b><i class="fa fa-envelope-o fa-2x"></i></a>
                 <a href="message-task.html" class="btn btn-primary" title="New Task"><b>40 </b><i class="fa fa-bars fa-2x"></i></a>
-                <a href="login.html" class="btn btn-danger" title="Logout"><i class="fa fa-exclamation-circle fa-2x"></i></a>
+                <a href="<?=U('logout') ?>" class="btn btn-danger" title="Logout"><i class="fa fa-exclamation-circle fa-2x"></i></a>
 
 
             </div>
@@ -23,18 +23,17 @@
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                    <!-- <li>
+                    <li>
                         <div class="user-img-div">
-                            <img src="assets/img/user.png" class="img-thumbnail" />
+                            <img src="/Public/admin/assets/img/user.png" class="img-thumbnail" />
                     
                             <div class="inner-text">
-                                Jhon Deo Alex
+                                <?=session('admin_user')['user'] ?>
                             <br />
-                                <small>Last Login : 2 Weeks Ago </small>
+                                <small>上次登录：<?=date('m-d H:i', session('admin_user')['last_login_time']) ?></small>
                             </div>
                         </div>
-                    
-                    </li> -->
+                    </li>
 
 <!-- class="active-menu-top" 活动的一级菜单 class="active-menu" 活动的菜单 collapse in 折叠 赋在ul上 -->
                     <li>
@@ -150,6 +149,9 @@
                             <li>
                                 <a href="<?=U('Member/agentApplyList') ?>" ><i class="fa fa-desktop "></i>代理用户申请</a>
                             </li>
+                            <li>
+                                <a href="<?=U('Member/withdrawList') ?>" ><i class="fa fa-desktop "></i>提现申请</a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -169,6 +171,9 @@
                                 <a href="<?=U('Info/seoAndRight') ?>" ><i class="fa fa-desktop "></i>SEO及版权设置 </a>
                             </li>
                             <li>
+                                <a href="<?=U('Info/express') ?>" ><i class="fa fa-desktop "></i>快递公司设置 </a>
+                            </li>
+                            <li>
                                 <a href="<?=U('Info/adminList') ?>" ><i class="fa fa-desktop "></i>管理员列表 </a>
                             </li>
                              <li>
@@ -179,7 +184,15 @@
                         </ul>
                     </li>
                       <li>
-                        <a href="gallery.html"><i class="fa fa-anchor "></i>Gallery</a>
+                        <a href="#"><i class="fa fa-anchor "></i>活动管理<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                            <a href="<?=U('Activity/index') ?>"><i class="fa fa-code "></i>进行中的活动</a>
+                            </li>
+                            <li>
+                            <a href="<?=U('Activity/expired') ?>"><i class="fa fa-code "></i>已结束活动</a>
+                            </li>
+                        </ul>
                     </li>
                      <li>
                         <a href="error.html"><i class="fa fa-bug "></i>Error Page</a>

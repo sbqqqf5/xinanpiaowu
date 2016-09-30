@@ -178,11 +178,9 @@
                     <div class="form-group">
                         <label for="express">快递公司</label>
                         <select name="express" id="express" class="form-control" required>
-                            <option value="顺丰快递" selected>顺丰快递</option>
-                            <option value="申通快递">申通快递</option>
-                            <option value="中通快递">中通快递</option>
-                            <option value="圆通快递">圆通快递</option>
-                            <option value="邮政EMS">邮政EMS</option>
+                        <?php foreach($expresses as $express): ?>
+                            <option value="<?=$express['name'] ?>"><?=$express['name'] ?></option>
+                        <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="form-group">

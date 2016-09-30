@@ -108,4 +108,24 @@ class MemberController extends BaseController
         ]);
         $this->display();
     }
+    /**
+     * 提现申请
+     * @return [type] [description]
+     */
+    public function withdrawList()
+    {
+        $model = new \Admin\Model\WithdrawalsModel();
+        if(IS_POST && $id = I('post.id')){
+            if(1 == I('post.status')){//打款接口
+                
+            }
+            $ans = $model->handle(I('post.'));
+        }
+        $data = $model->getAll();
+        $this->assign([
+            'data' => $data,
+        ]);
+
+        $this->display();
+    }
 }

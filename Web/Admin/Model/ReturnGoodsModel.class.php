@@ -77,14 +77,16 @@ class ReturnGoodsModel extends RelationModel
             $detail =  $this->alias('r')
                         ->join('piaowu_ticket t ON r.goods_id=t.id')
                         ->join('piaowu_user u ON r.user_id=u.id')
-                        ->field('r.*, t.title goods_name, u.nickname, u.phone')
+                        ->join('piaowu_order o ON o.order_id=r.order_id')
+                        ->field('r.*, t.title goods_name, u.nickname, u.phone, o.use_integral, o.order_amount, o.use_desposit')
                         ->where(['r.id'=>$id])
                         ->find();
         }else{// 退商品
             $detail =  $this->alias('r')
                         ->join('piaowu_star_goods g ON r.goods_id=g.id')
                         ->join('piaowu_user u ON r.user_id=u.id')
-                        ->field('r.*, g.goods_name, u.nickname, u.phone')
+                        ->join('piaowu_order o ON o.order_id=r.order_id')
+                        ->field('r.*, g.goods_name, u.nickname, u.phone, o.use_integral, o.order_amount, o.use_desposit')
                         ->where(['r.id'=>$id])
                         ->find();
         }

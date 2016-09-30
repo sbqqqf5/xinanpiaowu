@@ -112,4 +112,15 @@ class StarGoodsModel extends Model
     {
         return $this->save(['id'=>$id,'is_delete'=>1]);
     }
+    /**
+     * 根据栏目ID 获取数据
+     * @param  string $column_id [description]
+     * @return [type]            [description]
+     */
+    public function getActivityDataByColumn(string $column_id)
+    {
+        return $this->field('id,goods_name name')
+                    ->where(['column_id'=>$column_id,'is_delete'=>0])
+                    ->select();
+    }
 }
