@@ -1,0 +1,143 @@
+
+.template{
+    width:285px;
+    height:360px;
+    border:1px solid #d8d8d8;
+    margin-top:20px;
+    margin-left:20px;
+    box-sizing: border-box;
+}
+.template:first-child,.template:nth-child(5){
+    margin-left:0;
+}
+.templateImg{
+    width:240px;
+    height:240px;
+    margin:20px auto;
+    overflow: hidden;
+    margin-bottom:10px;
+}
+.templateImg img{
+    width:100%;
+}
+.templateName{
+    margin:auto;
+    width:240px;
+    line-height:20px;
+    height:40px;
+    color:#333;
+    overflow: hidden;
+}
+.money{
+    font-size:12px;
+    color:#ff4a00;
+    margin-left:25px;
+    margin-top: 13px;
+}
+.money span{
+    font-size:18px;
+}
+.shopIcon{
+    margin-right:25px;
+    margin-top: 13px;
+    cursor: pointer;
+}
+
+.endTimeT{
+    text-align: center;
+    color:#ff4a00;
+    font-size:18px;
+    font-weight: bold;
+    line-height:120px;
+    height:120px;
+    display:none;
+}
+.endTimeT span{
+    margin-left:10px;
+}
+.vip .endTimeT{
+    display:block;
+}
+.vip .vipMain{
+    margin-top:0;
+}
+.jifenBg{
+
+}
+.jifenTop{
+    height:105px;
+    background-color:#fafafa;
+    box-sizing: border-box;
+    border:1px solid #e6e6e6;
+    border-bottom:1px solid #fafafa;
+    margin-top:50px;
+}
+.jifenIcon{
+    margin-left:550px;
+    margin-top: 37px;
+}
+.jifenNum{
+    height: 50px;
+    line-height: 50px;
+    margin-top: 23px;
+    padding-left: 20px;
+    border-left: 1px solid #6faa1b;
+    margin-left: 20px;
+    color:#6faa1b;
+    font-size:18px;
+}
+.jifenNum span{
+    font-size:50px;
+}
+.listJT{
+    height:30px;
+    background-color:#80c41f;
+    color:#fff;
+    width:100%;
+    line-height:30px;
+    font-size: 14px;
+    text-align: center;
+}
+.listJT>div{
+
+    width:25%;
+}
+.jifenList{
+    width: 100%;
+    text-align: center;
+    line-height:30px;
+    height:30px;
+    color:#666;
+    font-size:13px;
+}
+.jifenList>div{
+    width: 25%;
+}
+.listJ{
+    border:1px solid #d8d8d8;
+    border-top:0;
+    box-sizing: border-box;
+    margin-bottom:35px;
+}
+.jifenList:nth-child(even){
+    background-color:#fff;
+}
+.jifenList:nth-child(odd){
+    background-color:#eff2eb;
+}
+.guanggaoT{
+    background-color:#f5f5f5;
+    height:40px;
+    line-height:40px;
+    padding:0 20px;
+    font-size:16px;
+    box-sizing:content-box;
+    width:1160px;
+    margin:auto;
+    color:#80c41f;
+    border:1px solid #d8d8d8;
+}
+.guanggaoT a{
+    color:#333;
+    font-size:13px;
+}

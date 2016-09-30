@@ -1,0 +1,339 @@
+.banner{
+    width:100%;
+    height:470px;
+    overflow: hidden;
+}
+.bannerImg{
+    width:1920px;
+    height:470px;
+    position: absolute;
+    left:0;
+    right:0;
+    margin:auto;
+}
+.menu{
+    height:470px;
+}
+.xiala{
+    width: 280px;
+    height:470px;
+    top:0;
+    left:0;
+    margin:auto;
+    background-color:#9541cd;
+    z-index:2;
+}
+.allTitle{
+    width:280px;
+}
+.bannerImg{
+    position: absolute;
+    top:0;
+}
+.template{
+    width:250px;
+    margin:auto;
+    height:94px;
+    border-bottom:1px dashed #000;
+    padding:10px 20px;
+    box-sizing: border-box;
+}
+.template img{
+    width:20px;
+    margin-right:5px;
+}
+.fenlei{
+    font-size:13px;
+    color:#fff;
+}
+.templateA{
+    width: 185px;
+    height: 80px;
+    overflow: hidden;
+}
+.templateA a{
+    white-space: nowrap;
+    font-size:12px;
+    color: #b0b0b0;
+}
+.templateA a:hover{
+    color:#fff;
+}
+.contentTop{
+    margin-top:25px;
+}
+.cla{
+    box-sizing: border-box;
+    width:300px;
+    margin-right:20px;
+    height:150px;
+    border:1px solid #e6e6e6;
+    border-top:5px solid #9541cd;
+}
+.claL{
+    width:50%;
+    height:100%;
+}
+.claR{
+    width: 50%;
+    height:100%;
+}
+.claL img{
+    width: 130px;
+    height:130px;
+}
+.claRN{
+    width:132px;
+    margin-top:25px;
+    height:30px;
+    line-height:30px;
+    border-bottom:1px solid #000;
+    font-size: 20px;
+}
+.claRD{
+    width:120px;
+    height:30px;
+    line-height:30px;
+    font-size: 12px;
+    color:#999;
+}
+.goHref{
+    margin-right:20px;
+}
+.baoyou{
+    width:240px;
+    height:150px;
+    background-size:100% 100%;
+    background-image:url('../images/baoyou.jpg');
+}
+.baoyou div{
+    border:2px solid #fff;
+    width:150px;
+    height:25px;
+    color:#fff;
+    text-align: center;
+    line-height:25px;
+    position:absolute;
+    bottom:20px;
+    left:0;
+    right:0;
+    margin:auto;
+}
+.listL{
+    width:230px;
+    height:600px;
+    border:1px solid #e6e6e6;
+    box-sizing: border-box;
+    padding:0 10px;
+}
+.listLT{
+    width:100%;
+    height:40px;
+    border-bottom:1px solid #ccc;
+    line-height:40px;
+}
+.goodslistT span{
+    color:#9541cd;
+}
+.goodslistT{
+    box-sizing: border-box;
+    padding:0 10px;
+    font-size: 22px;
+    margin-top:40px;
+    margin-bottom:15px;
+}
+.listLT{
+    font-size: 16px;
+}
+.listLT img{
+    height: 14px;
+    margin-top: 14px;
+}
+.listAll{
+    width:210px;
+    margin:auto;
+    height:555px;
+}
+.listBox{
+    overflow: hidden;
+    cursor: pointer;
+    height:40px;
+    line-height:40px;
+    border-bottom:1px dashed #000;
+    box-sizing: border-box;
+}
+.listBox:last-child{
+    border-bottom:0;
+}
+.numBig{
+    width:23px;
+    height:23px;
+    border:1px solid #ccc;
+    box-sizing: border-box;
+    border-radius:50%;
+    margin:9px auto;
+}
+.numS{
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+    margin: 3px;
+    background-color: #ccc;
+    color: #fff;
+    text-align: center;
+    line-height: 16px;
+}
+.goodsName{
+    width: 176px;
+    margin-left: 10px;
+}
+.listHind{
+    width:210px;
+    margin:auto;
+}
+.listHind img{
+    width:210px;
+    height:235px;
+}
+.listBox .listHind .hint{
+    color:#333;
+}
+.money{
+    line-height:40px;
+    height:40px;
+    font-size: 12px;
+}
+.money span{
+    line-height:40px;
+    height:40px;
+    font-size: 15px;
+}
+.hint{
+    line-height:40px;
+    height:40px;
+    font-size:12px;
+}
+
+
+
+
+
+
+
+.listBoxC {
+    color:#9541cd;
+    height:auto;
+}
+.listBoxC .numBig{
+    border-color:#9541cd;
+}
+.listBoxC .numS{
+    background-color:#9541cd;
+}
+.listBox:hover {
+    color:#9541cd;
+}
+.listBox:hover .numBig{
+    border-color:#9541cd;
+}
+.listBox:hover .numS{
+    background-color:#9541cd;
+}
+.goodslistT a{
+    color:#999;
+    font-size:13px;
+}
+.listR{
+    width:960px;
+    margin-left:10px;
+}
+.pptBox{
+    width:580px;
+    height:400px;
+}
+.pptBox img{
+    width:100%;
+    height:100%;
+    position: absolute;
+    top:0;
+    left:0;
+}
+.listRR1,.listRR2{
+    width:370px;
+    height:195px;
+}
+.listRR1{
+    margin-bottom:10px;
+}
+.listRR1 img,.listRR2 img{
+    width: 100%;
+    height:100%;
+}
+.pptIconBox{
+    width:100%;
+    background-color:rgba(255,255,255,.7);
+    height:35px;
+    bottom:0;
+    left:0;
+}
+.pptIcon{
+    cursor: pointer;
+    float: left;
+    width:16px;
+    height:16px;
+    overflow: hidden;
+    border-radius:50%;
+    border:2px solid #fff;
+    margin:0 5px;
+}
+.pptIcon div{
+    display:none;
+    width:12px;
+    height:12px;
+    margin:2px;
+    overflow: hidden;
+    border-radius:50%;
+    background-color:#fff;
+}
+.pptIconC div{
+    display: block;
+}
+.dibu{
+   width:90px;
+    height:18px;
+    /*background-color:#9cf;*/
+}
+
+.tuijian{
+    width:100%;
+    margin-top:10px;
+}
+.tuijianS{
+    width:192px;
+    height:190px;
+    box-sizing: border-box;
+    border:1px solid #e6e6e6;
+}
+.tImg{
+    height:130px;
+    overflow: hidden;
+    width:100%;
+    padding:20px;
+    box-sizing:border-box;
+}
+.tMoney{
+    font-size:14px;
+    color:#9541cd;
+    box-sizing: border-box;
+    padding:0 10px;
+    line-height:25px;
+    height:25px;
+}
+.tName{
+    font-size:14px;
+    color:#333;
+    box-sizing: border-box;
+    padding:0 10px;
+    line-height:25px;
+    height:25px;
+}

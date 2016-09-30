@@ -1,0 +1,261 @@
+.headerTop{
+    height:30px;
+    line-height:30px;
+    background-color:#f1f1f1;
+    font-size:12px;
+    color:#666666;
+}
+.headerBottom{
+    line-height:30px;
+    background-color:#fff;
+    font-size:12px;
+    color:#666666;
+}
+.loginBtn{
+    color:#6ea91a;
+    margin:0 18px;
+}
+.shop,.shoucang,.weixin,.center{
+    padding:0 10px;
+    border-left:1px solid #666;
+    height:14px;
+    line-height:14px;
+    margin-top:8px;
+}
+.weixin{
+    border-left:0px;
+}
+.weixinIcon{
+    margin-top: 8px;
+    margin-left: 10px;
+    border-left: 1px solid #666;
+    padding-left: 10px;
+}
+.headerSearchBox{
+    height:100px;
+}
+.logo{
+    padding: 20px 0;
+}
+.shopCar{
+    background-color: #f9f9f9;
+    border:1px solid #dfdfdf;
+    box-sizing: border-box;
+    width:140px;
+    height:36px;
+    line-height:34px;
+    text-align: center;
+    position:relative;
+    margin: 32px 20px;
+}
+.xia{
+    width: 8px;
+    height: 8px;
+    border-left: 1px solid #666;
+    border-top: 1px solid #666;
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+    margin: 8px 8px; 
+}
+.allOtherBox{
+    background-color:#80c420;
+    width:210px;
+    height:420px;
+    /*display:none;*/
+    position: fixed;
+    z-index:2;
+}
+.allOtherBox a{
+    display: block;
+    width:100%;
+    height:50px;
+    line-height:50px;
+    box-sizing: border-box;
+    padding:0 25px;
+    background-color:#80c420;
+    color:#fff;
+    font-size: 15px;
+}
+.allOtherBox a:hover{
+    background-color:#6faa1b;
+}
+.allOtherBox img{
+    margin-top: 15px;
+}
+
+.ssBox{
+    width: 550px;
+}
+.shuru{
+    width:460px;
+    box-sizing: border-box;
+    border:2px solid #80c41f;
+    height:36px;
+    padding:0 10px;
+    line-height:32px;
+}
+.ssBtn{
+    width:90px;
+    height:36px;
+    line-height:36px;
+    color:#fff;
+    background-color:#80c41f;
+}
+.smallSsBox{
+    margin:32px 0;
+}
+.ssKeywords{
+    width:100%;
+    color:#343434;
+    font-size:12px;
+    height:25px;
+    line-height:25px;
+}
+.ssKeywords span{
+    margin:0 8px;
+    cursor: pointer;
+}
+.ssKeywordsClick{
+    color:#6ea91a;
+}
+.shopCarIcon{
+    margin: 11px 12px;
+    margin-left: 26px;
+}
+.shopNum{
+    background-image:url('../images/number.png');
+    color:#fff;
+    text-align:center;
+    height:16px;
+    width:16px;
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    line-height:16px;
+    position: absolute;
+    right: 30px;
+    top: -6px;
+}
+.crumbs{
+    font-size:12px;
+    color:#999999;
+    line-height:35px;
+    height:35px;
+}
+.crumbs a{
+    margin:0 3px;
+    color:#999999;
+}
+
+.allTitle{
+    width:210px;
+    font-size: 16px;
+    height:43px;
+    color:#fff;
+    text-align: center;
+    line-height:43px;
+    position:relative;
+    top:1px;
+    background-color: #6faa1b;
+}
+.navTitle a{
+    display:block;
+    color:#333;
+    float: left;
+    text-align: center;
+    width:120px;
+}
+.navTitle a:hover{
+    color:#6faa1b;
+}
+.navTitle .liClick{
+    color:#6faa1b;
+}
+.navTitle{
+    line-height:42px;
+    font-size: 16px;
+}
+.xian{
+    width:100%;
+    height:2px;
+    background-color:#6faa1b;
+}
+/********个人中心头部*******/
+.centerHeader{
+    height:70px;
+    background-color:#80c41f;
+}
+.cenerZi{
+    line-height:70px;
+    font-size:30px;
+    color:#fff;
+}
+.centerNav{
+    margin-left:30px;
+}
+.centerNav a{
+    line-height:70px;
+    height:70px;
+    font-size:14px;
+    color:#fff;
+    width:60px;
+    padding:0 10px;
+    display: block;
+    float: left;
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+}
+.centerSan{
+    position: absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+    width: 0;
+    height:0;
+    border:10px solid transparent;
+    border-bottom:10px solid #fff;
+    display:none;
+}
+.centerNav .centerNavClick{
+    font-size:16px;
+    font-weight: bold;
+}
+.centerNavClick .centerSan{
+    display:block;
+}
+.centerNav a:hover{
+    font-size:16px;
+    font-weight: bold;
+}
+.centerNav a:hover .centerSan{
+    display:block;
+}
+
+.planText{
+    width: 130px;
+    height:30px;
+    background-color:#dddddf;
+    color:#333;
+    text-align: center;
+    font-size: 14px;
+    line-height:30px;
+}
+.plan img{
+    margin:9px;
+}
+.planBox{
+    width: 480px;
+    margin:40px auto;
+}
+.planOk{
+    background-color:#ff4a00;
+    color:#fff;
+}
+.planBox2{
+    width:655px;
+    margin:40px auto;
+}

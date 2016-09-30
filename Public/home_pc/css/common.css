@@ -1,0 +1,373 @@
+* {
+    word-wrap: break-word;
+}
+body {
+    background-color: #fff;
+    background-position: 0 0;
+}
+body {
+    color: #262626;
+    padding: 0;
+    margin: 0;
+    font: 12px/20px "微软雅黑","Microsoft YaHei","MicrosoftJhengHei","华文细黑",STHeiti,MingLiu,Arial,sans-serif;
+    overflow-x: hidden;
+}
+
+body, div, dl, dt, dd, p, ul, ol, li, h1, h2, h3, h4, h5, h6, hr, pre, code, form, fieldset, legend, input, button, blockquote, th, td, article, aside, details, section, a:focus, img, a img {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+img {
+    vertical-align: bottom;
+}
+
+html {
+    _text-overflow: ellipsis;
+}
+/*解决IE6下绝对定位图片抖动*/
+/* 去掉各Table  cell 的边距并让其边重合 */
+table {
+    empty-cells: show;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* 去掉 firefox 下此元素的边框 */
+abbr, acronym {
+    border: none;
+    font-variant: normal;
+}
+/* 去除默认边框 */
+img {
+    border: medium none;
+}
+/* 去掉列表前的标识, li 会继承 */
+ul, ol, li, dl, dd, dt, div, p {
+    list-style-type: none;
+}
+/* 要注意表单元素并不继承父级 font 的问题 */
+textarea {
+    resize: none;
+}
+/* IE bug fixed: th 不继承 text-align*/
+th {
+    text-align: inherit;
+}
+/* ie6 7 8(q) bug 显示为行内表现 */
+iframe {
+    display: block;
+}
+/* 对齐是排版最重要的因素, 别让什么都居中 */
+caption, th {
+    text-align: left;
+}
+th, td {
+    text-align: left;
+    vertical-align: top;
+}
+/* 手指 */
+label, button {
+    cursor: pointer;
+}
+/*引用*/
+q:before, q:after, blockquote:before, blockquote:after {
+    content: '';
+}
+
+/*
+	Name:			文本格式样式重设
+	Explain:		一致的 del 文字样式
+*/
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1em;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+del {
+    text-decoration: line-through;
+}
+ins {
+    text-decoration: none;
+}
+
+em, cite, i, address, caption, cite, code, dfn, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+input, button, select, optgroup, option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    *font-size: 100%;
+    background: none;
+}
+
+input {
+    vertical-align: middle;
+}
+/*
+	Name:			input重设
+	Explain:		input和botton
+*/
+
+:focus {
+    outline: none;
+    border: none;
+}
+/*for IE*/
+::-moz-focus-inner {
+    outline: none;
+    border: none;
+}
+/*for mozilla*/
+
+/*
+	Name:			链接样式
+	Explain:		重设
+*/
+
+a {
+    /*color: #666;*/
+    -moz-transition: color 0.3s ease-out 0s;
+    outline: none;
+    text-decoration: none;
+}
+
+a:link {
+}
+
+a:visited {
+    /*color: #AAA;*/
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active, a:focus {
+    text-decoration: none;
+}
+
+/* 文本属性：字号、颜色、粗细 */
+
+.xs1 {
+    font-size: 12px !important;
+}
+
+.xs2 {
+    font-size: 14px !important;
+}
+.xs3 {
+    font-size: 16px !important;
+}
+.xg0, .xg0 a {
+    color: #444 !important;
+}
+.xg1, .xg1 a {
+    color: #666 !important;
+}
+.xg2, .xg2 a {
+    color: #999 !important;
+}
+.xg3, .xg3 a {
+    color: #33bbff !important;
+}
+.xw0 {
+    font-weight: 300;
+}
+.xw1 {
+    font-weight: 700;
+}
+.xi1 {
+    text-decoration: line-through;
+}
+/*
+	Name:			mod_clearfix
+	Level:			Global
+	Sample:			class="cl"
+	Explain:		Clearfix,避免因子元素浮动而导致的父元素高度缺失能问题
+	Last Modify:	lushnis
+*/
+.cl:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.cl {
+    zoom: 1;
+}
+.cl {
+    display: inline-block;
+    display: block;
+}
+/*
+	Name:			mod_float
+	Sample:			class="z/y"
+	Explain:		.z/.y 浮动 left/right
+*/
+.z {
+    float: left;
+}
+
+.y {
+    float: right;
+}
+
+
+/* 行内分割竖线 */
+.pipe {
+    margin: 0 5px;
+    color: #AAAAAA;
+}
+/*
+	Explain:		外边距样式，作用于元素的上下外边距，上下各具有 n, m, w 三个级别
+*/
+.bm {
+    margin-bottom: 10px;
+    border: 1px solid #DEDEDE;
+}
+.mtn {
+    margin-top: 5px !important;
+}
+.mbn {
+    margin-bottom: 5px !important;
+}
+.mtm {
+    margin-top: 10px !important;
+}
+
+.mbm {
+    margin-bottom: 10px !important;
+}
+
+.mbs {
+    margin-bottom: 15px !important;
+}
+
+.mtw {
+    margin-top: 20px !important;
+}
+
+.mbw {
+    margin-bottom: 20px !important;
+}
+/*
+	Explain:		内边距样式，作用于元素的上下内边距，上下各具有 n, m, w 三个级别
+*/
+.ptn {
+    padding-top: 5px !important;
+}
+
+.pbn {
+    padding-bottom: 5px !important;
+}
+
+.pln {
+    padding-left: 5px !important;
+}
+.prn {
+    padding-right: 5px !important;
+}
+.ptm {
+    padding-top: 10px !important;
+}
+.pbm {
+    padding-bottom: 10px !important;
+}
+.ptw {
+    padding-top: 20px !important;
+}
+.pbw {
+    padding-bottom: 20px !important;
+}
+.bm_c {
+    padding: 10px;
+}
+.bm_d {
+    padding: 0 10px;
+}
+/*
+	Name:			mod_cursor
+	Level:			Global
+	Sample:			class="cur1"
+	Explain:		鼠标样式，可以根据需要按序添加
+	Last Modify:	Pony
+*/
+.cur1 {
+    cursor: pointer;
+}
+/* 通用容器，定义页面宽度 */
+.wp {width:1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+#wp .wp {
+    width: auto;
+}
+
+
+/*去除padding的*/
+.nopadding{
+    padding: 0;
+}
+/*内容宽度*/
+.content_width{
+    width: 1200px;
+    /*margin-top: 100px;*/
+}
+@media screen and (max-width: 1024px) {
+    .content_width{
+        width: 960px;
+    }
+}
+
+/***********投标样式 Begin*************************/
+.addShou{
+    cursor: pointer;
+}
+.pa{
+    position: absolute;
+}
+.pr{
+    position: relative;
+}
+.paAuto{
+    position: absolute;
+    top:0;
+    right: 0;
+    left:0;
+    bottom:0;
+    margin:auto;
+}
+.ellipse{
+    display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.t250{
+    -webkit-transition: all .25s linear;
+    -moz-transition: all .25s linear;
+    -ms-transition: all .25s linear;
+    -o-transition: all .25s linear;
+    transition: all .25s linear;
+}
+.t500{
+    -webkit-transition: all .5s linear;
+    -moz-transition: all .5s linear;
+    -ms-transition: all .5s linear;
+    -o-transition: all .5s linear;
+    transition: all .5s linear;
+}
+::-webkit-scrollbar{
+    width:0;
+}
+
+.none{
+    display:none;
+}
+
+/***********New样式 End************************/

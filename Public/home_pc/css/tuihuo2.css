@@ -1,0 +1,306 @@
+.state{
+    width:400px;
+    float: left;
+    position:relative;
+    height:52px;
+    overflow: hidden;
+}
+.state img{
+    height:100%;
+    width:100%;
+    position: absolute;
+    top:0;
+    left:0;
+}
+.state p{
+    position: absolute;
+    left:100px;
+    margin:auto;
+    height:52px;
+    line-height:52px;
+    text-align: center;
+    /*width:100%;*/
+    font-size: 16px;
+    font-weight: bold;
+    color:#fff;
+}
+
+.stateBox{
+    width:100%;
+}
+.main{
+    box-sizing: border-box;
+    border:1px solid #d8d8d8;
+    height:470px;
+    margin-top:50px;
+    background-color:#fafafa;
+}
+.goodsImg{
+    width: 240px;
+    height:240px;
+    margin:auto;
+    overflow: hidden;
+    margin-top:50px;
+}
+.goodsImg img{
+    width:100%;
+}
+.mainL {
+    width: 300px;
+    box-sizing: border-box;
+    border-right: 1px solid #d8d8d8;
+    height: 100%;
+}
+.goodsNmae{
+    width:240px;
+    margin:10px auto;
+    line-height:20px;
+    height:40px;
+    overflow: hidden;
+    font-size:13px;
+}
+.mesBox{
+    width:240px;
+    margin:auto;
+    font-size:13px;
+}
+.mesBox>div{
+    margin-top:5px;
+    width:100%;
+}
+.mesName{
+    width:65px;
+    font-weight: bold;
+}
+.money,.num{
+    color:#ff4a00;
+}
+.mesNameText{
+    width:175px;
+}
+.mainR{
+    overflow:hidden;
+    width:898px;
+    height:470px;
+}
+.stateOne{
+    width:718px;
+    margin:auto;
+    margin-top:120px;
+}
+.stateTwo{
+    width:718px;
+    margin:auto;
+    margin-top:50px;
+}
+.hintIMG{
+    width:150px;
+    margin-bottom:20px;
+}
+.stateThree{
+    width:718px;
+    margin:auto;
+    line-height:30px;
+    margin-top:70px;
+}
+.stateFour{
+    width:798px;
+    margin:auto;
+    margin-top:50px;
+}
+.stateOneBox{
+    clear: both;
+    margin-bottom:20px;
+}
+.stateImgBox{
+    margin-bottom:10px;
+}
+.stateTwoBox{
+    clear: both;
+    /*margin-bottom:5px;*/
+}
+.stateTwoImgBox{
+    margin-top:15px;
+}
+.stateOneBox span{
+    color:#ff4a00;
+}
+.stateOneBox select{
+    width:245px;
+    cursor: pointer;
+    outline:none;
+    height:30px;
+    background-color:#fff;
+    border:1px solid #d8d8d8;
+}
+.stateOneName{
+    height: 30px;
+    line-height: 30px;
+    margin-right: 10px;
+    width: 60px;
+    text-align: right;
+}
+.stateTwoName{
+    height: 30px;
+    line-height: 30px;
+    margin-right: 10px;
+    width: 65px;
+    text-align: right;
+}
+.stateOneBox textarea{
+    width:500px;
+    height:70px;
+    border:1px solid #d8d8d8;
+    outline:none;
+    padding:5px;
+}
+.maxZi{
+    color:#ccc;
+    bottom: 0;
+    right: 160px;
+}
+.stateOneBtn{
+    cursor: pointer;
+    height:40px;
+    width:150px;
+    background-color:#80c41f;
+    color:#fff;
+    text-align: center;
+    line-height:40px;
+    border-radius:3px;
+    font-size: 16px;
+}
+.stateTwoText{
+    width:500px;
+    min-height:30px;
+    line-height:30px;
+}
+.stateTwoImg{
+    width:630px;
+    font-size:0;
+}
+.stateOneText{
+    line-height:30px;
+}
+.stateOneText img{
+    margin-right:10px;
+    cursor: pointer;
+}
+.upAllImg{
+    width:630px;
+    margin-left:70px;
+}
+.upImgBox{
+    width:116px;
+    height:116px;
+    background-image:url('../images/b21c8701a18b87d6fd50ad310f0828381f30fd8a.png');
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    margin-right:10px;
+}
+.deleteBtn{
+    /*background-color:rgba(0,0,0,.5);*/
+    top:0;
+    right:0;
+    cursor: pointer;
+    width:24px;
+    height:24px;
+    background-image:url('../images/delete1.png');
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+}
+
+.deleteBtn:hover{
+    background-image:url('../images/delete2.png');
+}
+.stateTwoImg img{
+    width:116px;
+    height:116px;
+    margin-right:10px;
+}
+.stateThreeBox span{
+    font-weight: bold;
+}
+.stateThreeT{
+    width:65px;
+    margin-right:10px;
+    text-align: right;
+    height:30px;
+}
+.stateThreeBox input{
+    width:250px;
+    height:30px;
+    line-height:28px;
+    border:1px solid #d8d8d8;
+    background-color:#fff;
+    box-sizing: border-box;
+    padding:0 10px;
+}
+.stateThreeT span{
+    color:#ff4a00;
+}
+.stateThreeBox {
+    margin-bottom:15px;
+}
+.tijiaoBtn{
+    width:150px;
+    background-color:#80c41f;
+    color:#fff;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    height:40px;
+    line-height:40px;
+    border-radius:4px;
+}
+.threeHint{
+    margin-top:50px;
+}
+.threeHint span{
+    color:#ff4a00;
+}
+.tijiaoBtn{
+
+}
+.threeIcon{
+    width:150px;
+    margin-bottom:30px;
+    display:none;
+}
+.tuic{
+    width:150px;
+    margin-bottom:50px;
+    margin-left:45px;
+}
+.stateFourBox{
+    line-height:30px;
+    height:30px;
+    margin-left:50px;
+}
+.fourName{
+    width:65px;
+}
+.xianH{
+    width:745px;
+    height:1px;
+    background-color:#ccc;
+    margin:auto;
+    margin-top:20px;
+}
+.tuijian{
+    width:100%;
+    margin-top:20px;
+    padding:0 65px;
+}
+.tuijian a{
+    width:160px;
+    height:160px;
+    margin-right:10px;
+}
+.tuijian img{
+    width:100%;
+    height:100%;
+}
+.fourText span{
+    color:#62d12a;
+}

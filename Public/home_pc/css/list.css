@@ -1,0 +1,173 @@
+.bannerBox{
+   font-size:0;
+    height:320px;
+}
+.bannerImg{
+    width: 520px;
+    height: 220px;
+    display:none;
+}
+.bannerBox .bannerL{
+    width:520px;
+    height:220px;
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    margin:auto;
+    z-index:1;
+    display:block;
+}
+.bannerBox .bannerR{
+    width:520px;
+    height:220px;
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    margin:auto;
+    z-index:1;
+    display:block;
+}
+.bannerBox .bannerM{
+    width:640px;
+    height:265px;
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    margin:auto;
+    z-index:2;
+    display:block;
+}
+.jijiang{
+    margin:45px 0;
+    height:330px;
+    box-sizing: border-box;
+    border:1px solid #e5e5e5;
+    padding:20px;
+}
+.jijiangT{
+    line-height:40px;
+    height:40px;
+    font-size:24px;
+    color:#99d04c;
+}
+.jijiangT a{
+    font-size:12px;
+    color:#666;
+}
+.listBoxB{
+    width:450px;
+    height:250px;
+    overflow: hidden;
+}
+.listBoxS{
+    height: 110px;
+    width: 215px;
+    overflow: hidden;
+    margin-left: 20px;
+    margin-bottom: 26px;
+}
+.coverImg{
+    width:100%;
+}
+.masking{
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    color:#99d04c;
+    background-color:rgba(0,0,0,.8);
+    display:none;
+}
+.masking >div{
+    width:150px;
+    margin:auto;
+    height:20px;
+    font-size:12px;
+    line-height:20px;
+}
+.addresBox img{
+    margin-top:3px;
+    margin-right:10px;
+    height:14px;
+}
+.timeBox img{
+    margin-top: 7px;
+    margin-right: 10px;
+    height: 11px;
+}
+.addresBox{
+    top:-20px;
+}
+.timeBox{
+    top:20px;
+}
+.listTemplate{
+    width: 100%;
+    border: 1px solid #e5e5e5;
+    padding: 10px 14px;
+    padding-top:16px;
+}
+.listAll a{
+    color:#333;
+}
+.listTemplateT{
+    width: 100%;
+    height: 60px;
+    line-height: 58px;
+    border: 1px solid #e5e5e5;
+    padding: 0 10px;
+    color: #99d04c;
+    font-size: 24px;
+    box-sizing: border-box;
+    margin-top:45px;
+}
+.listTemplateT a{
+    color:#666;
+    font-size:12px;
+}
+.yuan{
+    background-color: #99d04c;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin: 0 10px;
+    margin-top: 28px;
+}
+.listTemplate{
+    width:210px;
+}
+.templateImg{
+    width:210px;
+    height:210px;
+    overflow: hidden;
+}
+.templateImg img{
+    width:100%;
+}
+.templateName{
+    height:40px;
+    line-height:20px;
+    overflow: hidden;
+    width:210px;
+    margin:10px 0;
+}
+.templateOther{
+    width:210px;
+    height:25px;
+    line-height:25px;
+    font-size:12px;
+    margin-top:5px;
+}
+.money span{
+    font-weight: bold;
+}
+.money span span{
+    font-size:24px;
+}
+.time {
+    line-height:32px;
+}

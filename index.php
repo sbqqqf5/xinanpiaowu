@@ -18,7 +18,7 @@ define('WECHAT_APPSECRET', '1c53d89344e50016b0ba236948c47a6d'); // 公众号 App
 
 define('PLATFORM_APPID', 'wx5283dc6f41a12021'); // 开放平台 AppID
 define('PLATFORM_APPSECRET', 'ecd3c9e433b9628e9bfb727e3e8d5d87'); // 开放平台 AppSecret
-// define('APP_DEBUG',True);
+define('APP_DEBUG',True);
 define('BIND_MODULE','Home');
 // 定义应用目录
 define('APP_PATH','./Web/');

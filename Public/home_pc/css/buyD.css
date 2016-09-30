@@ -1,0 +1,352 @@
+.buyDTop{
+    border:1px solid #e5e5e5;
+    min-height:440px;
+    width:1158px;
+    padding:20px;
+    /*box-sizing: border-box;*/
+}
+.buyDL{
+    width:320px;
+}
+.buyDImg{
+    width:320px;
+}
+.coverL{
+    width: 320px;
+    height:320px;
+    overflow: hidden;
+}
+.coverL img{
+    width:100%;
+}
+.buyR{
+    width:150px;
+    display: block;
+
+}
+.buyRT{
+    font-size: 18px;
+    color:#333;
+    font-weight:bold;
+    line-height:20px;
+    height:40px;
+    width:150px;
+    text-align: center;
+}
+.buyRC{
+    width:150px;
+    height:150px;
+    overflow: hidden;
+}
+.buyRC img{
+    width:100%;
+}
+.buyRD{
+    font-size:12px;
+    color:#999;
+    text-align: center;
+    line-height:20px;
+    padding:10px 0;
+}
+.buyM{
+    width: 648px;
+    margin: 0 20px;
+}
+.buyMT{
+    font-size: 18px;
+    color:#333;
+    font-weight: bold;
+    line-height:25px;
+    height:50px;
+    overflow: hidden;
+}
+.buyMTState{
+    color:#80c41f;
+}
+.buyMBox{
+    font-size: 14px;
+    color:#666;
+    line-height:36px;
+    min-height:36px;
+    margin-bottom:20px;
+}
+.buyMBoxName{
+    width:77px;
+}
+.buyMBoxText{
+    width: 570px;
+}
+.timeBox{
+    overflow: hidden;
+    height:36px;
+    width: 180px;
+    text-align: center;
+    line-height:34px;
+    border:1px solid #d9d9d9;
+    box-sizing: border-box;
+    margin-right:10px;
+    margin-bottom:10px;
+}
+.timeText{
+    width:100%;
+    height:100%;
+    left:0%;
+    top:0;
+}
+.timeSelect{
+    right:0;
+    bottom:0;
+    display:none;
+}
+.timeBox:hover{
+    cursor: pointer;
+    line-height:32px;
+    border:2px solid #80c41f;
+}
+.timeBox:hover .timeSelect{
+    display: block;
+}
+.timeBoxClick{
+    line-height:32px;
+    border:2px solid #80c41f;
+}
+.timeBoxClick .timeSelect{
+    display: block;
+}
+
+.moneyBox{
+    overflow: hidden;
+    height:36px;
+    text-align: center;
+    line-height:34px;
+    border:1px solid #d9d9d9;
+    margin-right:10px;
+    margin-bottom:10px;
+}
+.moneyText{
+    text-align: center;
+    padding:0 10px;
+    height:36px;
+    line-height:34px;
+}
+.moneySelect{
+    right:0;
+    bottom:0;
+    display:none;
+}
+.moneyBox:hover{
+    cursor: pointer;
+    line-height:34px;
+    border:1px solid #80c41f;
+    background-repeat:no-repeat;
+    background-position:right bottom;
+    background-image:url('../images/rightB.png');
+}
+.noHave:hover{
+    background-image:url('../images/touminf.png');
+}
+.moneyBoxClick{
+    line-height:34px;
+    border:1px solid #80c41f;
+    background-repeat:no-repeat;
+    background-position:right bottom;
+    background-image:url('../images/rightB.png');
+}
+.buyMBoxText .noHave{
+    color:#999;
+    background-color:#f5f5f5;
+    border:1px solid #d9d9d9;
+}
+.numMBoxText div{
+    width:30px;
+    height:30px;
+    border:1px solid #e5e5e5;
+    text-align: center;
+    line-height:28px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.numMBoxText input{
+    width:30px;
+    height:30px;
+    border:1px solid #e5e5e5;
+    border-right:0;
+    border-left: 0;
+    line-height:28px;
+    text-align: center;
+}
+.share{
+    margin: 10px 50px;
+}
+.icon{
+    margin-right:10px;
+    margin-left:10px;
+    width:20px;
+    height:20px;
+    overflow: hidden;
+    cursor: pointer;
+    font-size:14px;
+}
+.icon img{
+    width:100%;
+    height:100%;
+}
+.state2{
+    display:none;
+}
+.icon:hover .state1{
+    display:none;
+}
+.icon:hover .state2{
+    display:block;
+}
+.sheng{
+    color:#999;
+    margin-left:20px;
+}
+.hint{
+    margin-left:20px;
+    color:#ff4a00;
+}
+.shouState {
+    margin:10px 5px;
+}
+.shou1{
+    display:block;
+    cursor: pointer;
+}
+.shou2{
+    display:none;
+    cursor: pointer;
+}
+.buyMBoxNameClick .shou1{
+    display:none;
+}
+.buyMBoxNameClick .shou2{
+    display:block;
+}
+.buyBtn{
+    width:150px;
+    height:40px;
+    color:#fff;
+    background-color:#80c41f;
+    line-height:40px;
+    border-radius:3px;
+    text-align: center;
+    cursor: pointer;
+}
+.qrText{
+    cursor: pointer;
+    margin:11px;
+}
+.qrImg {
+    top: -124px;
+    left:232px;
+    width: 124px;
+    height: 124px;
+}
+.buyDBottom{
+    border:1px solid #e5e5e5;
+    width:1198px;
+    min-height:200px;
+    margin-top:25px;
+}
+.buyDBottomMain1{
+    padding:0px 30px;
+    padding-top:50px;
+}
+.buyDBottomMain2{
+    padding:0px 30px;
+    padding-top:50px;
+}
+.buyDBottomMain3{
+    padding:0px 30px;
+    padding-top:50px;
+}
+.buyDT{
+    height:40px;
+    background-color:#f5f5f5;
+}
+.buyDTS{
+    width:120px;
+    height:37px;
+    line-height:40px;
+    border-bottom:3px solid #f5f5f5;
+    background-color:#f5f5f5;
+    border-right:1px solid #ccc;
+    text-align: center;
+    float:left;
+}
+.buyDTSShow{
+    border-bottom:3px solid #80c41f;
+    color:#80c41f;
+    background-color:#fff;
+}
+.buyDBottomMain1T{
+    color:#80c41f;
+}
+.xuXian{
+    width: 1055px;
+    border-top: 1px dashed #ccc;
+    margin-top: 11px;
+}
+.buyDBottomC{
+    margin:auto;
+    width:960px;
+    margin-top:25px;
+}
+.buyDBottomCHint{
+    line-height:20px;
+    font-size:14px;
+}
+.mesN{
+    padding:10px 0;
+    height:60px;
+    width:120px;
+    background-color:#f5f5f5;
+    text-align: center;
+    font-weight: bold;
+    line-height:40px;
+    box-sizing: border-box;
+    border:1px solid #ccc;
+}
+.mesT{
+    padding:10px 10px;
+    height:60px;
+    width:360px;
+    box-sizing: border-box;
+    border:1px solid #ccc;
+}
+.neirong{
+    margin:35px auto;
+    width:960px;
+}
+.neirong a{
+    float: left;
+    width: 220px;
+    height: 220px;
+    display: block;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.neirong a:first-child,.neirong a:nth-child(5){
+    margin-left:0;
+}
+.neirong img{
+    width:100%;
+    /*height:100%;*/
+}
+.vipBtn{
+    position: absolute;
+    top: -15px;
+    left: 0;
+    background-color: #ff4800;
+    width: 65px;
+    color: #fff;
+    height: 19px;
+    text-align: center;
+    line-height: 19px;
+}

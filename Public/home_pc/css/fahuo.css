@@ -1,0 +1,36 @@
+.main{
+    width:960px;
+    min-height:300px;
+    border:2px solid #6faa1b;
+    box-sizing: border-box;
+    margin:auto;
+}
+.titleBg{
+    display: block;
+    margin:auto;
+    margin-top:10px;
+}
+.mainBox{
+    height:40px;
+    line-height:40px;
+    background-color:#75be0f;
+    text-align: center;
+    font-size:20px;
+    color:#fff;
+}
+.red{
+    color:#ff4a00;
+    margin:0 10px;
+}
+.other{
+    text-align: center;
+    margin:70px 0;
+}
+.other a{
+    color:#6faa1b;
+    margin:0 5px;
+}
+.goHomg{
+    padding-right:10px;
+    border-right:1px solid #6faa1b;
+}

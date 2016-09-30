@@ -1,6 +1,7 @@
 <?php
 return array(
     'TMPL_ENGINE_TYPE' => 'PHP' ,
+    'TMPL_TEMPLATE_SUFFIX' => '.php',
 
     'DB_TYPE'               =>  'mysql',     // 数据库类型
     'DB_HOST'               =>  'localhost', // 服务器地址

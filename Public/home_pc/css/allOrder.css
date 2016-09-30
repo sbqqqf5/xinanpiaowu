@@ -1,0 +1,485 @@
+.orderTitle{
+    margin-top: 30px;
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px solid #ccc;
+}
+.orderTitle a{
+    height:35px;
+    line-height:35px;
+    color:#666666;
+    display: block;
+    width:120px;
+    font-size:14px;
+    float: left;
+    text-align: center;
+    border-bottom:2px solid transparent;
+}
+.orderTitle .orderClick{
+    font-weight: bold;
+    border-bottom:2px solid #80c41f;
+    color:#80c41f;
+    font-size:16px;
+}
+.yuding{
+    font-size:14px;
+}
+.yuding input{
+    margin-top:11px;
+}
+.ssOrderBox{
+    width:100%;
+    margin:16px 0;
+}
+.orderSInput{
+    width:240px;
+    height:28px;
+    box-sizing: border-box;
+    border:1px solid #d8d8d8;
+    background-color:#fff;
+    padding:0 10px;
+}
+.orderSBtn{
+    width:50px;
+    text-align: center;
+    line-height:28px;
+    background-color:#ccc;
+    color:#666666;
+}
+.templateName{
+    width:40%;
+    /*background-color:darkseagreen;*/
+}
+.templateMoney{
+    width:10%;
+    text-align:center;
+    /*background-color:#9cf;*/
+}
+.templateNum{
+    width:10%;
+    text-align:center;
+    /*background-color:#096;*/
+}
+.templateHandle{
+    width:10%;
+    text-align:center;
+    /*background-color:#ccc;*/
+}
+.templateMoney2{
+    width:10%;
+    text-align:center;
+    /*background-color:orange;*/
+}
+.templateState{
+    width:10%;
+    text-align:center;
+    /*background-color:skyblue;*/
+}
+.templateHandle2{
+    width:10%;
+    text-align:center;
+    /*background-color:deeppink;*/
+}
+.templateT{
+    padding:0 20px;
+    border-bottom:2px solid #ccc;
+    box-sizing: border-box;
+}
+.templateT >div{
+    text-align: center;
+    line-height:35px;
+    height:35px;
+}
+.templateT .templateName{
+    text-align: left;
+}
+.goodsT{
+    font-size:13px;
+    padding:0 20px;
+    height:32px;
+    line-height: 30px;
+    border:1px solid #d8d8d8;
+    box-sizing: border-box;
+    background-color:#fafafa;
+}
+.template{
+    margin-top:15px;
+}
+.orderTime{
+    font-weight: bold;
+    width:80px;
+    text-align: center;
+}
+.orderNum{
+    font-weight: bold;
+    margin-left:25px;
+}
+.orderNum span{
+    font-weight:100;
+}
+.delete{
+    cursor: pointer;
+}
+.delete img{
+    margin: 5px 5px;
+}
+.goodsBox{
+    width: 100%;
+    box-sizing: border-box;
+    /*padding:0px 20px;*/
+    /*padding-top:0;*/
+    border:1px solid #d8d8d8;
+    border-top:0 solid #d8d8d8;
+    border-bottom:0 solid #d8d8d8;
+}
+.goodsImg{
+    width:80px;
+    height:80px;
+}
+.goodsName{
+    height:40px;
+    line-height:20px;
+    overflow: hidden;
+}
+.goodsText{
+    height:40px;
+    line-height:20px;
+    overflow: hidden;
+}
+.goodsMes{
+    width:342px;
+    margin:0 20px;
+    font-size:13px;
+    text-align:left;
+}
+.goodsName span{
+    color:#ff4a00;
+    margin-right:5px;
+}
+tbody{
+    float: left;
+    width:100%;
+}
+tbody td{
+    display: block;
+    width:100%;
+    text-align: center;
+}
+
+/*.goodsBox td{*/
+    /*margin-top:20px;*/
+/*}*/
+.templateNameD{
+    width:462px;
+    margin:20px 0;
+    margin-left:20px;
+}
+.templateMoneyD{
+    width:116px;
+    text-align: center;
+    line-height:120px;
+}
+.templateNumD{
+    width:116px;
+    text-align: center;
+    line-height:120px;
+}
+.templateHandleD{
+    width:116px;
+    text-align: center;
+    line-height:120px;
+}
+.templateStateD{
+    width:116px;
+    height:100%;
+    border-right:1px solid #d8d8d8;
+    box-sizing:border-box;
+    line-height:120px;
+    text-align: center;
+}
+.templateMoney2D{
+    width:116px;
+    height:100%;
+    border-left:1px solid #d8d8d8;
+    border-right:1px solid #d8d8d8;
+    box-sizing:border-box;
+    line-height:120px;
+    text-align: center;
+}
+.templateHandle2D{
+    width:136px;
+    height:100%;
+    text-align: center;
+}
+.goodsOther{
+    width:368px;
+    height:120px;
+    /*margin-right:20px;*/
+    border-bottom:1px solid #d8d8d8;
+}
+.goodsList{
+    border-bottom:1px solid #d8d8d8;
+}
+.goodsBig {
+    width:830px;
+}
+.goodsName span{
+  display:none;
+}
+.goodsName .state1{
+    color:#ff4a00;
+    display: inline-block;
+}
+.goodsName .state2{
+    color:#6faa1b;
+    display: inline-block;
+}
+.Hint{
+    margin:auto;
+    width:105px;
+}
+.confirm{
+    width: 100%;
+    height: 84px;
+}
+.Hint div{
+    line-height:20px;
+    height:40px;
+    width: 85px;
+    text-align: left;
+}
+.Hint img{
+    width: 14px;
+    margin-top: 3px;
+    margin-right: 5px;
+}
+.confirmBtn{
+    font-weight: bold;
+    margin:10px auto;
+    border-radius:5px;
+    background-color: #80c41f;
+    color:#fff;
+    font-size:13px;
+    width:80px;
+    text-align: center;
+    line-height:30px;
+    height:30px;
+    cursor: pointer;
+}
+.pay1{
+    cursor: pointer;
+    font-weight: bold;
+    /*margin:10px auto;*/
+    border-radius:5px;
+    background-color: #80c41f;
+    color:#fff;
+    font-size:13px;
+    width:80px;
+    text-align: center;
+    line-height:30px;
+    height:30px;
+}
+.pay2{
+    cursor: pointer;
+    font-weight: bold;
+    /*margin:10px auto;*/
+    border-radius:5px;
+    background-color: #ff4a00;
+    color:#fff;
+    font-size:13px;
+    width:80px;
+    text-align: center;
+    line-height:30px;
+    height:30px;
+}
+.pay3{
+    cursor: pointer;
+    font-weight: bold;
+    /*margin:p auto;*/
+    border-radius:5px;
+    background-color: #b3b3b3;
+    color:#fff;
+    font-size:13px;
+    width:80px;
+    text-align: center;
+    line-height:30px;
+    height:30px;
+}
+.cancel{
+    cursor: pointer;
+    top:60px;
+    /*margin:10px auto;*/
+    border-radius:5px;
+    /*background-color: #80c41f;*/
+    font-weight: bold;
+    color:#262626;
+    font-size:13px;
+    width:80px;
+    text-align: center;
+    line-height:30px;
+    height:30px;
+}
+.templateLast{
+    box-sizing: border-box;
+    width:100%;
+    border:1px solid #d8d8d8;
+    border-top:0 solid #d8d8d8;
+    height:35px;
+    line-height:35px;
+    padding:0 20px;
+}
+.addresText{
+    font-weight:bold;
+    margin-right:5px;
+}
+.qu{
+    color:#80c41f;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right:35px;
+}
+.cha{
+    color:#333;
+    font-weight: bold;
+    margin-right:35px;
+    cursor: pointer;
+}
+.masking{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background-color:rgba(0,0,0,.5);
+}
+.qupiao{
+    width: 500px;
+    min-height: 165px;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url(../images/otherXinxi.png);
+    right:0;
+    z-index: 2;
+    top: 30px;
+}
+.wuliu{
+    width: 500px;
+    min-height: 165px;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url(../images/otherXinxi.png);
+    right:0;
+    z-index: 2;
+    top: 30px;
+    padding-bottom:20px;
+}
+.qupiaoClose,.wuliuClose{
+    padding-right: 25px;
+    padding-top: 30px;
+    cursor: pointer;
+}
+.wuliu>div{
+    box-sizing: border-box;
+    width: 410px;
+    margin: auto;
+    clear: both;
+}
+.wuliuDT{
+    border-bottom:2px solid #d8d8d8;
+}
+.kuaidiNum{
+    font-weight:100;
+}
+.qupiaoD{
+    width:370px;
+    margin:auto;
+    line-height:25px;
+    margin-top:50px;
+}
+
+.qupiaoD>div{
+    width:340px;
+    margin-bottom:10px;
+}
+.qupiaoDi img{
+    width: 17px;
+    margin-right: 11px;
+    margin-left: 2px;
+}
+.qupiaoPhone img{
+    width: 20px;
+    margin-right: 10px;
+    margin-top: 3px;
+}
+.neirong{
+    width:400px;
+    height:200px;
+    background-size:100% 100%;
+    background-image:url('../images/../images/shanchuHint.jpg');
+}
+.neirong2{
+    width:400px;
+    height:200px;
+    background-size:100% 100%;
+    background-image:url('../images/../images/shanchuHint.jpg');
+}
+.neirongT{
+    width:350px;
+    margin:auto;
+    font-size:14px;
+    line-height:100px;
+    margin-top:5px;
+    font-weight: bold;
+    height:110px;
+}
+.deleteYes{
+    width:100px;
+    height:32px;
+    line-height:30px;
+    box-sizing: border-box;
+    border:1px solid #6faa1b;
+    text-align: center;
+    color:#6faa1b;
+    margin-left:66px;
+    font-size:14px;
+    cursor: pointer;
+}
+.deleteNo{
+    width:100px;
+    height:32px;
+    line-height:30px;
+    box-sizing: border-box;
+    background-color:#6faa1b;
+    border:1px solid #6faa1b;
+    text-align: center;
+    margin-right:66px;
+    font-size:14px;
+    color:#fff;
+    cursor: pointer;
+}
+.delete2Yes{
+    width:100px;
+    height:32px;
+    line-height:30px;
+    box-sizing: border-box;
+    border:1px solid #6faa1b;
+    text-align: center;
+    color:#6faa1b;
+    margin-left:66px;
+    font-size:14px;
+    cursor: pointer;
+}
+.delete2No{
+    width:100px;
+    height:32px;
+    line-height:30px;
+    box-sizing: border-box;
+    background-color:#6faa1b;
+    border:1px solid #6faa1b;
+    text-align: center;
+    margin-right:66px;
+    font-size:14px;
+    color:#fff;
+    cursor: pointer;
+}

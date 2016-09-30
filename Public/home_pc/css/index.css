@@ -1,0 +1,452 @@
+.center{
+    padding-right:0px;
+}
+.xia2{
+    margin-left:8px;
+    width: 8px;
+    height: 8px;
+    border-left: 1px solid #666;
+    border-top: 1px solid #666;
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+}
+
+.zuo {
+    width: 8px;
+    height: 8px;
+    border-left: 1px solid #666;
+    border-top: 1px solid #666;
+    -webkit-transform: rotate(-230deg);
+    -moz-transform: rotate(-230deg);
+    -ms-transform: rotate(-230deg);
+    -o-transform: rotate(-230deg);
+    transform: rotate(-230deg);
+    margin: 14px 12px;
+}
+
+
+.content{
+    clear: both;
+    width: 100%;
+}
+
+.allOtherBox{
+    position:static;
+    display:block !important;
+}
+.fenlei div{
+    width:80px;
+    margin-right:42px;
+    text-align:left;
+}
+.pptBox{
+    margin-top:10px;
+    width: 980px;
+    height:410px;
+    background-color:#000000;
+}
+.pptBoxTop{
+    height:310px;
+    width:930px;
+    margin:10px auto;
+    overflow:hidden;
+}
+.pptBoxTop img{
+    width:100%;
+    height:100%;
+    position: absolute;
+    top:0;
+    left:0;
+    display:none;
+}
+
+.smallPPTbox{
+    cursor: pointer;
+}
+.pptImgBox{
+    width:121px;
+    height:55px;
+    box-sizing: border-box;
+    border:2px solid #ccc;
+}
+.pptImgBox img{
+    width: 100%;
+    height:100%;
+}
+.san{
+    width: 0;
+    height:0;
+    margin:auto;
+    border-top:5px solid #000;
+    border-bottom:5px solid #ccc;
+    border-left:5px solid #000;
+    border-right:5px solid #000;
+}
+.clickPPT .san{
+    border-bottom:5px solid #80c420;
+}
+.clickPPT .pptImgBox{
+    border:2px solid #80c420;
+}
+.smallPPTbox{
+    margin-left:15px;
+}
+.pptBoxBottom .smallPPTbox:first-child{
+    margin-left:20px;
+}
+.tuijian{
+    margin-top: 40px;
+    border: 1px solid #d8d8d8;
+    border-bottom: 0px;
+    height: 420px;
+    background-image: url("../images/border_bottom.png");
+    background-size: 100% auto;
+    background-position-y: 410px;
+    background-repeat: no-repeat;
+}
+.tui{
+    cursor: pointer;
+    font-size: 18px;
+    width: 160px;
+    line-height:42px;
+    height:44px;
+    text-align: center;
+    box-sizing:border-box;
+    border:1px solid #d8d8d8;
+    border-right:0px;
+}
+.tuijianTitle .tui:last-child{
+    border-right:1px solid #d8d8d8;
+}
+.tuijianTitle .tuiClick{
+    border-bottom:0px;
+    border-top:2px solid #6faa1b;
+}
+.city{
+    width: 560px;
+    height:44px;
+    box-sizing:border-box;
+    line-height:44px;
+    border-bottom:1px solid #d8d8d8;
+    margin-bottom:20px;
+}
+.cityText{
+    cursor: pointer;
+    font-size: 12px;
+    padding: 0 10px;
+    border-left: 1px solid #000;
+    line-height: 14px;
+    height: 14px;
+    margin-top: 15px;
+}
+.cityTextClick{
+    color:#6faa1b;
+}
+.city .cityText:first-child{
+    border-left: 0px;
+    margin-left: 10px;
+}
+.huan{
+    cursor: pointer;
+    top: 13px;
+    right: 16px;
+}
+.huan div{
+    margin-right: 10px;
+}
+.tuiBox{
+    margin-left:21px;
+    width:175px;
+}
+
+.tuiBox img{
+    width:180px;
+    height:270px;
+}
+.tuiBoxText{
+    width:188px;
+    padding-right:24px;
+    color:#666666;
+    font-size:12px;
+    line-height:20px;
+    height:40px;
+    margin-top:20px;
+    box-sizing: border-box;
+    padding-left:10px;
+    border-right:1px dashed #000;
+}
+.tuijianBox .tuiBox:last-child .tuiBoxText{
+    border-right:0;
+}
+.tuijianBox{
+    clear: both;
+}
+.guanggao{
+    margin-top:40px;
+}
+.guanggao a{
+    float:left;
+    display: block;
+    height:200px;
+    width:290px;
+    margin-left:13px;
+}
+.guanggao a img{
+    width:100%;
+    height:100%;
+}
+.guanggao a:first-child{
+    margin-left: 0;
+}
+.listTemplate{
+    width:100%;
+    margin-top:30px;
+}
+.templateTitle{
+    line-height:35px;
+    height:35px;
+    color:#999;
+    border-bottom:1px solid #000;
+    margin-bottom:25px;
+}
+.templateTitle a{
+    color:#666;
+}
+.templateTitle span{
+    margin-right:15px;
+}
+.templateMainBig{
+    width:254px;
+    height:380px;
+}
+.coverImg{
+    width:100%;
+    height:100%;
+}
+.coverText{
+    left:0;
+    bottom:0;
+    width:100%;
+    height:125px;
+    color:#fff;
+}
+.coverD{
+    width: 170px;
+    height: 102px;
+}
+.money .span{
+    font-weight: bold;
+}
+.introduce{
+    margin:10px 0;
+    overflow: hidden;
+    height:40px;
+}
+
+.templateRight{
+    width: 290px;
+    height: 380px;
+    border: 1px solid #e5e5e5;
+    background-image: url("../images/border_bottom.png");
+    background-size: 190% auto;
+    background-position-y: 375px;
+    background-repeat: no-repeat;
+    border-bottom: 0;
+}
+.templateMainSmall{
+    width:285px;
+    height:180px;
+    margin-left:20px;
+    margin-bottom:20px;
+}
+.templateMainSmallZ{
+    width:120px;
+    height:180px;
+}
+.templateMainSmallR{
+    width:140px;
+    height:180px;
+    line-height:25px;
+}
+.templateMainSmallRTitle{
+    line-height:20px;
+    height:40px;
+    font-size:14px;
+    color:#333;
+    overflow: hidden;
+}
+.time,.addres{
+    color:#666;
+}
+.moneyQ{
+    color:#333;
+    font-size:12px;
+}
+.moneyQ span{
+    font-weight: bold;
+    font-size: 18px;
+}
+.buyBox{
+    width:114px;
+    height: 36px;
+
+    box-sizing: border-box;
+    background-repeat:no-repeat;
+    background-position: 10px;
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    bottom:20px;
+}
+.buyBox div{
+    margin-left: 32px;
+    line-height: 34px;
+}
+.templateRightT{
+    font-size:12px;
+    line-height:35px;
+    height:36px;
+    box-sizing:border-box;
+    padding:0 10px;
+    border-bottom:1px dashed #e5e5e5;
+}
+.templateRightT a{
+    color:#333;
+}
+.yushouCover{
+    height:170px;
+    width:270px;
+    margin:15px auto;
+    overflow: hidden;
+}
+.yushouCover img{
+    width:100%;
+}
+.yushouName{
+    margin:auto;
+    width: 270px;
+    line-height:30px;
+    height:30px;
+}
+.yudingBtn{
+    width:120px;
+    box-sizing: border-box;
+    height:36px;
+    background-repeat:no-repeat;
+    background-position: 10px;
+    line-height:34px;
+    text-indent: 37px;
+    margin-left:15px;
+}
+.yushouX{
+    width: 140px;
+    color: #666;
+    font-size: 12px;
+    line-height: 18px;
+    margin-left: 10px;
+}
+.yushouHint{
+    font-size: 12px;
+    color:#999;
+    width: 270px;
+    margin:auto;
+    margin-top: 0px;
+}
+.yushouOther{
+    margin: 10px 0;
+}
+
+
+.listTemplate1 .yudingBtn{
+    border:1px solid #d8281b;
+    color:#d8281b;
+    font-size: 14px;
+    background-image:url('../images/frontMoney_red.png');
+}
+.listTemplate1 .buyBox{
+    border:1px solid #d8281b;
+    color:#d8281b;
+    background-image:url('../images/shoppingCart_red.png');
+}
+.listTemplate1 .templateTitle{
+    border-bottom:1px solid #db3a1b;
+}
+.listTemplate1 .templateTitle span{
+    color:#db3a1b;
+    margin-left:5px;
+}
+.listTemplate1 .coverText{
+    background-color:rgba(216,40,27,.9);
+}
+
+
+.listTemplate2 .yudingBtn{
+    border:1px solid #391635;
+    color:#391635;
+    font-size: 14px;
+    background-image:url('../images/frontMoney_black.png');
+}
+.listTemplate2 .buyBox{
+    border:1px solid #391635;
+    color:#391635;
+    background-image:url('../images/shoppingCart_purple.png');
+}
+.listTemplate2 .templateTitle{
+    border-bottom:1px solid #391635;
+}
+.listTemplate2 .templateTitle span{
+    color:#391635;
+    margin-left:5px;
+}
+.listTemplate2 .coverText{
+    background-color:rgba(216,40,27,.9);
+}
+
+
+.listTemplate3 .yudingBtn{
+    border:1px solid #80c41f;
+    color:#80c41f;
+    font-size: 14px;
+    background-image:url('../images/frontMoney_green.png');
+}
+.listTemplate3 .buyBox{
+    border:1px solid #80c41f;
+    color:#80c41f;
+    background-image:url('../images/shoppingCart_green.png');
+}
+.listTemplate3 .templateTitle{
+    border-bottom:1px solid #80c41f;
+}
+.listTemplate3 .templateTitle span{
+    color:#80c41f;
+    margin-left:5px;
+}
+.listTemplate3 .coverText{
+    background-color:rgba(128,196,31,.9);
+}
+
+
+.listTemplate4 .yudingBtn{
+    border:1px solid #3c66bc;
+    color:#3c66bc;
+    font-size: 14px;
+    background-image:url('../images/frontMoney_blue.png');
+}
+.listTemplate4 .buyBox{
+    border:1px solid #3c66bc;
+    color:#3c66bc;
+    background-image:url('../images/shoppingCart_blue.png');
+}
+.listTemplate4 .templateTitle{
+    border-bottom:1px solid #3c66bc;
+}
+.listTemplate4 .templateTitle span{
+    color:#3c66bc;
+    margin-left:5px;
+}
+.listTemplate4 .coverText{
+    background-color:rgba(60,102,188,.9);
+}

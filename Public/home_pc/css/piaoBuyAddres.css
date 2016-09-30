@@ -1,0 +1,348 @@
+
+.addresBox{
+
+}
+.addBox{
+    line-height:30px;
+    margin:7.5px 0;
+}
+.addBox:last-child{
+    margin-top:20px;
+}
+.newAddres{
+    background-color:#fafafa;
+    height:270px;
+    box-sizing: border-box;
+    border:1px solid #d8d8d8;
+}
+.shuru1{
+    width:250px;
+    height:30px;
+     box-sizing: border-box;
+    border:1px solid #d8d8d8;
+    background-color:#fff;
+    line-height:28px;
+    padding:0 10px;
+}
+.shuru2{
+    width:380px;
+    height:30px;
+    box-sizing: border-box;
+    border:1px solid #d8d8d8;
+    background-color:#fff;
+    line-height:28px;
+    padding:0 10px;
+}
+#loc_province,#loc_city,#loc_county{
+    width:120px;
+    height:30px;
+    background-color:#fff;
+    line-height: 28px;
+    box-sizing: border-box;
+    border:1px solid #d8d8d8;
+    margin-right:6px;
+}
+.addBtn{
+    background-color:#ff4a00;
+    color:#fff;
+    text-align: center;
+    line-height:30px;
+    height:30px;
+    width:150px;
+    font-size: 14px;
+    border-radius:4px;
+    margin-left:35px;
+}
+.addBtn2{
+    background-color:#ff4a00;
+    color:#fff;
+    text-align: center;
+    line-height:30px;
+    height:30px;
+    width:150px;
+    font-size: 14px;
+    border-radius:4px;
+    margin-left:35px;
+}
+.xuan{
+    margin: 9px 0;
+    margin-left: 15px;
+    margin-right: 2px;
+}
+.newAddresZ{
+    margin:29px 80px
+}
+.newAddresZ2{
+    width:700px;
+    height:390px;
+    background-color:#fafafa;
+}
+.newAddresZ2 .addBox{
+    margin-left:120px;
+}
+
+.addBoxName{
+    margin-right:10px;
+}
+.addBg{
+    margin: 28px 20px;
+}
+.addTitle{
+    line-height:30px;
+    height:30px;
+    font-weight: bold;
+    font-size: 16px;
+    margin:10px 0;
+}
+.addTitle a{
+    font-weight: 100;
+    font-size: 12px;
+    color:#80c41f;
+}
+.goodsList{
+    border:1px solid #d8d8d8;
+    box-sizing: border-box;
+}
+.goodsTitle{
+    line-height:40px;
+    height:40px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color:#fafafa;
+    padding:0 30px;
+}
+.goodsTemplate{
+    line-height:40px;
+    height:40px;
+    padding:0 30px;
+    font-size:13px;
+}
+.goodsAll{
+    line-height:40px;
+    height:40px;
+    background-color:#fafafa;
+}
+.goodsNameT{
+    width:410px;
+}
+.goodsDT,.goodsD{
+    width:360px;
+    text-align: center;
+    /*background-color:#ccc;*/
+}
+.goodsPT,.goodsP{
+    width:110px;
+    /*background-color:orangered;*/
+    text-align: center;
+}
+.goodsNT,.goodsN{
+    width:110px;
+    text-align: center;
+    /*background-color:#096;*/
+}
+.goodsMT,.goodsM{
+    width:145px;
+    /*background-color:#9cf;*/
+    text-align:right;
+}
+.goodsAll{
+    padding:0 30px;
+}
+.goodsName{
+    font-size: 13px;
+}
+.allM{
+    font-size:18px;
+    color:#ff4800;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+.other{
+    margin-top:20px;
+    line-height: 20px;
+    margin-right: 17px;
+}
+.otherC{
+    margin: 3.5px;
+    cursor: pointer;
+    margin-right:10px;
+    margin-top:7px;
+}
+.shiyong{
+    font-size:14px;
+    color:#666;
+    margin-right:10px;
+    line-height:25px;
+}
+.jifen{
+    line-height:25px;
+    margin-right:20px;
+}
+.shuru3{
+    line-height: 18px;
+    height: 18px;
+    width:40px;
+    padding: 0 3px;
+    border:1px solid #ccc;
+    box-sizing:content-box;
+    text-align: center;
+    margin-right:10px;
+    margin-top:3px;
+}
+.readS{
+    background-color:#e6e6e6;
+}
+
+.money span{
+    color:#ff4a00;
+    margin:0 5px;
+}
+.money span span{
+    font-size:18px;
+    font-weight:bold;
+}
+.other2{
+    width:100%;
+    margin-top:20px;
+}
+.comBtn{
+    font-size: 16px;
+    color:#fff;
+    background-color:#ff4a00;
+    border-radius:4px;
+    width:150px;
+    height:40px;
+    line-height:40px;
+    text-align: center;
+}
+.shuru4{
+    width:100px;
+    line-height:40px;
+    height:38px;
+    padding:0 5px;
+    box-sizing: content-box;
+    border:1px solid #d8d8d8;
+    margin-right:40px;
+    font-size: 13px;
+    margin-left:10px;
+}
+.yaoqing{
+    font-size:16px;
+    font-weight: bold;
+    line-height:40px;
+}
+.addAllBox{
+    margin:20px 0;
+    height:150px;
+    overflow: hidden;
+}
+.template{
+    position: relative;
+    padding:5px 10px;
+    width:290px;
+    height:130px;
+    box-sizing: border-box;
+    border:2px solid #d8d8d8;
+    margin-bottom:20px;
+}
+.template:first-child{
+    margin-left:0;
+}
+.template:nth-child(5){
+    margin-left:0;
+}
+.template{
+    cursor: pointer;
+    margin-left:13px;
+}
+.templateName {
+    font-weight:bold;
+    width: 80px;
+}
+.templateS2{
+    margin-left:5px;
+    font-weight:bold;
+}
+.templateTitle{
+    /*font-weight: bold;*/
+    font-size:14px;
+    height:32px;
+    line-height:32px;
+    border-bottom:1px solid #ccc;
+}
+.templateDi{
+    line-height:20px;
+    height:60px;
+    overflow: hidden;
+    margin-top:5px;
+}
+.qu{
+    margin-right:5px;
+    line-height:20px;
+}
+.xiangxi{
+    overflow: hidden;
+}
+.change{
+    cursor: pointer;
+    color:#6faa1b;
+}
+.templateClick{
+    border:2px solid #6faa1b;
+}
+.templateClick .moren{
+    display:block;
+}
+.moren{
+    display:none;
+    color:#fff;
+    top:0;
+    right: 0;
+    padding:0 3px;
+    text-align: center;
+    background-color:#6faa1b;
+}
+.addNew{
+    height:28px;
+    line-height:28px;
+    border:1px solid #ccc;
+    width:110px;
+    font-size:13px;
+    color:#666;
+    text-align: center;
+    cursor: pointer;
+}
+.allL{
+    font-size:13px;
+    line-height:28px;
+    color:#6faa1b;
+}
+.allL img{
+    margin-top:10px;
+    margin-left:10px;
+}
+.addOtherClick img{
+    -webkit-transform:rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.masking{
+    background-color:rgba(0,0,0,.5);
+    width:100%;
+    position:fixed;
+    top:0;
+    left:0;
+}
+.addT{
+    height:44px;
+    line-height:44px;
+    color:#666;
+    background-color:#f5f5f5;
+    font-weight:bold;
+    font-size: 16px;
+    padding:0 20px;
+    margin-bottom:70px;
+    box-sizing: border-box;
+}
