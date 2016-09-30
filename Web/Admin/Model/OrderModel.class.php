@@ -27,10 +27,11 @@ class OrderModel extends RelationModel
 
     protected $_link = [
         'User' => [
-            'mapping_type' => self::HAS_ONE,
-            'mapping_name' => 'user',
-            'foreigh_key'  => 'user_id',
-            'parent_key'   => 'user_id',
+            'mapping_type'   => self::HAS_ONE,
+            'mapping_name'   => 'user',
+            'foreign_key'    => 'id',
+            'mapping_key'    => 'user_id',
+            'mapping_fields' => 'id,phone,nickname,head_pic',
         ],
     ];
 /**
@@ -40,9 +41,9 @@ class OrderModel extends RelationModel
  */
     public function getAll(array $where = [])
     {
-        $field = ['order_id', 'order_sn', 'order_type', 'order_status', 'delivery_status', 
-                    'pay_status', 'consignee', 'phone', 'goods_price', 'create_at'];
-        $data = $this->field($field)
+        $field = ['order_id', 'order_sn', 'user_id', 'order_type', 'order_status', 
+        'delivery_status', 'pay_status', 'consignee', 'phone', 'goods_price', 'create_at'];
+        $data = $this->field($field)->relation(true)
                      ->where($where)
                      ->where('is_admin_delete=0')
                      ->order('create_at desc')
@@ -120,6 +121,7 @@ class OrderModel extends RelationModel
         try{
             $this->data($dataForOrder)->save();
             M('OrderGoods')->where($whereForOrderGoods)->setField($dataForOrderGoods);
+            M('RebateLog')->wehre($whereForOrderGoods)->save(['status'=>2]); // 更新分销表
             $this->commit();
             $return = [true,'操作成功'];
         }catch(\Exception $e){

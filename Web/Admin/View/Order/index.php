@@ -80,18 +80,19 @@
             </form>
         </div>
 
-        <table class="table table-hover table-bordered">
+        <table class="table table-hover table-bordered table-condensed" style="font-size:14px">
             <thead>
                 <tr>
                     <th class="text-center">订单编号</th>
                     <th class="text-center">商品类型</th>
+                    <th class="text-center">买家</th>
                     <th class="text-center">收货人</th>
                     <th class="text-center">应付金额</th>
                     <th class="text-center">支付状态</th>
                     <th class="text-center">订单状态</th>
                     <th class="text-center">发货状态</th>
                     <th class="text-center">下单时间</th>
-                    <th class="text-center">操作</th>
+                    <th class="text-center" width="80">操作</th>
                 </tr>
             </thead>
             <tbody>
@@ -99,7 +100,8 @@
                 <tr>
                     <td><?=$v['order_sn'] ?></td>
                     <td class="text-center"><?=$orderType[$v['order_type']] ?></td>
-                    <td><?=$v['consignee'].':'.$v['phone'] ?></td>
+                    <td class="text-center"><?=$v['user']['nickname'].'<br>'.$v['user']['phone'] ?></td>
+                    <td><?=$v['consignee'].'<br>'.$v['phone'] ?></td>
                     <td class="text-center"><?=$v['goods_price'] ?></td>
                     <td class="text-center">
                     <?=

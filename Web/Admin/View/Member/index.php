@@ -29,6 +29,7 @@
         </div>
 
         <div class="mg-b-20 clearfix">
+            <button type="button" class="btn btn-danger pull-right" onclick="update_member_info()">更新用户昵称</button>
             <form action="<?=U('index') ?>" method="get" class="form-inline pull-right" role="form">
             
                 <div class="form-group">
@@ -137,6 +138,20 @@ function advance_agent(id,is_agent)
             })
         })
     }
+}
+
+/** 更新用户昵称 */
+function update_member_info()
+{
+    var index = layer.load();
+    $.post("<?=U('updateMemberInfo') ?>",function(e){
+        layer.close(index);
+        if(e !== false){
+            layer.msg('成功更新用户数据 '+e+' 条',{icon:6},function(){location.reload()});
+        }else{
+            layer.alert('发生错误，未能更新用户数据！');
+        }
+    })
 }
 </script>
 </body>

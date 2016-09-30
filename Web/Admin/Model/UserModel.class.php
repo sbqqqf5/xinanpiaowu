@@ -97,4 +97,41 @@ class UserModel extends Model
     {
         return $this->save(['id'=>$id, 'distribute_time'=>time(), 'is_distribute'=>1]);
     }
+/**
+ * 获取所有微信OPENID
+ * @return array ['value', 'value', ...]
+ */
+    public function getAllWechatOpenid()
+    {
+        $basic = $this->field('openid')->where('openid is not NULL')->select();
+        $data = [];
+        foreach($basic as $k=>$v){
+            $data[] = $v['openid'];
+        }
+        return $data;
+    }
+    /**
+     * 批量更新用户的昵称和头像
+     * @param  array  $info [description]
+     * @return int       更新的数据条数
+     */
+    public function updateMemberNicknameAndHeadimg(array $info)
+    {
+        if(is_array($info)){
+            $info     = $info[0]['user_info_list'];
+            $saveData = [];
+            $count    = 0;
+            $update   = false;
+            foreach($info as $v){
+                if($v['subscribe']){//已关注的用户 才有信息
+                    $saveData = ['nickname' => $v['nickname'], 'head_pic' => $v['headimgurl']];
+                    $update = $this->where(['openid'=>$v['openid']])->save($saveData);
+                    $update ? $count++ : '';
+                }
+            }
+            return $count;
+        }else{
+            return false;
+        }
+    }
 }

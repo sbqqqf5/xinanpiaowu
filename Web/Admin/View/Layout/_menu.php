@@ -152,6 +152,9 @@
                             <li>
                                 <a href="<?=U('Member/withdrawList') ?>" ><i class="fa fa-desktop "></i>提现申请</a>
                             </li>
+                            <li>
+                                <a href="<?=U('Member/rebateLog') ?>" ><i class="fa fa-desktop "></i>分销记录</a>
+                            </li>
                         </ul>
                     </li>
                     <li>

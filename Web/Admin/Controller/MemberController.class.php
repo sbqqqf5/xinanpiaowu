@@ -128,4 +128,68 @@ class MemberController extends BaseController
 
         $this->display();
     }
+    /**
+     * 分销记录表
+     * @return [type] [description]
+     */
+    public function rebateLog()
+    {
+        $model = D('RebateLog');
+        $where = [];
+        if(IS_GET && 'search' == I('get.action')){
+            if($status = I('get.status')){
+                $where['status'] = $status;
+            }
+            if($order_sn = I('get.order_sn')){
+                $where['order_sn'] = ['like', '%'.$order_sn.'%'];
+            }
+        }
+        $data = $model->getAll($where);
+        // dump($data);
+        $this->assign([
+            'data'   => $data,
+            'status' => $model::$status,
+        ]);
+        $this->display();
+    }
+    /**
+     * 处理一条分销记录
+     * @return ajax 
+     */
+    public function rebateLogHandle()
+    {
+        if(IS_POST){
+            $id     = I('post.id');
+            $action = I('post.action');
+            if('delete' == $action){
+                $this->ajaxReturn(D('RebateLog')->deleteOne($id));
+            }
+            if('confirm' == $action){
+                $this->ajaxRetrun(D('RebateLog')->confirmOne($id));
+            }
+        }
+    }
+
+    /**
+     * 更新用户的微信昵称 头像
+     * @return [type] [description]
+     */
+    public function updateMemberInfo()
+    {
+        $WxApi = new \Com\WxApi(WECHAT_APPID, WECHAT_APPSECRET);
+        // $all = $WxApi->wxGetUserList()['data']['openid'];
+        /*$all = file_get_contents('./Public/data/subscribe.json');
+        $all = json_decode($all, true);
+        $part = array_slice($all, -400, 200);*/
+
+        $model = D('User');
+        $openidArray = $model->getAllWechatOpenid();
+        $openidBatch = array_chunk($openidArray, 100);
+        $userinfo = [];
+        foreach($openidBatch as $v){
+            $userinfo[] = $WxApi->wxGetUserListBatch($v);
+        }
+        $update = $model->updateMemberNicknameAndHeadimg($userinfo);
+        $this->ajaxReturn($update!==false ? $update : false);
+    }
 }
