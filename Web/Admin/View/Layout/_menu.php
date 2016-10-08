@@ -180,7 +180,7 @@
                                 <a href="<?=U('Info/adminList') ?>" ><i class="fa fa-desktop "></i>管理员列表 </a>
                             </li>
                              <li>
-                                <a href="form-advance.html"><i class="fa fa-code "></i>Advance</a>
+                                <a href="<?=U('Info/homeBanner') ?>"><i class="fa fa-code "></i>首页轮播图</a>
                             </li>
                              
                            

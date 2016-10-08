@@ -35,17 +35,19 @@
             <thead>
                 <tr>
                     <th class="text-center" width="100">#</th>
+                    <th class="text-center" width="100">ICON</th>
                     <th class="text-center" width="150">栏目名称</th>
                     <th class="text-center">栏目介绍</th>
                     <th class="text-center" width="100">排序值</th>
-                    <th class="text-center">状态</th>
+                    <th class="text-center">显示为栏目</th>
                     <th class="text-center">操作</th>
                 </tr>
             </thead>
             <tbody>
-            <?php foreach ($data as $v): ?>
+            <?php foreach ($data as $k=>$v): ?>
                 <tr>
-                    <td class="text-center"><?=$v['id'] ?></td>
+                    <td class="text-center"><?=$k+1 ?></td>
+                    <td class="text-center" style="background-color:rgba(0,202,121,1)"><img src="<?=$v['icon'] ?>" width="30"></td>
                     <td class="cate-name"> <input type="text" class="form-control input-sm " value="<?=$v['name'] ?>" onblur="update_name(this,<?=$v['id'] ?>)"> </td>
                     <td class="text-center">
                         <input type="text" class="form-control input-sm " value="<?=$v['intro'] ?>" onblur="update_intro(this,<?=$v['id'] ?>)">
@@ -112,7 +114,14 @@
                             </div>
                         </div>
                     </div>
-                   
+                   <div class="form-group row">
+                       <label for="icon" class="col-sm-2 control-label">ICON</label>
+                       <div class="col-sm-10">
+                           <img src="/Public/admin/assets/img/demoUpload.jpg" class="img-rounded" width="50" id="icon-img" onclick="$('#icon-file').click()">
+                           <input type="file" name="file" id="icon-file" style="display:none" onchange="handleFiles(this.files,'icon-img','icon-file','icon-input')">
+                           <input type="hidden" name="icon" id="icon-input">
+                       </div>
+                   </div>
                     <div class="form-group row">
                         <label for="pics" class="col-sm-2 control-label">轮播图</label>
                         <div class="col-sm-10">
@@ -166,6 +175,14 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="icon" class="col-sm-2 control-label">ICON</label>
+                        <div class="col-sm-10">
+                            <img src="/Public/admin/assets/img/demoUpload.jpg" class="img-rounded" width="50" id="edit-icon-img" onclick="$('#edit-icon-file').click()" style="background-color:#000">
+                            <input type="file" name="file" id="edit-icon-file" style="display:none" onchange="handleFiles(this.files,'edit-icon-img','edit-icon-file','edit-icon-input')">
+                            <input type="hidden" name="icon" id="edit-icon-input">
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label for="" class="col-sm-2 control-label">原图册</label>
                         <div class="col-sm-10" id="edit-div-pics">
                         </div>
@@ -191,6 +208,7 @@
 <?=W('Widget/deleteModal',[['id'=>'item-delete']]) ?>
 
 <?php require __DIR__.'/../Layout/_script.php' ?>
+<script src="/Public/admin/assets/js/ajaxfileupload.js"></script>
 <script src="/Public/admin/bootstrap_fileinput/js/fileinput.min.js"></script>
 <script src="/Public/admin/bootstrap_fileinput/js/fileinput_locale_zh.js"></script>
 
@@ -212,6 +230,30 @@ function initFileInput(ctrlName, uploadUrl)
 initFileInput('pics',"<?=U('ajaxColumnBanner') ?>");
 initFileInput('edit-pics',"<?=U('ajaxColumnBanner') ?>");
 
+function handleFiles(files,pic,fileID,hiddenID){
+    var file = files[0];  //从文件对象中获取到第一个
+    var reader = new FileReader();  
+    reader.onload = (function(img){
+        return function(e){
+            $('#'+pic).attr('src', e.target.result );  
+        };
+    })(file);
+    reader.readAsDataURL(file);
+    $.ajaxFileUpload({
+        url : "<?=U('ajaxTicketCoulumnIcon') ?>",
+        type : 'post',
+        secureuri : false,
+        fileElementId : fileID,
+        dataTpye: 'json',
+        error : function(e){
+            layer.alert('缩略图上传失败！');
+        },
+        success : function(ans){
+            var imgpath = $(ans).text();
+            $('#'+hiddenID).val(imgpath);
+        },
+    });
+};
 
     /* 更新名称 */
     function update_name(obj,id)
@@ -271,9 +313,13 @@ initFileInput('edit-pics',"<?=U('ajaxColumnBanner') ?>");
         cur_id  = id;
         $.get("<?=U('columnList') ?>",{"id":cur_id},function(e){
             var $modal = $('#modal-edit');
+            var icon_img = e.icon ? e.icon : '/Public/admin/assets/img/demoUpload.jpg';
+            var icon_img_input = e.icon ? e.icon : '';
                 $modal.find(':hidden[name="id"]').val(e.id)
                 $modal.find('#edit-name').text(e.name)
                 $modal.find('#edit-intro').val(e.intro);
+                $modal.find('#edit-icon-img').attr('src', icon_img);
+                $modal.find('#edit-icon-input').val(icon_img_input);
                 $modal.find(':checkbox').each(function(){$(this).prop('checked',false)});
                 for(var i in e.cates){
                     $modal.find(':checkbox[value='+e['cates'][i]+']').prop('checked',true);

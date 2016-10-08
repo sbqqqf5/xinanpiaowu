@@ -5,6 +5,54 @@ use Think\Controller;
 
 class InfoController extends BaseController
 {
+    /**
+     * 首页轮播图
+     * @return [type] [description]
+     */
+    public function homeBanner()
+    {
+        $model = D("HomeBanner");
+        if(IS_POST){
+            $action = I('post.action');
+            $id     = I('post.id');
+            if('del' == $action && $id){//删除一条内容
+                $this->ajaxReturn($model->delete($id));
+            }
+            if('sorted' == $action && $id){//更新排序值 
+                $this->ajaxReturn($model->updateSorted(I('post.')));
+            }
+            if('status' == $action && $id){
+                $this->ajaxReturn($model->updateStatus(I('post.')));
+            }
+            if('add' == $action){
+                $add = $model->addOne(I('post.'));
+                if($add[0]){
+                    $this->success('添加成功', 'homeBanner');exit;
+                }else{
+                    $this->error($add[1]);exit;
+                }
+            }
+        }
+
+        $this->assign([
+            'data' => $model->getAll(),
+        ]);
+        $this->display();
+    }
+/**
+ * 上传首页 Banner 图
+ * @return [type] [description]
+ */
+    public function ajaxHomeBanner()
+    {
+        $result = $this->ajaxFileUpload('homebanner/');
+        if($result){
+            $ans = $result;
+        }else{
+            $ans = 0;
+        }
+        $this->ajaxReturn($ans);
+    }
 /**
  * 充值会员价格 赠送积分
  * @return [type] [description]

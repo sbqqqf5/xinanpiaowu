@@ -26,7 +26,7 @@
                     <label for="name" class="control-label">Name *</label>
                     <div class="templatemo-input-icon-container">
                         <i class="fa fa-user"></i>
-                        <input type="text" class="form-control" id="name" placeholder="" name="user">
+                        <input type="text" class="form-control" id="name" placeholder="" name="user" autofocus>
                     </div>                                                          
                   </div>              
                 </div>

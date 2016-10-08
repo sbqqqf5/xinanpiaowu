@@ -6,6 +6,7 @@
         .td-manage span{cursor:pointer;margin-left:5px;margin-right:5px;}
         thead tr{background-color:#00ca79;color:#fff;}
         .cate-name span{color:blue;font-size:20px;margin-right:10px;}
+        .cate-name img{background-color: #000;float:right; max-width: 30px;}
         .child{display:none;}
     </style>
 </head>
@@ -48,6 +49,7 @@
                     <td class="cate-name">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true" onclick="expand(this,<?=$v['id'] ?>)"></span>
                         <span class="glyphicon glyphicon-minus" aria-hidden="true" style="display:none;" onclick="collapse(this,<?=$v['id'] ?>)"></span><?=$v['name'] ?>
+                        <img src="<?=$v['icon'] ?>" >
                     </td>
                     <td><input type="text" name="sorted[]" class="form-control input-sm " value="<?=$v['sorted'] ?>" required="required" onblur="update_sorted(this,<?=$v['id'] ?>)"></td>
                     <td class="td-manage text-center">
@@ -106,6 +108,14 @@
                             <input type="text" name="sorted" id="inputSorted" class="form-control" value="1" required="required" placeholder="值越大，显示越前">
                         </div>
                     </div>
+                    <div class="form-group row">
+                       <label for="icon" class="col-sm-2 control-label">ICON</label>
+                       <div class="col-sm-10">
+                           <img src="/Public/admin/assets/img/demoUpload.jpg" class="img-rounded" width="50" id="icon-img" onclick="$('#icon-file').click()" style="background-color:#000">
+                           <input type="file" name="file" id="icon-file" style="display:none" onchange="handleFiles(this.files,'icon-img','icon-file','icon-input')">
+                           <input type="hidden" name="icon" id="icon-input">
+                       </div>
+                   </div>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="id" value="">
@@ -136,6 +146,7 @@
     </div>
 </div> <!-- /modal #item-delete -->
 <?php require __DIR__.'/../Layout/_script.php' ?>
+<script src="/Public/admin/assets/js/ajaxfileupload.js"></script>
 
 <script>
     /* 展开 */
@@ -166,6 +177,32 @@
         }
         $.post("<?=U('cateHandle') ?>",{"action":"sorted","id":id,"value":value});
     }
+    /** 上传icon */
+    function handleFiles(files,pic,fileID,hiddenID){
+        var file = files[0];  //从文件对象中获取到第一个
+        var reader = new FileReader();  
+        reader.onload = (function(img){
+            return function(e){
+                $('#'+pic).attr('src', e.target.result );  
+            };
+        })(file);
+        reader.readAsDataURL(file);
+        $.ajaxFileUpload({
+            url : "<?=U('Ticket/ajaxTicketCoulumnIcon') ?>",
+            type : 'post',
+            secureuri : false,
+            fileElementId : fileID,
+            dataTpye: 'json',
+            error : function(e){
+                layer.alert('缩略图上传失败！');
+            },
+            success : function(ans){
+                var imgpath = $(ans).text();
+                $('#'+hiddenID).val(imgpath);
+            },
+        });
+    };
+
     /* 编辑 */
     function item_edit(obj,id)
     {

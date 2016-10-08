@@ -158,6 +158,18 @@ class TicketController extends BaseController
         ]);
         $this->display();
     }
+
+    /** 上传栏目 ICON */
+    public function ajaxTicketCoulumnIcon()
+    {
+        $result = $this->ajaxFileUpload('icon/');
+        if($result){
+            $ans = $result;
+        }else{
+            $ans = 0;
+        }
+        echo $ans;
+    }
 /**
  * 票务城市
  * @return [type] [description]

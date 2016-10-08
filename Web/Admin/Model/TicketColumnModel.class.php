@@ -15,7 +15,7 @@ class TicketColumnModel extends Model
  */
     public function getAll(array $where = [])
     {
-        return $this->field(true)->where($where)->select();
+        return $this->field(true)->order('sorted desc')->where($where)->select();
     }
     /**
      * 获取有效的栏目名 格式化成 json

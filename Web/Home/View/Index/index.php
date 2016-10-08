@@ -62,12 +62,11 @@
             </div>
             <div class="navTitle z">
                 <a href="javascript:void(0)" class="liClick">首页</a>
-                <a href="javascript:void(0)">演唱会</a>
-                <a href="javascript:void(0)">话剧表演</a>
-                <a href="javascript:void(0)">景点门票</a>
-                <a href="javascript:void(0)">展会展览</a>
-                <a href="javascript:void(0)">体育赛事</a>
-                <a href="javascript:void(0)">明星周边</a>
+                <?php foreach($columns as $column): ?>
+                <a href="javascript:void(0)"><?=$column['name'] ?></a>
+                <?php endforeach; ?>
+
+                <a href="/star">明星周边</a>
                 <a href="javascript:void(0)">代理加盟</a>
             </div>
         </div>
@@ -76,11 +75,13 @@
     <div class="content cl">
         <div class="bannerBox wp cl">
             <div class="allOtherBox z">
+            <?php foreach($menus as $menu): ?>
                 <a href="javascript:void(0)" class="cl fenlei">
-                    <img src="/Public/home_pc/images/ticket_category_concert.png" class="z" alt="">
-                    <div class="y">演唱会</div>
+                    <img src="<?=$menu['icon'] ?>" class="z" alt="">
+                    <div class="y"><?=$menu['name'] ?></div>
                 </a>
-                <a href="javascript:void(0)" class="cl fenlei">
+            <?php endforeach ?>
+                <!-- <a href="javascript:void(0)" class="cl fenlei">
                     <img src="/Public/home_pc/images/ticket_category_musicale.png" class="z" alt="">
                     <div class="y">音乐会</div>
                 </a>
@@ -99,61 +100,23 @@
                 <a href="javascript:void(0)" class="cl fenlei">
                     <img src="/Public/home_pc/images/ticket_category_view.png" class="z" alt="">
                     <div class="y">景点门票</div>
-                </a>
+                </a> -->
             </div>
             <div class="y pptBox">
                 <div class="pptBoxTop pr">
-                    <img src="/Public/home_pc/images/banner1.jpg" alt="">
-                    <img src="/Public/home_pc/images/banner2.jpg" alt="">
-                    <img src="/Public/home_pc/images/banner3.jpg" alt="">
-                    <img src="/Public/home_pc/images/banner4.jpg" alt="">
-                    <img src="/Public/home_pc/images/banner5.jpg" alt="">
-                    <img src="/Public/home_pc/images/banner6.jpg" alt="">
-                    <img src="/Public/home_pc/images/banner7.jpg" alt="">
+                <?php foreach($banners as $banner): ?>
+                   <a href="<?=$banner['link']?$banner['link']:'javascript:;' ?>"><img src="<?=$banner['img'] ?>" alt=""></a>
+                <?php endforeach; ?>
                 </div>
                 <div class="pptBoxBottom cl" data-show=0>
+                <?php foreach($banners as $banner): ?>
                     <div class="smallPPTbox z">
                         <div class="san"></div>
                         <div class="pptImgBox">
-                            <img src="/Public/home_pc/images/banner1.jpg" alt="">
+                            <img src="<?=$banner['img'] ?>" alt="">
                         </div>
                     </div>
-                    <div class="smallPPTbox z">
-                        <div class="san"></div>
-                        <div class="pptImgBox">
-                            <img src="/Public/home_pc/images/banner2.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="smallPPTbox z">
-                        <div class="san"></div>
-                        <div class="pptImgBox">
-                            <img src="/Public/home_pc/images/banner3.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="smallPPTbox z">
-                        <div class="san"></div>
-                        <div class="pptImgBox">
-                            <img src="/Public/home_pc/images/banner4.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="smallPPTbox z">
-                        <div class="san"></div>
-                        <div class="pptImgBox">
-                            <img src="/Public/home_pc/images/banner5.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="smallPPTbox z">
-                        <div class="san"></div>
-                        <div class="pptImgBox">
-                            <img src="/Public/home_pc/images/banner6.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="smallPPTbox z">
-                        <div class="san"></div>
-                        <div class="pptImgBox">
-                            <img src="/Public/home_pc/images/banner7.jpg" alt="">
-                        </div>
-                    </div>
+                <?php endforeach; ?>
                 </div>
             </div>
         </div>
@@ -711,71 +674,7 @@
             </div>
         </div>
     </div>
-    <div class="footer cl">
-        <div class="footerTop">
-            <div class="footerA wp cl pr">
-                <div class="z nav">
-                    <a href="javascript:void(0)" class="fs16">新手指南</a>
-                    <a href="javascript:void(0)">购票流程</a>
-                    <a href="javascript:void(0)">发票说明</a>
-                    <a href="javascript:void(0)">预订说明</a>
-                    <a href="javascript:void(0)">退换及缺货说明</a>
-                </div>
-                <div class="z nav">
-                    <a href="javascript:void(0)"  class="fs16">订票方式</a>
-                    <a href="javascript:void(0)">微信订票</a>
-                    <a href="javascript:void(0)">网站订票</a>
-                </div>
-                <div class="z nav">
-                    <a href="javascript:void(0)"  class="fs16">配送说明</a>
-                    <a href="javascript:void(0)">送货上门</a>
-                    <a href="javascript:void(0)">上门自取</a>
-                    <a href="javascript:void(0)">电子票</a>
-                </div>
-                <div class="z nav">
-                    <a href="javascript:void(0)"  class="fs16">支付方式</a>
-                    <a href="javascript:void(0)">微信支付</a>
-                </div>
-                <div class="z nav">
-                    <a href="javascript:void(0)"  class="fs16">特色服务</a>
-                    <a href="javascript:void(0)">加盟推广</a>
-                </div>
-                <div class="pa" style="background-position-y:10px;background-position-x:55px;top:0;right:0;height:180px;width:340px;;background-image:url(/Public/home_pc/images/china.png);background-repeat:no-repeat;">
-                    <div class="lianxi">
-                        欢迎来到西南票务网网站， 具体地址是成都市顺城大街
-                        127号嘉好大厦1188室(银河王朝大酒店正对面)，联系人
-                        是吴小姐。
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footerBottom wp">
-            <div class="qrBox z">
-                <img src="/Public/home_pc/images/qr.png" class="z" alt="">
-                <p>西南票务微信</p>
-            </div>
-            <div class="footerXinxi z">
-                <div class="footerBottomA z">
-                    <a href="javascript:void(0)">关于西南票务望</a>
-                    <a href="javascript:void(0)">服务协议</a>
-                    <a href="javascript:void(0)">隐私声明</a>
-                    <a href="javascript:void(0)">联系我们</a>
-                    <a href="javascript:void(0)">友情链接</a>
-                </div>
-                <div class="z zi">
-                    <div class="z">
-                        版权所有 西南票务网 Copyright©2003-2016 All Rights Reserved 成都西南票务文化传播股份有限公司
-                        中国领先的演出门票预订综合性票务网站。为您提供各类演出门票网上订票服务。
-                    </div>
-                    <div class="footerImg z">
-                        <img src="/Public/home_pc/images/footer_icon1.png" alt="">
-                        <img src="/Public/home_pc/images/footer_icon2.png" alt="">
-                        <img src="/Public/home_pc/images/footer_icon3.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php require __DIR__.'/../Public/_footer.php' ?>
 </body>
 <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="/Public/home_pc/js/com.js"></script>
