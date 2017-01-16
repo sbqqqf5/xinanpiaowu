@@ -2,6 +2,6 @@
 
 .impowerBox .qrcode {width: 90%;}
 .impowerBox .title {display: none;}
-.impowerBox .info {width: 200px;}
+.impowerBox .info {width: 200px;display:none;}
 .status_icon {display：none}
 .impowerBox .status {text-align: center;} 
